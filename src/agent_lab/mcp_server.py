@@ -32,7 +32,7 @@ class MCPServer:
                 {
                     "protocolVersion": PROTOCOL_VERSION,
                     "capabilities": {"tools": {"listChanged": False}},
-                    "serverInfo": {"name": "agent-engineering-sprint", "version": "0.1.0"},
+                    "serverInfo": {"name": "agent-engineering-sprint", "version": "0.2.0"},
                 },
             )
         if method == "tools/list":
