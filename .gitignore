@@ -10,4 +10,5 @@ __pycache__/
 build/
 dist/
 evidence/traces/*.jsonl
+!evidence/traces/agent-matrix.jsonl
 evidence/runtime/
