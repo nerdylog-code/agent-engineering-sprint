@@ -1,0 +1,40 @@
+{
+  "documents": 100,
+  "chunks": 100,
+  "dataset": "evals\\golden_dataset.json",
+  "modes": {
+    "vector_only": {
+      "mode": "vector",
+      "rerank": false,
+      "questions": 50,
+      "recall_at_1": 0.92,
+      "recall_at_3": 0.92,
+      "recall_at_5": 0.92,
+      "mrr": 0.92,
+      "groundedness": 0.92,
+      "answer_relevance": 0.64
+    },
+    "hybrid": {
+      "mode": "hybrid",
+      "rerank": false,
+      "questions": 50,
+      "recall_at_1": 0.98,
+      "recall_at_3": 1.0,
+      "recall_at_5": 1.0,
+      "mrr": 0.99,
+      "groundedness": 1.0,
+      "answer_relevance": 0.666667
+    },
+    "hybrid_reranker": {
+      "mode": "hybrid",
+      "rerank": true,
+      "questions": 50,
+      "recall_at_1": 1.0,
+      "recall_at_3": 1.0,
+      "recall_at_5": 1.0,
+      "mrr": 1.0,
+      "groundedness": 1.0,
+      "answer_relevance": 0.666667
+    }
+  }
+}
