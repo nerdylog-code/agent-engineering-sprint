@@ -19,14 +19,14 @@ default não depende de API paga, credencial, cloud ou modelo remoto.
 | Gate | Resultado observado |
 |---|---:|
 | Compilação `compileall` | PASS |
-| Testes de `tests/` | 29 passed |
+| Testes de `tests/` | 41 passed |
 | Evals de `evals/` | 7 passed |
-| Pytest total | 36 passed, 3 subtests |
-| Branch coverage | 81.14% |
+| Pytest total | 48 passed, 3 subtests |
+| Branch coverage | 81.41% |
 | Mypy | PASS |
 | Bandit | PASS |
 | Dependency audit | PASS, 0 known vulnerabilities in project runtime |
-| Security scan | 36 arquivos, 0 findings |
+| Security scan | 43 arquivos, 0 findings |
 | Agent task success | 1.0 (8/8 runs) |
 | Tool selection accuracy | 1.0 |
 | Structured-output validity | 1.0 |
@@ -36,6 +36,10 @@ default não depende de API paga, credencial, cloud ou modelo remoto.
 | Hybrid + reranker MRR | 1.0 |
 | MiniCPM5 real tool loop | PASS, 2 turns / 12.257931s |
 | Local benchmark | 100 runs, agent/RAG p50/p95 recorded |
+| FastEmbed benchmark | PASS, BGE small vs hashing measured |
+| OpenTelemetry | SDK in-memory spans for HTTP/agent/provider/tool/RAG |
+| MCP HTTPS | PASS, self-signed TLS + JWT tool scope allow/deny |
+| Chaos/load | 100/100 requests; timeout/429/500/malformed/lock recovery |
 
 Os artefatos completos ficam em:
 
@@ -47,7 +51,54 @@ Os artefatos completos ficam em:
 - `evidence/provider/minicpm5-tool-call.json`
 - `evidence/provider/mcp-stdio-protocol.json`
 - `evidence/benchmarks/local-baseline.json`
+- `evidence/benchmarks/embedding-comparison.json`
+- `evidence/benchmarks/chaos-load.json`
+- `evidence/security/mcp-http-tls.json`
+- `evidence/security-tests.md`
+- `evidence/traces/otel-spans-demo.json`
 - `evals/golden_dataset.json`
+
+## Production Readiness
+
+### Implemented and locally verified
+
+✓ JWT authentication with claims, RBAC and tenant isolation
+
+✓ Persistent RAG and real FastEmbed benchmark against hashing
+
+✓ Agent/tool execution and structured outputs
+
+✓ MCP stdio plus local MCP HTTP/TLS, JWT scopes, timeout and audit decisions
+
+✓ Rate limiting, retries, circuit breaker and failure handling
+
+✓ OpenTelemetry SDK spans for HTTP, router, agent, provider, retrieval and tools
+
+✓ Async load/chaos harness, static security analysis and automated tests
+
+### Prepared but not externally verified
+
+△ Docker image and compose deployment
+
+△ GitHub Actions hosted execution and branch protection
+
+△ Qdrant/vector database deployment
+
+△ Managed secrets and centralized observability export
+
+△ Cloud deployment, rollback and distributed load testing
+
+### Requires external infrastructure or human approval
+
+○ Production identity provider and key rotation
+
+○ Managed vector database with production ACL policy
+
+○ Centralized telemetry backend, SLOs and retention
+
+○ Azure/AWS production account and budget
+
+○ Formal SOC 2/LGPD review and release approval
 
 ## O que foi implementado
 
@@ -67,7 +118,7 @@ Os artefatos completos ficam em:
 - ACL por `tenant_id` e `principal` no retrieval, sem permitir cross-tenant
   citations.
 - FastAPI com health/readiness, request IDs, métricas Prometheus básicas e
-  Bearer token opcional para rotas `/v1/*`.
+  JWT HS256 opcional com claims tenant/principal para rotas `/v1/*`.
 - Rate limit por janela fixa com resposta `429` e `Retry-After`.
 - Servidor stdio JSON-RPC com `initialize`, `tools/list` e `tools/call`, além
   de teste de subprocesso real sobre a registry allowlisted.
@@ -78,6 +129,7 @@ Os artefatos completos ficam em:
 - Chunking com overlap.
 - Embeddings locais por hashing, sem download de modelo.
 - Busca vector-only, keyword-only e hybrid com Reciprocal Rank Fusion.
+- Backend de embeddings substituível: hashing control e FastEmbed ONNX real.
 - Reranker lexical/semântico com bônus de evidência exata.
 - Respostas com citações, groundedness e answer relevance.
 - Comparação mensurada entre vector-only, hybrid e hybrid + reranker.
@@ -92,6 +144,10 @@ Os artefatos completos ficam em:
 - `scripts/security_scan.py`: secrets, private keys e shell escape patterns.
 - `scripts/minicpm5_tool_call_probe.py`: prova real do loop de tool calling local.
 - `scripts/benchmark.py`: baseline reproduzível de throughput e p50/p95.
+- `scripts/embedding_benchmark.py`: comparação hashing vs FastEmbed com Recall/MRR.
+- `scripts/mcp_https_demo.py`: HTTPS local real com JWT e scope de tool.
+- `scripts/chaos_load.py`: carga assíncrona e injeção de falhas com evidência JSON.
+- `scripts/otel_trace_demo.py`: inventário de spans redigido para demonstração.
 
 ## Quickstart
 
@@ -108,8 +164,9 @@ PYTHONPATH=src python scripts/generate_evidence.py
 ```
 
 O núcleo determinístico não exige dependências de provider. Os extras `api`,
-`dev` e `security` são instalados pelos gates para validar FastAPI, cobertura,
-mypy, Bandit e pip-audit.
+`dev`, `security` e `observability` são instalados pelos gates para validar
+FastAPI, cobertura, mypy, Bandit, pip-audit e OpenTelemetry. `embeddings` é
+opcional porque baixa o modelo FastEmbed local.
 
 ## Contrato de execução
 
@@ -177,8 +234,13 @@ evidence/               resultados medidos e traces
   está separado em evidência própria; isso não generaliza para todos os modelos.
 - O embedding por hashing é baseline reproduzível, não substituto de um modelo
   de embedding de produção.
+- FastEmbed BGE small foi executado localmente; neste dataset lexical ambos
+  tiveram Recall/MRR 1.0, portanto nenhum vencedor é declarado sem dataset
+  semanticamente ambíguo.
+- O timeout de tool limita o chamador, mas não mata thread Python já iniciada;
+  tool não confiável ainda exige processo/container isolado em produção.
 - Não há GitHub Actions hospedado executado porque este diretório não possui
   remote GitHub configurado; o workflow está pronto para um push futuro.
 - Não há certificado ou badge externo inventado.
-- MCP protocol completo com autenticação, client/server remoto e isolamento
-  continua pendente; o subconjunto stdio local já foi validado com subprocesso.
+- MCP protocol completo com client/server remoto e isolamento continua pendente;
+  o subconjunto stdio e o boundary HTTPS/JWT local já foram validados.

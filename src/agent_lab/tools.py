@@ -6,6 +6,7 @@ import ast
 import operator
 import re
 from collections.abc import Callable
+from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass, field
 from typing import Any
 
@@ -27,6 +28,7 @@ class ToolSpec:
     description: str
     read_only: bool = True
     requires_approval: bool = False
+    timeout_seconds: float | None = None
     parameters: dict[str, Any] = field(
         default_factory=lambda: {"type": "object", "properties": {}, "additionalProperties": False}
     )
@@ -57,14 +59,28 @@ class ToolRegistry:
     def schemas(self) -> list[dict[str, Any]]:
         return [self._tools[name].schema() for name in self.names()]
 
-    def call(self, name: str, arguments: dict[str, Any]) -> ToolResult:
+    def call(self, name: str, arguments: dict[str, Any], *, timeout_seconds: float | None = None) -> ToolResult:
         spec = self._tools.get(name)
         if spec is None:
             return ToolResult(name=name, ok=False, error="tool is not registered", blocked=True)
         if not isinstance(arguments, dict) or any(str(key).startswith("__") for key in arguments):
             return ToolResult(name=name, ok=False, error="unsafe tool arguments", blocked=True)
+        timeout = timeout_seconds if timeout_seconds is not None else spec.timeout_seconds
         try:
-            output = spec.handler(arguments)
+            if timeout is None:
+                output = spec.handler(arguments)
+            else:
+                if timeout <= 0:
+                    return ToolResult(name=name, ok=False, error="tool timeout must be positive", blocked=True)
+                executor = ThreadPoolExecutor(max_workers=1, thread_name_prefix=f"tool-{name}")
+                future = executor.submit(spec.handler, arguments)
+                try:
+                    output = future.result(timeout=timeout)
+                except TimeoutError:
+                    future.cancel()
+                    return ToolResult(name=name, ok=False, error=f"tool timed out after {timeout:.3f}s")
+                finally:
+                    executor.shutdown(wait=False, cancel_futures=True)
         except (ToolSecurityError, ValueError, ZeroDivisionError, SyntaxError, OverflowError) as exc:
             return ToolResult(name=name, ok=False, error=str(exc))
         serialized = str(output)

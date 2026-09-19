@@ -8,25 +8,29 @@ security gates, CI and real MiniCPM5 execution.
 
 | Area | Evidence | Status |
 |---|---|---|
-| Unit/integration behavior | `pytest`: 36 passed, 3 subtests | PASS |
-| Branch coverage | `pytest-cov`: 81.14% | PASS (threshold 80%) |
+| Unit/integration behavior | `pytest`: 48 passed, 3 subtests | PASS |
+| Branch coverage | `pytest-cov`: 81.41% | PASS (threshold 80%) |
 | Ruff | `ruff check` | PASS |
-| Mypy | `mypy src` | PASS, 23 source files |
+| Mypy | `mypy src` | PASS, 27 source files |
 | Bandit | `bandit -q -r src -ll` | PASS |
 | Dependency audit | `pip-audit . --format json` | PASS, project runtime has no known vulnerable dependency |
 | Security baseline | `scripts/security_scan.py` | PASS, 0 findings |
 | API process | Uvicorn real HTTP smoke | PASS: health, readiness, metrics, agent and RAG endpoints |
-| API controls | optional Bearer token, request ID, bounded payloads | PASS in contract tests |
-| Tenant/principal isolation | retrieval filters + regression tests | PASS |
+| API controls | JWT HS256 claims, request ID, bounded payloads | PASS in contract tests |
+| Tenant/principal isolation | JWT-derived tenant/principal + retrieval filters | PASS in local contract tests |
 | Rate limiting | fixed window, 429 and Retry-After | PASS in contract tests |
 | RAG durability | SQLite WAL store + reload test | PASS |
 | Provider protocol | OpenAI-compatible parser + retry + circuit breaker | PASS in fake-provider contract tests |
 | Real MCP stdio subset | `initialize`, `tools/list`, `tools/call` over JSON-RPC | PASS: subprocess protocol test |
+| Local MCP HTTPS | self-signed TLS + JWT per-tool scope | PASS: `evidence/security/mcp-http-tls.json` |
 | Real local model | MiniCPM5-2B-Q8 at `127.0.0.1:8082` | PASS: real tool loop |
+| Real FastEmbed | BGE-small ONNX vs hashing control | PASS: `evidence/benchmarks/embedding-comparison.json` |
+| OpenTelemetry SDK | in-memory spans for HTTP/agent/provider/tool/RAG | PASS: contract tests |
+| Local load/chaos | 100 concurrent requests + failure injection | PASS: `evidence/benchmarks/chaos-load.json` |
 | Local benchmark | 100 agent/RAG runs with p50/p95 | PASS: evidence JSON |
 | Docker execution | Docker daemon on current host | NOT EXECUTED: command unavailable |
 | Hosted GitHub Actions | remote repository/run URL | NOT EXECUTED: no remote configured |
-| Real MCP transport | MCP client/server/auth boundary | NOT YET IMPLEMENTED |
+| Full external MCP deployment | hosted server/client and network isolation | NOT EXECUTED: local HTTPS boundary only |
 
 ## MiniCPM5 real-path evidence
 
@@ -79,7 +83,13 @@ provider or external MCP server has the same capability.
   `tools/call`, backed by the allowlisted registry.
 - FastAPI health/readiness endpoints.
 - Optional Bearer authentication for `/v1/*` routes.
+- JWT HS256 authentication with issuer/audience/expiry/signature validation,
+  derived tenant/principal claims and per-tool MCP scopes.
 - Request ID propagation and Prometheus-compatible basic counters.
+- OpenTelemetry SDK spans with in-memory evidence and optional console export.
+- FastEmbed BGE-small ONNX backend with hashing control and Recall/MRR benchmark.
+- Async load/chaos evidence for provider failures, malformed responses, hanging
+  tools, SQLite locks and recovery.
 - Non-root Docker image, read-only compose service and healthcheck.
 - Mypy, Bandit, coverage and project-scoped pip-audit gates.
 
@@ -89,17 +99,18 @@ Use:
 
 > Built an offline-first agent evaluation platform with a real OpenAI-compatible
 > provider adapter, MiniCPM5 tool-calling validation, bounded retries and circuit
-> breaking, structured tool schemas, safety/PII gates, FastAPI health/auth/
-> metrics, SQLite-persisted RAG corpora, hybrid retrieval, reranking, 80.42% branch
+> breaking, structured tool schemas, safety/PII gates, JWT-derived tenant/scopes,
+> FastAPI health/auth/metrics, SQLite-persisted RAG corpora, hybrid retrieval,
+> FastEmbed benchmark, OpenTelemetry spans, and 80%+ branch
 > coverage and CI quality/security gates.
 
 Do not claim yet:
 
-- full production MCP server/client deployment;
+- full production MCP server/client deployment with isolated workers;
 - hosted GitHub Actions passing;
 - Docker image passing in this environment;
 - cloud deployment or Application Insights;
-- multi-tenant authorization or compliance certification;
+- persisted enterprise ACL authorization or compliance certification;
 - Microsoft/Hugging Face/AWS credentials without account evidence.
 
 ## Remaining production promotion blockers
@@ -107,14 +118,14 @@ Do not claim yet:
 1. Connect a real GitHub remote, enable branch protection and capture a hosted
    CI run URL.
 2. Run Docker build/smoke/scan on a Docker-enabled runner.
-3. Expand the stdio MCP subset to a full MCP client/server deployment with
-   authentication, per-tool scopes and process/network isolation.
+3. Promote the local MCP HTTPS boundary to a full MCP client/server deployment
+   with process/network isolation and external identity.
 4. Add OpenTelemetry export, dashboards, alerts, SLOs and retention policy.
 5. Add a production vector database, ACL/tenant filters and real documents.
 6. Add an external secret manager, SBOM/signing and a clean locked dependency
    environment for every deploy target.
-7. Perform independent threat modeling, load testing, chaos/recovery testing and
-   human release approval.
+7. Perform independent threat modeling, distributed load testing and human
+   release approval; local load/chaos evidence is already captured.
 
 Until those items are verified, the project is **enterprise-grade in its local
 engineering controls and evidence discipline**, but not a production service

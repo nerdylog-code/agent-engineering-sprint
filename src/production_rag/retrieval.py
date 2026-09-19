@@ -7,9 +7,14 @@ import math
 import re
 from collections import Counter
 from collections.abc import Iterable
-from typing import TypedDict
+from typing import TYPE_CHECKING, TypedDict
 
 from .models import Chunk, RagAnswer, RetrievalHit
+
+if TYPE_CHECKING:
+    from agent_lab.telemetry import Telemetry
+
+    from .embeddings import EmbeddingBackend
 
 _TOKEN_RE = re.compile(r"[a-z0-9À-ÿ_-]+", re.IGNORECASE)
 
@@ -52,10 +57,26 @@ class ScoreRow(TypedDict, total=False):
 
 
 class HybridRetriever:
-    def __init__(self, chunks: Iterable[Chunk], *, dimensions: int = 128) -> None:
+    def __init__(
+        self,
+        chunks: Iterable[Chunk],
+        *,
+        dimensions: int = 128,
+        embedding_backend: EmbeddingBackend | None = None,
+        telemetry: Telemetry | None = None,
+    ) -> None:
         self.chunks = tuple(chunks)
-        self.dimensions = dimensions
-        self.embeddings = {chunk.chunk_id: hashed_embedding(chunk.text, dimensions) for chunk in self.chunks}
+        if embedding_backend is None:
+            from .embeddings import HashEmbeddingBackend
+
+            embedding_backend = HashEmbeddingBackend(dimensions)
+        self.embedding_backend = embedding_backend
+        self.telemetry = telemetry
+        self.dimensions = embedding_backend.dimensions
+        vectors = embedding_backend.embed_documents(chunk.text for chunk in self.chunks)
+        self.embeddings = {
+            chunk.chunk_id: vector for chunk, vector in zip(self.chunks, vectors, strict=True)
+        }
 
     def search(
         self,
@@ -67,12 +88,41 @@ class HybridRetriever:
         tenant_id: str | None = None,
         principal: str | None = None,
     ) -> list[RetrievalHit]:
+        if self.telemetry is not None:
+            with self.telemetry.span("retrieval.search", {"tenant_id": tenant_id, "mode": mode}):
+                return self._search(
+                    query,
+                    top_k=top_k,
+                    mode=mode,
+                    rerank=rerank,
+                    tenant_id=tenant_id,
+                    principal=principal,
+                )
+        return self._search(
+            query,
+            top_k=top_k,
+            mode=mode,
+            rerank=rerank,
+            tenant_id=tenant_id,
+            principal=principal,
+        )
+
+    def _search(
+        self,
+        query: str,
+        *,
+        top_k: int,
+        mode: str,
+        rerank: bool,
+        tenant_id: str | None,
+        principal: str | None,
+    ) -> list[RetrievalHit]:
         if top_k <= 0:
             raise ValueError("top_k must be positive")
         if mode not in {"vector", "keyword", "hybrid"}:
             raise ValueError("mode must be vector, keyword, or hybrid")
         query_tokens = tokenize(query)
-        query_vector = hashed_embedding(query, self.dimensions)
+        query_vector = self.embedding_backend.embed_query(query)
         scored: list[ScoreRow] = []
         for chunk in self.chunks:
             if not self._allowed(chunk, tenant_id=tenant_id, principal=principal):

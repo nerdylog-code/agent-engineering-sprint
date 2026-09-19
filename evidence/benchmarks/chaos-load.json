@@ -1,0 +1,62 @@
+{
+  "status": "pass",
+  "load": {
+    "requests": 100,
+    "successes": 100,
+    "success_rate": 1.0,
+    "throughput_requests_per_second": 282.0520414221831,
+    "latency_p50_ms": 335.4229499991561,
+    "latency_p95_ms": 342.4128999995446,
+    "status_counts": {
+      "200": 100
+    }
+  },
+  "chaos": {
+    "provider_timeout": {
+      "status": "expected_failure",
+      "error_type": "ProviderTimeout",
+      "error": "timeout after 45.0",
+      "case": "provider_timeout",
+      "latency_ms": 0.10019999899668619
+    },
+    "provider_429": {
+      "status": "expected_failure",
+      "error_type": "ProviderError",
+      "error": "provider HTTP 429",
+      "case": "provider_429",
+      "latency_ms": 0.08650000017951243
+    },
+    "provider_500": {
+      "status": "expected_failure",
+      "error_type": "ProviderError",
+      "error": "provider HTTP 500",
+      "case": "provider_500",
+      "latency_ms": 0.044099999286117963
+    },
+    "malformed_json": {
+      "status": "expected_failure",
+      "error_type": "ProviderResponseError",
+      "error": "invalid provider response: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)",
+      "case": "malformed_json",
+      "latency_ms": 0.07430000005115289
+    },
+    "hanging_tool": {
+      "case": "hanging_tool",
+      "status": "expected_failure",
+      "error": "tool timed out after 0.020s",
+      "latency_ms": 27.69569999873056
+    },
+    "sqlite_lock": {
+      "case": "sqlite_lock",
+      "status": "expected_failure: database is locked",
+      "recovered_counts": {
+        "documents": 0,
+        "chunks": 0
+      }
+    },
+    "provider_recovery": {
+      "case": "provider_recovery",
+      "status": "recovered"
+    }
+  }
+}

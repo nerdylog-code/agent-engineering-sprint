@@ -12,6 +12,7 @@ from .models import AgentRequest, RouteDecision, ToolResult
 from .providers import OpenAICompatibleProvider, ProviderError, ProviderResponse
 from .router import route_request
 from .safety import SafetyReport, scan_text
+from .telemetry import Telemetry
 from .tools import ToolRegistry, default_registry
 from .tracing import TraceCollector
 
@@ -68,6 +69,7 @@ class ProviderAgentRunner:
         registry: ToolRegistry | None = None,
         trace_path: str | Path | None = None,
         max_tool_turns: int = 3,
+        telemetry: Telemetry | None = None,
     ) -> None:
         if not 1 <= max_tool_turns <= 5:
             raise ValueError("max_tool_turns must be between 1 and 5")
@@ -75,10 +77,12 @@ class ProviderAgentRunner:
         self.registry = registry or default_registry()
         self.trace_path = Path(trace_path) if trace_path else None
         self.max_tool_turns = max_tool_turns
+        self.telemetry = telemetry or Telemetry()
 
     def run(self, request: AgentRequest, *, require_tool: bool = False) -> ProviderRunResult:
         started = time.perf_counter()
-        route = route_request(request.objective, request.user_input)
+        with self.telemetry.span("router.route"):
+            route = route_request(request.objective, request.user_input)
         safety = scan_text(request.user_input)
         tracer = TraceCollector(self.trace_path)
         tracer.record(
@@ -102,13 +106,17 @@ class ProviderAgentRunner:
         tool_results: list[ToolResult] = []
         for turn in range(1, self.max_tool_turns + 1):
             try:
-                response = self.provider.chat(
-                    messages,
-                    tools=self.registry.schemas(),
-                    tool_choice="required" if require_tool and turn == 1 else "auto",
-                    temperature=0.0,
-                    max_tokens=256,
-                )
+                with self.telemetry.span(
+                    "provider.call",
+                    {"model": self.provider.model, "turn": turn, "retry_count": turn - 1},
+                ):
+                    response = self.provider.chat(
+                        messages,
+                        tools=self.registry.schemas(),
+                        tool_choice="required" if require_tool and turn == 1 else "auto",
+                        temperature=0.0,
+                        max_tokens=256,
+                    )
             except ProviderError as exc:  # provider boundary becomes evidence, not an unhandled response
                 error = type(exc).__name__ + ": " + str(exc)
                 tracer.record(agent=route.route, model=self.provider.model, event="provider_response", status="error", error=error, retry_count=turn - 1)
@@ -132,7 +140,8 @@ class ProviderAgentRunner:
                 ]
                 messages.append({"role": "assistant", "content": response.content or None, "tool_calls": assistant_calls})
                 for call in response.tool_calls:
-                    tool_result = self.registry.call(call.name, call.arguments)
+                    with self.telemetry.span("tool.call", {"tool": call.name, "turn": turn}):
+                        tool_result = self.registry.call(call.name, call.arguments)
                     tool_results.append(tool_result)
                     tracer.record(
                         agent=route.route,

@@ -1,0 +1,27 @@
+{
+  "status": "pass",
+  "transport": "HTTPS with self-signed localhost certificate",
+  "certificate": "evidence\\runtime\\tls\\localhost.crt",
+  "allowed_call": {
+    "status_code": 200,
+    "response": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"ok\": true, \"output\": {\"expression\": \"7 * 6\", \"result\": 42.0}, \"error\": null}"
+          }
+        ],
+        "isError": false
+      }
+    }
+  },
+  "denied_call": {
+    "status_code": 403,
+    "response": {
+      "detail": "tool scope denied"
+    }
+  }
+}

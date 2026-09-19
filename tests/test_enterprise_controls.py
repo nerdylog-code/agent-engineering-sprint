@@ -15,6 +15,7 @@ from agent_lab.providers import (
 )
 from agent_lab.safety import scan_text
 from agent_lab.storage import SQLiteTraceStore
+from agent_lab.telemetry import Telemetry
 from agent_lab.tools import default_registry
 from agent_lab.tracing import TraceCollector
 
@@ -156,12 +157,16 @@ class ProviderAndSafetyTests(unittest.TestCase):
             def assert_tool_result(messages):
                 assert any(message.get("role") == "tool" for message in messages)
 
-        result = ProviderAgentRunner(FakeProvider(), registry=default_registry()).run(
+        telemetry = Telemetry()
+        result = ProviderAgentRunner(FakeProvider(), registry=default_registry(), telemetry=telemetry).run(
             AgentRequest("calculate", "calcule 7 * 6"), require_tool=True
         )
         self.assertEqual(result.status, "completed")
         self.assertEqual(result.tool_results[0].output["result"], 42.0)
         self.assertEqual(result.final_response.content, "A resposta é 42.")
+        self.assertIn("router.route", {span.name for span in telemetry.records})
+        self.assertIn("provider.call", {span.name for span in telemetry.records})
+        self.assertIn("tool.call", {span.name for span in telemetry.records})
 
 
 if __name__ == "__main__":

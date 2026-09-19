@@ -1,0 +1,67 @@
+{
+  "status": "pass",
+  "span_count": 7,
+  "spans": [
+    {
+      "name": "http.request",
+      "status": "ok",
+      "attributes": {
+        "http.method": "GET",
+        "http.route": "/healthz",
+        "http.request_id": "http-fa3e420c838d"
+      },
+      "duration_seconds": 0.0022886
+    },
+    {
+      "name": "retrieval.search",
+      "status": "ok",
+      "attributes": {
+        "mode": "hybrid"
+      },
+      "duration_seconds": 0.002647
+    },
+    {
+      "name": "http.request",
+      "status": "ok",
+      "attributes": {
+        "http.method": "POST",
+        "http.route": "/v1/rag/query",
+        "http.request_id": "http-94a27c74d7a0"
+      },
+      "duration_seconds": 0.003985
+    },
+    {
+      "name": "router.route",
+      "status": "ok",
+      "attributes": {},
+      "duration_seconds": 3.77e-05
+    },
+    {
+      "name": "tool.call",
+      "status": "ok",
+      "attributes": {
+        "tool": "calculator",
+        "model": "offline-deterministic-v1"
+      },
+      "duration_seconds": 8.04e-05
+    },
+    {
+      "name": "agent.run",
+      "status": "ok",
+      "attributes": {},
+      "duration_seconds": 0.0003265
+    },
+    {
+      "name": "http.request",
+      "status": "ok",
+      "attributes": {
+        "http.method": "POST",
+        "http.route": "/v1/agent/runs",
+        "http.request_id": "http-cbba95fa8a03"
+      },
+      "duration_seconds": 0.0014403
+    }
+  ],
+  "sdk_finished_spans": 7,
+  "redaction": "no prompts, tokens, API keys or document contents stored"
+}

@@ -15,6 +15,7 @@ from .models import (
     ToolResult,
 )
 from .router import route_request
+from .telemetry import Telemetry
 from .tools import ToolRegistry, default_registry
 from .tracing import TraceCollector
 
@@ -30,10 +31,12 @@ class AgentOrchestrator:
         registry: ToolRegistry | None = None,
         model: str = "offline-deterministic-v1",
         trace_path: str | Path | None = None,
+        telemetry: Telemetry | None = None,
     ) -> None:
         self.registry = registry or default_registry()
         self.model = model
         self.trace_path = Path(trace_path) if trace_path else None
+        self.telemetry = telemetry or Telemetry()
 
     def run(
         self,
@@ -50,7 +53,8 @@ class AgentOrchestrator:
             raise ValueError("invalid_attempts must not be negative")
         tracer = TraceCollector(self.trace_path)
         started = time.perf_counter()
-        decision = route_request(request.objective, request.user_input)
+        with self.telemetry.span("router.route"):
+            decision = route_request(request.objective, request.user_input)
         tracer.record(
             agent=decision.route,
             model=self.model,
@@ -158,7 +162,8 @@ class AgentOrchestrator:
             return None
         arguments = self._tool_arguments(decision.selected_tool, request.user_input)
         started = time.perf_counter()
-        result = self.registry.call(decision.selected_tool, arguments)
+        with self.telemetry.span("tool.call", {"tool": decision.selected_tool, "model": self.model}):
+            result = self.registry.call(decision.selected_tool, arguments)
         tracer.record(
             agent=decision.route,
             model=self.model,

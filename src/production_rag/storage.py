@@ -14,8 +14,11 @@ from .models import Chunk, Document
 class SQLiteCorpusStore:
     """Persist a versioned corpus so retrieval can survive process restarts."""
 
-    def __init__(self, path: str | Path) -> None:
+    def __init__(self, path: str | Path, *, timeout_seconds: float = 5.0) -> None:
+        if timeout_seconds <= 0:
+            raise ValueError("timeout_seconds must be positive")
         self.path = Path(path)
+        self.timeout_seconds = timeout_seconds
         self.path.parent.mkdir(parents=True, exist_ok=True)
         with self._connection() as connection:
             connection.executescript(
@@ -40,7 +43,7 @@ class SQLiteCorpusStore:
 
     @contextmanager
     def _connection(self) -> Iterator[sqlite3.Connection]:
-        connection = sqlite3.connect(self.path)
+        connection = sqlite3.connect(self.path, timeout=self.timeout_seconds)
         connection.execute("PRAGMA foreign_keys=ON")
         try:
             yield connection
