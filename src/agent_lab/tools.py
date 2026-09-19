@@ -6,7 +6,7 @@ import ast
 import operator
 import re
 from collections.abc import Callable
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Any
 
 from .models import ToolResult
@@ -27,6 +27,19 @@ class ToolSpec:
     description: str
     read_only: bool = True
     requires_approval: bool = False
+    parameters: dict[str, Any] = field(
+        default_factory=lambda: {"type": "object", "properties": {}, "additionalProperties": False}
+    )
+
+    def schema(self) -> dict[str, Any]:
+        return {
+            "type": "function",
+            "function": {
+                "name": self.name,
+                "description": self.description,
+                "parameters": self.parameters,
+            },
+        }
 
 
 class ToolRegistry:
@@ -40,6 +53,9 @@ class ToolRegistry:
 
     def names(self) -> tuple[str, ...]:
         return tuple(sorted(self._tools))
+
+    def schemas(self) -> list[dict[str, Any]]:
+        return [self._tools[name].schema() for name in self.names()]
 
     def call(self, name: str, arguments: dict[str, Any]) -> ToolResult:
         spec = self._tools.get(name)
@@ -118,6 +134,30 @@ def _lookup_faq(arguments: dict[str, Any]) -> dict[str, Any]:
 
 def default_registry() -> ToolRegistry:
     registry = ToolRegistry()
-    registry.register(ToolSpec("calculator", _safe_calculate, "safe arithmetic over numeric literals"))
-    registry.register(ToolSpec("lookup_faq", _lookup_faq, "read-only local engineering FAQ"))
+    registry.register(
+        ToolSpec(
+            "calculator",
+            _safe_calculate,
+            "safe arithmetic over numeric literals",
+            parameters={
+                "type": "object",
+                "properties": {"expression": {"type": "string", "maxLength": 80}},
+                "required": ["expression"],
+                "additionalProperties": False,
+            },
+        )
+    )
+    registry.register(
+        ToolSpec(
+            "lookup_faq",
+            _lookup_faq,
+            "read-only local engineering FAQ",
+            parameters={
+                "type": "object",
+                "properties": {"query": {"type": "string", "maxLength": 240}},
+                "required": ["query"],
+                "additionalProperties": False,
+            },
+        )
+    )
     return registry

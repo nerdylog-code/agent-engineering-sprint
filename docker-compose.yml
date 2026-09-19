@@ -1,6 +1,8 @@
 services:
   agent-lab:
     build: .
-    command: ["python", "-m", "agent_lab.cli", "demo", "--json", "--trace", "/app/evidence/traces/docker-demo.jsonl"]
-    volumes:
-      - ./evidence:/app/evidence
+    ports:
+      - "127.0.0.1:8000:8000"
+    read_only: true
+    tmpfs:
+      - /tmp

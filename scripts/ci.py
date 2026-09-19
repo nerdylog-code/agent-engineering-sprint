@@ -45,8 +45,13 @@ def main(argv: list[str] | None = None) -> int:
     gates = [
         ("compile", [sys.executable, "-m", "compileall", "-q", "src", "evals", "tests", "scripts"]),
         ("ruff", [sys.executable, "-m", "ruff", "check", "src", "tests", "evals", "scripts"]),
+        ("mypy", [sys.executable, "-m", "mypy", "src"]),
+        ("bandit", [sys.executable, "-m", "bandit", "-q", "-r", "src", "-ll"]),
         ("unit_tests", [sys.executable, "-m", "unittest", "discover", "-s", "tests", "-v"]),
         ("evals", [sys.executable, "-m", "unittest", "discover", "-s", "evals", "-v"]),
+        ("mcp_protocol", [sys.executable, "scripts/mcp_stdio_probe.py"]),
+        ("coverage", [sys.executable, "-m", "pytest", "--cov=src", "--cov-branch", "--cov-report=term-missing", "--cov-fail-under=80"]),
+        ("dependency_audit", [sys.executable, "-m", "pip_audit", ".", "--format", "json"]),
         ("security", [sys.executable, "scripts/security_scan.py", "--json"]),
         ("rag_smoke", [sys.executable, "-m", "production_rag.cli", "evaluate", "--json"]),
     ]

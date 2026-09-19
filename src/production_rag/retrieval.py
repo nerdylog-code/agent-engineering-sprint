@@ -7,6 +7,7 @@ import math
 import re
 from collections import Counter
 from collections.abc import Iterable
+from typing import TypedDict
 
 from .models import Chunk, RagAnswer, RetrievalHit
 
@@ -42,6 +43,14 @@ def keyword_score(query_tokens: list[str], text: str) -> float:
     return matched / len(set(query_tokens))
 
 
+class ScoreRow(TypedDict, total=False):
+    chunk: Chunk
+    vector: float
+    keyword: float
+    fusion: float
+    rerank: float
+
+
 class HybridRetriever:
     def __init__(self, chunks: Iterable[Chunk], *, dimensions: int = 128) -> None:
         self.chunks = tuple(chunks)
@@ -62,7 +71,7 @@ class HybridRetriever:
             raise ValueError("mode must be vector, keyword, or hybrid")
         query_tokens = tokenize(query)
         query_vector = hashed_embedding(query, self.dimensions)
-        scored: list[dict[str, object]] = []
+        scored: list[ScoreRow] = []
         for chunk in self.chunks:
             vector = cosine(query_vector, self.embeddings[chunk.chunk_id])
             lexical = keyword_score(query_tokens, chunk.text)
@@ -70,31 +79,31 @@ class HybridRetriever:
 
         vector_rank = {
             row["chunk"].chunk_id: rank
-            for rank, row in enumerate(sorted(scored, key=lambda r: float(r["vector"]), reverse=True), start=1)
+            for rank, row in enumerate(sorted(scored, key=lambda r: r["vector"], reverse=True), start=1)
         }
         keyword_rank = {
             row["chunk"].chunk_id: rank
-            for rank, row in enumerate(sorted(scored, key=lambda r: float(r["keyword"]), reverse=True), start=1)
+            for rank, row in enumerate(sorted(scored, key=lambda r: r["keyword"], reverse=True), start=1)
         }
         for row in scored:
             chunk = row["chunk"]
             row["fusion"] = 1.0 / (60 + vector_rank[chunk.chunk_id]) + 1.0 / (60 + keyword_rank[chunk.chunk_id])
-            row["rerank"] = self._rerank_score(query_tokens, chunk, float(row["vector"]), float(row["keyword"]))
+            row["rerank"] = self._rerank_score(query_tokens, chunk, row["vector"], row["keyword"])
 
         if mode == "vector":
-            key = lambda r: (float(r["vector"]), float(r["keyword"]))
+            key = lambda r: (r["vector"], r["keyword"])
         elif mode == "keyword":
-            key = lambda r: (float(r["keyword"]), float(r["vector"]))
+            key = lambda r: (r["keyword"], r["vector"])
         else:
-            key = lambda r: (float(r["rerank"] if rerank else r["fusion"]), float(r["keyword"]))
+            key = lambda r: (r["rerank"] if rerank else r["fusion"], r["keyword"])
         ordered = sorted(scored, key=key, reverse=True)[:top_k]
         return [
             RetrievalHit(
                 chunk=row["chunk"],
-                vector_score=round(float(row["vector"]), 6),
-                keyword_score=round(float(row["keyword"]), 6),
-                fusion_score=round(float(row["fusion"]), 6),
-                rerank_score=round(float(row["rerank"]), 6),
+                vector_score=round(row["vector"], 6),
+                keyword_score=round(row["keyword"], 6),
+                fusion_score=round(row["fusion"], 6),
+                rerank_score=round(row["rerank"], 6),
             )
             for row in ordered
         ]

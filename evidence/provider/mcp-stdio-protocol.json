@@ -1,0 +1,21 @@
+{
+  "status": "pass",
+  "transport": "stdio-json-rpc",
+  "methods_verified": [
+    "initialize",
+    "notifications/initialized",
+    "tools/list",
+    "tools/call"
+  ],
+  "response_ids": [
+    1,
+    2,
+    3
+  ],
+  "tools": [
+    "calculator",
+    "lookup_faq"
+  ],
+  "calculator_result": 42.0,
+  "stderr": ""
+}

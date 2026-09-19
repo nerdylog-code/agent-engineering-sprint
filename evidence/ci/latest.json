@@ -14,7 +14,7 @@
         "scripts"
       ],
       "returncode": 0,
-      "duration_seconds": 0.09164,
+      "duration_seconds": 0.109482,
       "stdout": "",
       "stderr": "",
       "status": "pass"
@@ -32,8 +32,39 @@
         "scripts"
       ],
       "returncode": 0,
-      "duration_seconds": 0.091254,
+      "duration_seconds": 0.092008,
       "stdout": "All checks passed!\n",
+      "stderr": "",
+      "status": "pass"
+    },
+    {
+      "name": "mypy",
+      "command": [
+        "C:\\Users\\ganga\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+        "-m",
+        "mypy",
+        "src"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.428819,
+      "stdout": "Success: no issues found in 23 source files\n",
+      "stderr": "",
+      "status": "pass"
+    },
+    {
+      "name": "bandit",
+      "command": [
+        "C:\\Users\\ganga\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+        "-m",
+        "bandit",
+        "-q",
+        "-r",
+        "src",
+        "-ll"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.483078,
+      "stdout": "",
       "stderr": "",
       "status": "pass"
     },
@@ -49,9 +80,9 @@
         "-v"
       ],
       "returncode": 0,
-      "duration_seconds": 0.21413,
+      "duration_seconds": 0.916638,
       "stdout": "",
-      "stderr": "test_human_approval_is_explicit (test_agent_lab.AgentLabTests.test_human_approval_is_explicit) ... ok\ntest_router_selects_specialized_routes (test_agent_lab.AgentLabTests.test_router_selects_specialized_routes) ... ok\ntest_structured_contract_rejects_bad_confidence (test_agent_lab.AgentLabTests.test_structured_contract_rejects_bad_confidence) ... ok\ntest_structured_contract_rejects_non_string_answer (test_agent_lab.AgentLabTests.test_structured_contract_rejects_non_string_answer) ... ok\ntest_structured_output_retry_is_bounded_and_recovers (test_agent_lab.AgentLabTests.test_structured_output_retry_is_bounded_and_recovers) ... ok\ntest_tool_output_injection_is_blocked (test_agent_lab.AgentLabTests.test_tool_output_injection_is_blocked) ... ok\ntest_tool_run_and_jsonl_trace_have_required_fields (test_agent_lab.AgentLabTests.test_tool_run_and_jsonl_trace_have_required_fields) ... ok\ntest_unknown_tool_and_unsafe_name_are_not_executable (test_agent_lab.AgentLabTests.test_unknown_tool_and_unsafe_name_are_not_executable) ... ok\ntest_answer_has_citations_and_groundedness (test_rag.ProductionRagTests.test_answer_has_citations_and_groundedness) ... ok\ntest_hybrid_reranker_finds_exact_fact (test_rag.ProductionRagTests.test_hybrid_reranker_finds_exact_fact) ... ok\ntest_ingestion_preserves_all_documents (test_rag.ProductionRagTests.test_ingestion_preserves_all_documents) ... ok\ntest_measured_hybrid_metrics (test_rag.ProductionRagTests.test_measured_hybrid_metrics) ... ok\ntest_mode_comparison_returns_three_real_variants (test_rag.ProductionRagTests.test_mode_comparison_returns_three_real_variants) ... ok\n\n----------------------------------------------------------------------\nRan 13 tests in 0.077s\n\nOK\n",
+      "stderr": "test_human_approval_is_explicit (test_agent_lab.AgentLabTests.test_human_approval_is_explicit) ... ok\ntest_router_selects_specialized_routes (test_agent_lab.AgentLabTests.test_router_selects_specialized_routes) ... ok\ntest_structured_contract_rejects_bad_confidence (test_agent_lab.AgentLabTests.test_structured_contract_rejects_bad_confidence) ... ok\ntest_structured_contract_rejects_non_string_answer (test_agent_lab.AgentLabTests.test_structured_contract_rejects_non_string_answer) ... ok\ntest_structured_output_retry_is_bounded_and_recovers (test_agent_lab.AgentLabTests.test_structured_output_retry_is_bounded_and_recovers) ... ok\ntest_tool_output_injection_is_blocked (test_agent_lab.AgentLabTests.test_tool_output_injection_is_blocked) ... ok\ntest_tool_run_and_jsonl_trace_have_required_fields (test_agent_lab.AgentLabTests.test_tool_run_and_jsonl_trace_have_required_fields) ... ok\ntest_unknown_tool_and_unsafe_name_are_not_executable (test_agent_lab.AgentLabTests.test_unknown_tool_and_unsafe_name_are_not_executable) ... ok\ntest_agent_endpoint_returns_structured_result (test_api.ApiContractTests.test_agent_endpoint_returns_structured_result) ... ok\ntest_api_can_boot_from_persistent_rag_store (test_api.ApiContractTests.test_api_can_boot_from_persistent_rag_store) ... ok\ntest_health_and_readiness_are_operational (test_api.ApiContractTests.test_health_and_readiness_are_operational) ... ok\ntest_optional_api_token_and_metrics (test_api.ApiContractTests.test_optional_api_token_and_metrics) ... ok\ntest_rag_endpoint_returns_citations (test_api.ApiContractTests.test_rag_endpoint_returns_citations) ... ok\ntest_provider_parses_real_openai_tool_call_shape (test_enterprise_controls.ProviderAndSafetyTests.test_provider_parses_real_openai_tool_call_shape) ... ok\ntest_provider_rejects_malformed_response (test_enterprise_controls.ProviderAndSafetyTests.test_provider_rejects_malformed_response) ... ok\ntest_provider_retries_then_succeeds_and_circuit_opens (test_enterprise_controls.ProviderAndSafetyTests.test_provider_retries_then_succeeds_and_circuit_opens) ... ok\ntest_provider_runner_executes_tool_and_follow_up (test_enterprise_controls.ProviderAndSafetyTests.test_provider_runner_executes_tool_and_follow_up) ... ok\ntest_safety_blocks_injection_and_pii (test_enterprise_controls.ProviderAndSafetyTests.test_safety_blocks_injection_and_pii) ... ok\ntest_trace_store_is_durable_and_indexed (test_enterprise_controls.ProviderAndSafetyTests.test_trace_store_is_durable_and_indexed) ... ok\ntest_in_process_handler_covers_protocol_errors_and_notification (test_mcp_stdio.MCPStdioProtocolTests.test_in_process_handler_covers_protocol_errors_and_notification) ... ok\ntest_real_stdio_initialize_list_and_call (test_mcp_stdio.MCPStdioProtocolTests.test_real_stdio_initialize_list_and_call) ... ok\ntest_answer_has_citations_and_groundedness (test_rag.ProductionRagTests.test_answer_has_citations_and_groundedness) ... ok\ntest_hybrid_reranker_finds_exact_fact (test_rag.ProductionRagTests.test_hybrid_reranker_finds_exact_fact) ... ok\ntest_ingestion_preserves_all_documents (test_rag.ProductionRagTests.test_ingestion_preserves_all_documents) ... ok\ntest_measured_hybrid_metrics (test_rag.ProductionRagTests.test_measured_hybrid_metrics) ... ok\ntest_mode_comparison_returns_three_real_variants (test_rag.ProductionRagTests.test_mode_comparison_returns_three_real_variants) ... ok\ntest_corpus_survives_store_reload (test_rag_storage.RagStorageTests.test_corpus_survives_store_reload) ... ok\n\n----------------------------------------------------------------------\nRan 27 tests in 0.378s\n\nOK\n",
       "status": "pass"
     },
     {
@@ -66,9 +97,54 @@
         "-v"
       ],
       "returncode": 0,
-      "duration_seconds": 0.527442,
+      "duration_seconds": 0.602307,
       "stdout": "",
-      "stderr": "test_retry_rate_is_measurable (test_agent_quality.AgentQualityEvaluation.test_retry_rate_is_measurable) ... ok\ntest_task_success_and_tool_selection_accuracy (test_agent_quality.AgentQualityEvaluation.test_task_success_and_tool_selection_accuracy) ... ok\ntest_golden_dataset_is_50_questions_over_100_documents (test_rag_retrieval.RagEvaluation.test_golden_dataset_is_50_questions_over_100_documents) ... ok\ntest_golden_route_cases (test_router.RouterEvaluation.test_golden_route_cases) ... ok\ntest_invalid_first_attempt_is_repaired_within_bound (test_structured_output.StructuredOutputEvaluation.test_invalid_first_attempt_is_repaired_within_bound) ... ok\ntest_calculator_and_faq_are_allowlisted (test_tools.ToolEvaluation.test_calculator_and_faq_are_allowlisted) ... ok\ntest_unknown_and_injection_outputs_are_blocked (test_tools.ToolEvaluation.test_unknown_and_injection_outputs_are_blocked) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.388s\n\nOK\n",
+      "stderr": "test_retry_rate_is_measurable (test_agent_quality.AgentQualityEvaluation.test_retry_rate_is_measurable) ... ok\ntest_task_success_and_tool_selection_accuracy (test_agent_quality.AgentQualityEvaluation.test_task_success_and_tool_selection_accuracy) ... ok\ntest_golden_dataset_is_50_questions_over_100_documents (test_rag_retrieval.RagEvaluation.test_golden_dataset_is_50_questions_over_100_documents) ... ok\ntest_golden_route_cases (test_router.RouterEvaluation.test_golden_route_cases) ... ok\ntest_invalid_first_attempt_is_repaired_within_bound (test_structured_output.StructuredOutputEvaluation.test_invalid_first_attempt_is_repaired_within_bound) ... ok\ntest_calculator_and_faq_are_allowlisted (test_tools.ToolEvaluation.test_calculator_and_faq_are_allowlisted) ... ok\ntest_unknown_and_injection_outputs_are_blocked (test_tools.ToolEvaluation.test_unknown_and_injection_outputs_are_blocked) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.418s\n\nOK\n",
+      "status": "pass"
+    },
+    {
+      "name": "mcp_protocol",
+      "command": [
+        "C:\\Users\\ganga\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+        "scripts/mcp_stdio_probe.py"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.221023,
+      "stdout": "{\n  \"status\": \"pass\",\n  \"transport\": \"stdio-json-rpc\",\n  \"methods_verified\": [\n    \"initialize\",\n    \"notifications/initialized\",\n    \"tools/list\",\n    \"tools/call\"\n  ],\n  \"response_ids\": [\n    1,\n    2,\n    3\n  ],\n  \"tools\": [\n    \"calculator\",\n    \"lookup_faq\"\n  ],\n  \"calculator_result\": 42.0,\n  \"stderr\": \"\"\n}\n",
+      "stderr": "",
+      "status": "pass"
+    },
+    {
+      "name": "coverage",
+      "command": [
+        "C:\\Users\\ganga\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "--cov=src",
+        "--cov-branch",
+        "--cov-report=term-missing",
+        "--cov-fail-under=80"
+      ],
+      "returncode": 0,
+      "duration_seconds": 3.768317,
+      "stdout": "..................................                                    [100%]\n=============================== tests coverage ================================\n______________ coverage: platform win32, python 3.11.15-final-0 _______________\n\nName                               Stmts   Miss Branch BrPart  Cover   Missing\n------------------------------------------------------------------------------\nsrc\\agent_lab\\__init__.py              9      0      0      0   100%\nsrc\\agent_lab\\__main__.py              1      1      0      0     0%   1\nsrc\\agent_lab\\api.py                  70      0      6      0   100%\nsrc\\agent_lab\\cli.py                  23     23      2      0     0%   3-33\nsrc\\agent_lab\\mcp_server.py           51     16     18      4    65%   29-30, 39, 53-60, 80, 83-86\nsrc\\agent_lab\\models.py               93      8     18      6    87%   24, 26, 49, 51, 57, 59, 83-84\nsrc\\agent_lab\\orchestrator.py         95     14     30      7    83%   48, 50, 67->96, 97-118, 130-131, 133, 197-198, 216-217\nsrc\\agent_lab\\provider_runner.py      77     20     12      4    73%   32-33, 73, 93-96, 112-116, 161-164, 168-171\nsrc\\agent_lab\\providers.py           141     15     32      9    86%   37, 39, 54-56, 69, 116, 118, 149->174, 157, 162-163, 189->191, 192, 194-195, 212\nsrc\\agent_lab\\router.py               12      0      4      0   100%\nsrc\\agent_lab\\safety.py               30      1      6      1    94%   56\nsrc\\agent_lab\\storage.py              41      4      4      2    87%   43-45, 54, 74->77\nsrc\\agent_lab\\tools.py                83      8     28      7    86%   65, 94, 103-104, 108, 110, 114, 128\nsrc\\agent_lab\\tracing.py              47      2     16      2    94%   23, 33->exit, 94\nsrc\\production_rag\\__init__.py         5      0      0      0   100%\nsrc\\production_rag\\__main__.py         1      1      0      0     0%   1\nsrc\\production_rag\\cli.py             36     36      8      0     0%   3-51\nsrc\\production_rag\\dataset.py         24      2      8      2    88%   23, 46\nsrc\\production_rag\\evaluator.py       25      1      2      1    93%   42\nsrc\\production_rag\\ingest.py          37     14     18      4    53%   14, 17, 20->33, 31->20, 44-70\nsrc\\production_rag\\models.py          38      2      0      0    95%   16, 28\nsrc\\production_rag\\retrieval.py       85      6     20      6    89%   30, 40, 69, 71, 96, 122\nsrc\\production_rag\\storage.py         41      3      0      0    93%   47-49\n------------------------------------------------------------------------------\nTOTAL                               1065    177    232     55    80%\nRequired test coverage of 80% reached. Total coverage: 80.42%\n34 passed, 3 subtests passed in 3.15s\n",
+      "stderr": "",
+      "status": "pass"
+    },
+    {
+      "name": "dependency_audit",
+      "command": [
+        "C:\\Users\\ganga\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+        "-m",
+        "pip_audit",
+        ".",
+        "--format",
+        "json"
+      ],
+      "returncode": 0,
+      "duration_seconds": 16.774191,
+      "stdout": "{\"dependencies\": [], \"fixes\": []}\n",
+      "stderr": "No known vulnerabilities found\n",
       "status": "pass"
     },
     {
@@ -79,8 +155,8 @@
         "--json"
       ],
       "returncode": 0,
-      "duration_seconds": 0.083295,
-      "stdout": "{\n  \"status\": \"pass\",\n  \"files_scanned\": 25,\n  \"findings\": []\n}\n",
+      "duration_seconds": 0.089384,
+      "stdout": "{\n  \"status\": \"pass\",\n  \"files_scanned\": 36,\n  \"findings\": []\n}\n",
       "stderr": "",
       "status": "pass"
     },
@@ -94,7 +170,7 @@
         "--json"
       ],
       "returncode": 0,
-      "duration_seconds": 0.528242,
+      "duration_seconds": 0.519059,
       "stdout": "{\n  \"documents\": 100,\n  \"chunks\": 100,\n  \"dataset\": \"evals\\\\golden_dataset.json\",\n  \"modes\": {\n    \"vector_only\": {\n      \"mode\": \"vector\",\n      \"rerank\": false,\n      \"questions\": 50,\n      \"recall_at_1\": 0.92,\n      \"recall_at_3\": 0.92,\n      \"recall_at_5\": 0.92,\n      \"mrr\": 0.92,\n      \"groundedness\": 0.92,\n      \"answer_relevance\": 0.64\n    },\n    \"hybrid\": {\n      \"mode\": \"hybrid\",\n      \"rerank\": false,\n      \"questions\": 50,\n      \"recall_at_1\": 0.98,\n      \"recall_at_3\": 1.0,\n      \"recall_at_5\": 1.0,\n      \"mrr\": 0.99,\n      \"groundedness\": 1.0,\n      \"answer_relevance\": 0.666667\n    },\n    \"hybrid_reranker\": {\n      \"mode\": \"hybrid\",\n      \"rerank\": true,\n      \"questions\": 50,\n      \"recall_at_1\": 1.0,\n      \"recall_at_3\": 1.0,\n      \"recall_at_5\": 1.0,\n      \"mrr\": 1.0,\n      \"groundedness\": 1.0,\n      \"answer_relevance\": 0.666667\n    }\n  }\n}\n",
       "stderr": "",
       "status": "pass"

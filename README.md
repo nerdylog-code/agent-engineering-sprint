@@ -19,9 +19,14 @@ default não depende de API paga, credencial, cloud ou modelo remoto.
 | Gate | Resultado observado |
 |---|---:|
 | Compilação `compileall` | PASS |
-| Testes de `tests/` | 13 passed |
+| Testes de `tests/` | 27 passed |
 | Evals de `evals/` | 7 passed |
-| Security scan | 25 arquivos, 0 findings |
+| Pytest total | 34 passed, 3 subtests |
+| Branch coverage | 80.42% |
+| Mypy | PASS |
+| Bandit | PASS |
+| Dependency audit | PASS, 0 known vulnerabilities in project runtime |
+| Security scan | 36 arquivos, 0 findings |
 | Agent task success | 1.0 (8/8 runs) |
 | Tool selection accuracy | 1.0 |
 | Structured-output validity | 1.0 |
@@ -29,6 +34,7 @@ default não depende de API paga, credencial, cloud ou modelo remoto.
 | RAG golden set | 50 perguntas |
 | Hybrid + reranker Recall@1 | 1.0 |
 | Hybrid + reranker MRR | 1.0 |
+| MiniCPM5 real tool loop | PASS, 2 turns / 12.257931s |
 
 Os artefatos completos ficam em:
 
@@ -36,6 +42,9 @@ Os artefatos completos ficam em:
 - `evidence/metrics/agent_metrics.json`
 - `evidence/eval-results/rag_metrics.json`
 - `evidence/traces/agent-matrix.jsonl`
+- `evidence/traces/minicpm5-tool-call.jsonl`
+- `evidence/provider/minicpm5-tool-call.json`
+- `evidence/provider/mcp-stdio-protocol.json`
 - `evals/golden_dataset.json`
 
 ## O que foi implementado
@@ -49,6 +58,14 @@ Os artefatos completos ficam em:
 - Proteção contra saída de tool com marcadores de prompt injection.
 - Traces JSONL com `trace_id`, `run_id`, `agent`, `model`, `tool`, tokens,
   latência, status, retry count e erro.
+- Provider OpenAI-compatible real com timeout, retry, circuit breaker, parsing
+  de tool calls e loop provider → tool → provider.
+- Safety gate para prompt injection/PII e schemas de tools com propriedades
+  adicionais bloqueadas.
+- FastAPI com health/readiness, request IDs, métricas Prometheus básicas e
+  Bearer token opcional para rotas `/v1/*`.
+- Servidor stdio JSON-RPC com `initialize`, `tools/list` e `tools/call`, além
+  de teste de subprocesso real sobre a registry allowlisted.
 
 ### Production RAG (`src/production_rag`)
 
@@ -63,11 +80,12 @@ Os artefatos completos ficam em:
 ### CI/CD e distribuição
 
 - `.github/workflows/ci.yml`: compile, Ruff, testes, evals, security gate,
-  geração de evidências e CI estrito.
+  mypy, Bandit, cobertura, pip-audit, geração de evidências e CI estrito.
 - `.github/workflows/docker.yml`: build e smoke test do container.
 - `Dockerfile` e `docker-compose.yml`.
 - `scripts/ci.py`: contrato local equivalente ao pipeline.
 - `scripts/security_scan.py`: secrets, private keys e shell escape patterns.
+- `scripts/minicpm5_tool_call_probe.py`: prova real do loop de tool calling local.
 
 ## Quickstart
 
@@ -83,9 +101,9 @@ PYTHONPATH=src python scripts/ci.py --strict
 PYTHONPATH=src python scripts/generate_evidence.py
 ```
 
-O projeto não instala dependência Python de runtime. `pytest`, `ruff`, FastAPI
-e Pydantic estão declarados como extras opcionais para CI/API futura; a suíte
-base roda com a biblioteca padrão.
+O núcleo determinístico não exige dependências de provider. Os extras `api`,
+`dev` e `security` são instalados pelos gates para validar FastAPI, cobertura,
+mypy, Bandit e pip-audit.
 
 ## Contrato de execução
 
@@ -109,7 +127,8 @@ Documents -> parser -> chunks -> vector + keyword -> RRF -> reranker
                                               answer + citations + evals
 ```
 
-Leia `docs/architecture.md` e `docs/QA_SECURITY_PLAN.md` para os contratos
+Leia `docs/architecture.md`, `docs/QA_SECURITY_PLAN.md` e
+`docs/ENTERPRISE_READINESS.md` para os contratos
 mais detalhados.
 
 ## Docker
@@ -136,8 +155,8 @@ concluída.
 ## Estrutura
 
 ```text
-src/agent_lab/          orchestrator, router, tools, traces
-src/production_rag/     ingestão, retrieval, reranker, métricas
+src/agent_lab/          API, provider, tools, safety, traces, storage
+src/production_rag/     ingestão, retrieval, reranker, SQLite, métricas
 tests/                  testes de comportamento
  evals/                 golden dataset + eval suite
 scripts/                CI local, security scan, evidence generator
@@ -148,10 +167,12 @@ evidence/               resultados medidos e traces
 
 ## Limites deliberados
 
-- Não há chamada de LLM remoto: os resultados medem o harness determinístico,
-  não qualidade de um provedor externo.
+- O baseline default é determinístico, mas o loop real MiniCPM5 foi validado e
+  está separado em evidência própria; isso não generaliza para todos os modelos.
 - O embedding por hashing é baseline reproduzível, não substituto de um modelo
   de embedding de produção.
 - Não há GitHub Actions hospedado executado porque este diretório não possui
   remote GitHub configurado; o workflow está pronto para um push futuro.
 - Não há certificado ou badge externo inventado.
+- MCP protocol completo com autenticação, client/server remoto e isolamento
+  continua pendente; o subconjunto stdio local já foi validado com subprocesso.

@@ -6,7 +6,7 @@ import json
 import re
 import time
 from pathlib import Path
-from typing import Any
+from typing import Any, Protocol
 from uuid import uuid4
 
 from .models import TraceEvent
@@ -29,11 +29,16 @@ def token_estimate(text: str) -> int:
     return max(1, (len(text.strip()) + 3) // 4)
 
 
+class TraceSink(Protocol):
+    def append(self, events: list[TraceEvent]) -> None: ...
+
+
 class TraceCollector:
     """Collect events in memory and optionally persist them as JSONL."""
 
-    def __init__(self, path: str | Path | None = None) -> None:
+    def __init__(self, path: str | Path | None = None, *, sink: TraceSink | None = None) -> None:
         self.path = Path(path) if path else None
+        self.sink = sink
         self.trace_id = f"trace-{uuid4().hex[:12]}"
         self.run_id = f"run-{uuid4().hex[:12]}"
         self.events: list[TraceEvent] = []
@@ -73,12 +78,15 @@ class TraceCollector:
         return event_row
 
     def flush(self) -> Path | None:
-        if self.path is None:
+        if self.sink is not None:
+            self.sink.append(self.events)
+        if self.path is not None:
+            self.path.parent.mkdir(parents=True, exist_ok=True)
+            with self.path.open("a", encoding="utf-8") as handle:
+                for event in self.events:
+                    handle.write(json.dumps(event.to_dict(), ensure_ascii=False) + "\n")
+        if self.path is None and self.sink is None:
             return None
-        self.path.parent.mkdir(parents=True, exist_ok=True)
-        with self.path.open("a", encoding="utf-8") as handle:
-            for event in self.events:
-                handle.write(json.dumps(event.to_dict(), ensure_ascii=False) + "\n")
         return self.path
 
     @property

@@ -3,6 +3,8 @@ __pycache__/
 *.egg-info/
 .pytest_cache/
 .ruff_cache/
+.coverage
+htmlcov/
 .venv/
 .env
 .env.*
@@ -11,4 +13,5 @@ build/
 dist/
 evidence/traces/*.jsonl
 !evidence/traces/agent-matrix.jsonl
+!evidence/traces/minicpm5-tool-call.jsonl
 evidence/runtime/
