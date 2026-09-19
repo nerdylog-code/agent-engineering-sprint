@@ -4,12 +4,12 @@
   "chunks": 100,
   "model": "BAAI/bge-small-en-v1.5",
   "hashing": {
-    "build_latency_ms": 5.4766,
+    "build_latency_ms": 5.4169,
     "backend": "hashing",
     "dimensions": 128,
     "float32_index_bytes": 51200,
-    "memory_rss_before_bytes": 22396928,
-    "memory_rss_after_bytes": 22884352,
+    "memory_rss_before_bytes": 22495232,
+    "memory_rss_after_bytes": 22982656,
     "memory_rss_delta_bytes": 487424,
     "questions_evaluated": 50,
     "query_runs": 50,
@@ -18,19 +18,19 @@
     "recall_at_5": 1.0,
     "mrr": 1.0,
     "groundedness": 1.0,
-    "answer_relevance": 0.666667,
-    "latency_p50_ms": 2.56585,
-    "latency_p95_ms": 4.1901
+    "answer_relevance": 0.6,
+    "latency_p50_ms": 2.52765,
+    "latency_p95_ms": 2.7132
   },
   "fastembed": {
-    "build_latency_ms": 2131.5139,
+    "build_latency_ms": 3118.2052,
     "cache_size_bytes": 67181330,
     "backend": "fastembed",
     "dimensions": 384,
     "float32_index_bytes": 153600,
-    "memory_rss_before_bytes": 22884352,
-    "memory_rss_after_bytes": 415354880,
-    "memory_rss_delta_bytes": 392470528,
+    "memory_rss_before_bytes": 22982656,
+    "memory_rss_after_bytes": 415313920,
+    "memory_rss_delta_bytes": 392331264,
     "questions_evaluated": 50,
     "query_runs": 50,
     "recall_at_1": 1.0,
@@ -38,8 +38,8 @@
     "recall_at_5": 1.0,
     "mrr": 1.0,
     "groundedness": 1.0,
-    "answer_relevance": 0.666667,
-    "latency_p50_ms": 10.4232,
-    "latency_p95_ms": 12.4173
+    "answer_relevance": 0.6,
+    "latency_p50_ms": 9.4803,
+    "latency_p95_ms": 11.2412
   }
 }
