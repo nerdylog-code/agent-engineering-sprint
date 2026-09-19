@@ -8,8 +8,8 @@ security gates, CI and real MiniCPM5 execution.
 
 | Area | Evidence | Status |
 |---|---|---|
-| Unit/integration behavior | `pytest`: 34 passed, 3 subtests | PASS |
-| Branch coverage | `pytest-cov`: 80.42% | PASS (threshold 80%) |
+| Unit/integration behavior | `pytest`: 36 passed, 3 subtests | PASS |
+| Branch coverage | `pytest-cov`: 81.14% | PASS (threshold 80%) |
 | Ruff | `ruff check` | PASS |
 | Mypy | `mypy src` | PASS, 23 source files |
 | Bandit | `bandit -q -r src -ll` | PASS |
@@ -17,10 +17,13 @@ security gates, CI and real MiniCPM5 execution.
 | Security baseline | `scripts/security_scan.py` | PASS, 0 findings |
 | API process | Uvicorn real HTTP smoke | PASS: health, readiness, metrics, agent and RAG endpoints |
 | API controls | optional Bearer token, request ID, bounded payloads | PASS in contract tests |
+| Tenant/principal isolation | retrieval filters + regression tests | PASS |
+| Rate limiting | fixed window, 429 and Retry-After | PASS in contract tests |
 | RAG durability | SQLite WAL store + reload test | PASS |
 | Provider protocol | OpenAI-compatible parser + retry + circuit breaker | PASS in fake-provider contract tests |
 | Real MCP stdio subset | `initialize`, `tools/list`, `tools/call` over JSON-RPC | PASS: subprocess protocol test |
 | Real local model | MiniCPM5-2B-Q8 at `127.0.0.1:8082` | PASS: real tool loop |
+| Local benchmark | 100 agent/RAG runs with p50/p95 | PASS: evidence JSON |
 | Docker execution | Docker daemon on current host | NOT EXECUTED: command unavailable |
 | Hosted GitHub Actions | remote repository/run URL | NOT EXECUTED: no remote configured |
 | Real MCP transport | MCP client/server/auth boundary | NOT YET IMPLEMENTED |

@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import hashlib
+import hmac
 import os
 from uuid import uuid4
 
@@ -17,6 +19,7 @@ from production_rag.storage import SQLiteCorpusStore
 from . import __version__
 from .models import AgentRequest
 from .orchestrator import AgentOrchestrator
+from .rate_limit import FixedWindowRateLimiter
 
 
 class AgentRunPayload(BaseModel):
@@ -28,9 +31,17 @@ class AgentRunPayload(BaseModel):
 class RagQueryPayload(BaseModel):
     query: str = Field(min_length=1, max_length=2_000)
     top_k: int = Field(default=5, ge=1, le=20)
+    tenant_id: str | None = Field(default=None, pattern=r"^[A-Za-z0-9_-]{1,64}$")
+    principal: str | None = Field(default=None, pattern=r"^[A-Za-z0-9_:@.-]{1,128}$")
 
 
-def create_app(*, api_token: str | None = None, rag_store_path: str | None = None) -> FastAPI:
+def create_app(
+    *,
+    api_token: str | None = None,
+    rag_store_path: str | None = None,
+    rate_limit_per_window: int | None = None,
+    rate_limit_window_seconds: float = 60.0,
+) -> FastAPI:
     app = FastAPI(title="Agent Engineering Sprint", version=__version__)
     app.state.agent = AgentOrchestrator()
     documents = build_synthetic_corpus(100)
@@ -43,7 +54,19 @@ def create_app(*, api_token: str | None = None, rag_store_path: str | None = Non
     app.state.retriever = HybridRetriever(chunks)
     app.state.provider_mode = os.environ.get("AGENT_PROVIDER_MODE", "offline-deterministic")
     app.state.api_token = api_token if api_token is not None else os.environ.get("AGENT_API_TOKEN")
-    app.state.metrics = {"requests_total": 0, "agent_runs_total": 0, "rag_queries_total": 0}
+    configured_rate = rate_limit_per_window
+    if configured_rate is None:
+        configured_rate = int(os.environ.get("AGENT_RATE_LIMIT", "60"))
+    app.state.rate_limiter = FixedWindowRateLimiter(
+        max_requests=configured_rate,
+        window_seconds=rate_limit_window_seconds,
+    )
+    app.state.metrics = {
+        "requests_total": 0,
+        "agent_runs_total": 0,
+        "rag_queries_total": 0,
+        "rate_limited_total": 0,
+    }
 
     @app.middleware("http")
     async def request_id_middleware(request: Request, call_next):
@@ -52,11 +75,22 @@ def create_app(*, api_token: str | None = None, rag_store_path: str | None = Non
         app.state.metrics["requests_total"] += 1
         if app.state.api_token and request.url.path.startswith("/v1/"):
             authorization = request.headers.get("Authorization", "")
-            if authorization != f"Bearer {app.state.api_token}":
+            if not hmac.compare_digest(authorization, f"Bearer {app.state.api_token}"):
                 return JSONResponse(
                     {"detail": "unauthorized", "request_id": request_id},
                     status_code=401,
                     headers={"X-Request-ID": request_id},
+                )
+            identity = authorization
+            allowed, retry_after = app.state.rate_limiter.allow(
+                hashlib.sha256(identity.encode("utf-8")).hexdigest()
+            )
+            if not allowed:
+                app.state.metrics["rate_limited_total"] += 1
+                return JSONResponse(
+                    {"detail": "rate limit exceeded", "request_id": request_id},
+                    status_code=429,
+                    headers={"X-Request-ID": request_id, "Retry-After": str(retry_after)},
                 )
         response = await call_next(request)
         response.headers["X-Request-ID"] = request_id
@@ -86,6 +120,8 @@ def create_app(*, api_token: str | None = None, rag_store_path: str | None = Non
             f"agent_runs_total {app.state.metrics['agent_runs_total']}",
             "# TYPE rag_queries_total counter",
             f"rag_queries_total {app.state.metrics['rag_queries_total']}",
+            "# TYPE agent_rate_limited_total counter",
+            f"agent_rate_limited_total {app.state.metrics['rate_limited_total']}",
         ]
         return PlainTextResponse("\n".join(lines) + "\n", media_type="text/plain; version=0.0.4")
 
@@ -105,7 +141,12 @@ def create_app(*, api_token: str | None = None, rag_store_path: str | None = Non
     @app.post("/v1/rag/query")
     async def rag_query(request: Request, payload: RagQueryPayload):
         app.state.metrics["rag_queries_total"] += 1
-        result = app.state.retriever.answer(payload.query, top_k=payload.top_k)
+        result = app.state.retriever.answer(
+            payload.query,
+            top_k=payload.top_k,
+            tenant_id=payload.tenant_id,
+            principal=payload.principal,
+        )
         return result.to_dict()
 
     return app

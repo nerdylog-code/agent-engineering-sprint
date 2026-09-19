@@ -64,6 +64,8 @@ class HybridRetriever:
         top_k: int = 5,
         mode: str = "hybrid",
         rerank: bool = True,
+        tenant_id: str | None = None,
+        principal: str | None = None,
     ) -> list[RetrievalHit]:
         if top_k <= 0:
             raise ValueError("top_k must be positive")
@@ -73,6 +75,8 @@ class HybridRetriever:
         query_vector = hashed_embedding(query, self.dimensions)
         scored: list[ScoreRow] = []
         for chunk in self.chunks:
+            if not self._allowed(chunk, tenant_id=tenant_id, principal=principal):
+                continue
             vector = cosine(query_vector, self.embeddings[chunk.chunk_id])
             lexical = keyword_score(query_tokens, chunk.text)
             scored.append({"chunk": chunk, "vector": vector, "keyword": lexical})
@@ -116,8 +120,24 @@ class HybridRetriever:
         exact_marker_bonus = 0.35 if any(token.startswith("fact-") and token in text_tokens for token in query_set) else 0.0
         return 0.35 * max(0.0, vector) + 0.5 * keyword + phrase_bonus + exact_marker_bonus
 
-    def answer(self, query: str, *, top_k: int = 5) -> RagAnswer:
-        hits = tuple(self.search(query, top_k=top_k, mode="hybrid", rerank=True))
+    def answer(
+        self,
+        query: str,
+        *,
+        top_k: int = 5,
+        tenant_id: str | None = None,
+        principal: str | None = None,
+    ) -> RagAnswer:
+        hits = tuple(
+            self.search(
+                query,
+                top_k=top_k,
+                mode="hybrid",
+                rerank=True,
+                tenant_id=tenant_id,
+                principal=principal,
+            )
+        )
         if not hits or hits[0].keyword_score == 0.0:
             return RagAnswer(query, "Não encontrei evidência local suficiente.", (), 0.0, 0.0, hits)
         top = hits[0]
@@ -128,3 +148,12 @@ class HybridRetriever:
         grounded = len(answer_tokens & context_tokens) / max(1, len(answer_tokens))
         relevance = keyword_score(tokenize(query), " ".join(hit.chunk.text for hit in hits))
         return RagAnswer(query, answer, citations, round(grounded, 6), round(relevance, 6), hits)
+
+    @staticmethod
+    def _allowed(chunk: Chunk, *, tenant_id: str | None, principal: str | None) -> bool:
+        metadata = chunk.metadata
+        document_tenant = metadata.get("tenant_id")
+        if document_tenant is not None and document_tenant != tenant_id:
+            return False
+        allowed = metadata.get("allowed_principals")
+        return allowed is None or principal in {item.strip() for item in allowed.split(",") if item.strip()}

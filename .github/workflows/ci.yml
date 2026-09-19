@@ -28,6 +28,8 @@ jobs:
         run: python -m unittest discover -s evals -v
       - name: MCP stdio protocol
         run: python scripts/mcp_stdio_probe.py
+      - name: Local benchmark
+        run: python scripts/benchmark.py --runs 100
       - name: Coverage
         run: python -m pytest --cov=src --cov-branch --cov-report=term-missing --cov-fail-under=80
       - name: Dependency audit

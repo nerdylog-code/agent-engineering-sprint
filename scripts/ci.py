@@ -50,6 +50,7 @@ def main(argv: list[str] | None = None) -> int:
         ("unit_tests", [sys.executable, "-m", "unittest", "discover", "-s", "tests", "-v"]),
         ("evals", [sys.executable, "-m", "unittest", "discover", "-s", "evals", "-v"]),
         ("mcp_protocol", [sys.executable, "scripts/mcp_stdio_probe.py"]),
+        ("benchmark", [sys.executable, "scripts/benchmark.py", "--runs", "100"]),
         ("coverage", [sys.executable, "-m", "pytest", "--cov=src", "--cov-branch", "--cov-report=term-missing", "--cov-fail-under=80"]),
         ("dependency_audit", [sys.executable, "-m", "pip_audit", ".", "--format", "json"]),
         ("security", [sys.executable, "scripts/security_scan.py", "--json"]),

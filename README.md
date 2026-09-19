@@ -19,10 +19,10 @@ default não depende de API paga, credencial, cloud ou modelo remoto.
 | Gate | Resultado observado |
 |---|---:|
 | Compilação `compileall` | PASS |
-| Testes de `tests/` | 27 passed |
+| Testes de `tests/` | 29 passed |
 | Evals de `evals/` | 7 passed |
-| Pytest total | 34 passed, 3 subtests |
-| Branch coverage | 80.42% |
+| Pytest total | 36 passed, 3 subtests |
+| Branch coverage | 81.14% |
 | Mypy | PASS |
 | Bandit | PASS |
 | Dependency audit | PASS, 0 known vulnerabilities in project runtime |
@@ -35,6 +35,7 @@ default não depende de API paga, credencial, cloud ou modelo remoto.
 | Hybrid + reranker Recall@1 | 1.0 |
 | Hybrid + reranker MRR | 1.0 |
 | MiniCPM5 real tool loop | PASS, 2 turns / 12.257931s |
+| Local benchmark | 100 runs, agent/RAG p50/p95 recorded |
 
 Os artefatos completos ficam em:
 
@@ -45,6 +46,7 @@ Os artefatos completos ficam em:
 - `evidence/traces/minicpm5-tool-call.jsonl`
 - `evidence/provider/minicpm5-tool-call.json`
 - `evidence/provider/mcp-stdio-protocol.json`
+- `evidence/benchmarks/local-baseline.json`
 - `evals/golden_dataset.json`
 
 ## O que foi implementado
@@ -62,8 +64,11 @@ Os artefatos completos ficam em:
   de tool calls e loop provider → tool → provider.
 - Safety gate para prompt injection/PII e schemas de tools com propriedades
   adicionais bloqueadas.
+- ACL por `tenant_id` e `principal` no retrieval, sem permitir cross-tenant
+  citations.
 - FastAPI com health/readiness, request IDs, métricas Prometheus básicas e
   Bearer token opcional para rotas `/v1/*`.
+- Rate limit por janela fixa com resposta `429` e `Retry-After`.
 - Servidor stdio JSON-RPC com `initialize`, `tools/list` e `tools/call`, além
   de teste de subprocesso real sobre a registry allowlisted.
 
@@ -86,6 +91,7 @@ Os artefatos completos ficam em:
 - `scripts/ci.py`: contrato local equivalente ao pipeline.
 - `scripts/security_scan.py`: secrets, private keys e shell escape patterns.
 - `scripts/minicpm5_tool_call_probe.py`: prova real do loop de tool calling local.
+- `scripts/benchmark.py`: baseline reproduzível de throughput e p50/p95.
 
 ## Quickstart
 
@@ -156,7 +162,7 @@ concluída.
 
 ```text
 src/agent_lab/          API, provider, tools, safety, traces, storage
-src/production_rag/     ingestão, retrieval, reranker, SQLite, métricas
+src/production_rag/     ingestão, retrieval, ACL, reranker, SQLite, métricas
 tests/                  testes de comportamento
  evals/                 golden dataset + eval suite
 scripts/                CI local, security scan, evidence generator

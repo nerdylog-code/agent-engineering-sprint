@@ -60,6 +60,15 @@ class ApiContractTests(unittest.TestCase):
             self.assertTrue(ready.json()["rag_persistence"])
             self.assertEqual(ready.json()["rag_documents"], 100)
 
+    def test_authenticated_rate_limit_returns_retry_after(self):
+        client = TestClient(create_app(api_token="secret", rate_limit_per_window=1))
+        headers = {"Authorization": "Bearer secret"}
+        first = client.post("/v1/agent/runs", headers=headers, json={"objective": "x", "user_input": "hello"})
+        second = client.post("/v1/agent/runs", headers=headers, json={"objective": "x", "user_input": "hello"})
+        self.assertEqual(first.status_code, 200)
+        self.assertEqual(second.status_code, 429)
+        self.assertIn("retry-after", second.headers)
+
 
 if __name__ == "__main__":
     unittest.main()

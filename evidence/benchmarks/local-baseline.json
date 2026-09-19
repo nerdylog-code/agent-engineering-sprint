@@ -1,0 +1,15 @@
+{
+  "status": "pass",
+  "runs": 100,
+  "agent": {
+    "success_rate": 1.0,
+    "latency_p50_ms": 0.0518,
+    "latency_p95_ms": 0.0704
+  },
+  "rag": {
+    "documents": 100,
+    "latency_p50_ms": 2.3522,
+    "latency_p95_ms": 2.4399
+  },
+  "provenance": "scripts/benchmark.py"
+}
