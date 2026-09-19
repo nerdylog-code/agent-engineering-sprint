@@ -1,0 +1,14 @@
+{
+  "runs": 8,
+  "task_success_rate": 1.0,
+  "tool_selection_accuracy": 1.0,
+  "structured_output_validity": 1.0,
+  "retry_rate": 0.0,
+  "latency_p50_ms": 0.0405,
+  "latency_p95_ms": 0.149,
+  "total_input_tokens": 147,
+  "total_output_tokens": 437,
+  "error_rate": 0.0,
+  "model": "offline-deterministic-v1",
+  "trace_file": "evidence\\traces\\agent-matrix.jsonl"
+}

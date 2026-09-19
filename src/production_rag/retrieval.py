@@ -1,0 +1,121 @@
+"""Dependency-free vector, keyword, fusion, and reranking retrieval."""
+
+from __future__ import annotations
+
+import hashlib
+import math
+import re
+from collections import Counter
+from collections.abc import Iterable
+
+from .models import Chunk, RagAnswer, RetrievalHit
+
+_TOKEN_RE = re.compile(r"[a-z0-9À-ÿ_-]+", re.IGNORECASE)
+
+
+def tokenize(text: str) -> list[str]:
+    return [token.lower() for token in _TOKEN_RE.findall(text)]
+
+
+def hashed_embedding(text: str, dimensions: int = 128) -> tuple[float, ...]:
+    vector = [0.0] * dimensions
+    for token in tokenize(text):
+        digest = hashlib.sha256(token.encode("utf-8")).digest()
+        index = int.from_bytes(digest[:4], "big") % dimensions
+        sign = 1.0 if digest[4] % 2 else -1.0
+        vector[index] += sign
+    norm = math.sqrt(sum(value * value for value in vector))
+    if norm == 0:
+        return tuple(vector)
+    return tuple(value / norm for value in vector)
+
+
+def cosine(left: tuple[float, ...], right: tuple[float, ...]) -> float:
+    return sum(a * b for a, b in zip(left, right))
+
+
+def keyword_score(query_tokens: list[str], text: str) -> float:
+    if not query_tokens:
+        return 0.0
+    counts = Counter(tokenize(text))
+    matched = sum(1 for token in set(query_tokens) if counts[token])
+    return matched / len(set(query_tokens))
+
+
+class HybridRetriever:
+    def __init__(self, chunks: Iterable[Chunk], *, dimensions: int = 128) -> None:
+        self.chunks = tuple(chunks)
+        self.dimensions = dimensions
+        self.embeddings = {chunk.chunk_id: hashed_embedding(chunk.text, dimensions) for chunk in self.chunks}
+
+    def search(
+        self,
+        query: str,
+        *,
+        top_k: int = 5,
+        mode: str = "hybrid",
+        rerank: bool = True,
+    ) -> list[RetrievalHit]:
+        if top_k <= 0:
+            raise ValueError("top_k must be positive")
+        if mode not in {"vector", "keyword", "hybrid"}:
+            raise ValueError("mode must be vector, keyword, or hybrid")
+        query_tokens = tokenize(query)
+        query_vector = hashed_embedding(query, self.dimensions)
+        scored: list[dict[str, object]] = []
+        for chunk in self.chunks:
+            vector = cosine(query_vector, self.embeddings[chunk.chunk_id])
+            lexical = keyword_score(query_tokens, chunk.text)
+            scored.append({"chunk": chunk, "vector": vector, "keyword": lexical})
+
+        vector_rank = {
+            row["chunk"].chunk_id: rank
+            for rank, row in enumerate(sorted(scored, key=lambda r: float(r["vector"]), reverse=True), start=1)
+        }
+        keyword_rank = {
+            row["chunk"].chunk_id: rank
+            for rank, row in enumerate(sorted(scored, key=lambda r: float(r["keyword"]), reverse=True), start=1)
+        }
+        for row in scored:
+            chunk = row["chunk"]
+            row["fusion"] = 1.0 / (60 + vector_rank[chunk.chunk_id]) + 1.0 / (60 + keyword_rank[chunk.chunk_id])
+            row["rerank"] = self._rerank_score(query_tokens, chunk, float(row["vector"]), float(row["keyword"]))
+
+        if mode == "vector":
+            key = lambda r: (float(r["vector"]), float(r["keyword"]))
+        elif mode == "keyword":
+            key = lambda r: (float(r["keyword"]), float(r["vector"]))
+        else:
+            key = lambda r: (float(r["rerank"] if rerank else r["fusion"]), float(r["keyword"]))
+        ordered = sorted(scored, key=key, reverse=True)[:top_k]
+        return [
+            RetrievalHit(
+                chunk=row["chunk"],
+                vector_score=round(float(row["vector"]), 6),
+                keyword_score=round(float(row["keyword"]), 6),
+                fusion_score=round(float(row["fusion"]), 6),
+                rerank_score=round(float(row["rerank"]), 6),
+            )
+            for row in ordered
+        ]
+
+    @staticmethod
+    def _rerank_score(query_tokens: list[str], chunk: Chunk, vector: float, keyword: float) -> float:
+        text_tokens = tokenize(chunk.text)
+        query_set = set(query_tokens)
+        phrase_bonus = 0.15 if " ".join(query_tokens[:2]) in chunk.text.lower() else 0.0
+        exact_marker_bonus = 0.35 if any(token.startswith("fact-") and token in text_tokens for token in query_set) else 0.0
+        return 0.35 * max(0.0, vector) + 0.5 * keyword + phrase_bonus + exact_marker_bonus
+
+    def answer(self, query: str, *, top_k: int = 5) -> RagAnswer:
+        hits = tuple(self.search(query, top_k=top_k, mode="hybrid", rerank=True))
+        if not hits or hits[0].keyword_score == 0.0:
+            return RagAnswer(query, "Não encontrei evidência local suficiente.", (), 0.0, 0.0, hits)
+        top = hits[0]
+        citations = tuple(dict.fromkeys(hit.chunk.document_id for hit in hits))
+        answer = f"{top.chunk.text} [{top.chunk.document_id}]"
+        context_tokens = set(tokenize(" ".join(hit.chunk.text for hit in hits)))
+        answer_tokens = set(tokenize(answer))
+        grounded = len(answer_tokens & context_tokens) / max(1, len(answer_tokens))
+        relevance = keyword_score(tokenize(query), " ".join(hit.chunk.text for hit in hits))
+        return RagAnswer(query, answer, citations, round(grounded, 6), round(relevance, 6), hits)

@@ -1,0 +1,15 @@
+name: Docker
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        run: docker build --tag agent-engineering-sprint:${{ github.sha }} .
+      - name: Smoke test image
+        run: docker run --rm agent-engineering-sprint:${{ github.sha }}

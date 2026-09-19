@@ -1,0 +1,65 @@
+{
+  "status": "pass",
+  "agent": {
+    "runs": 8,
+    "task_success_rate": 1.0,
+    "tool_selection_accuracy": 1.0,
+    "structured_output_validity": 1.0,
+    "retry_rate": 0.0,
+    "latency_p50_ms": 0.0405,
+    "latency_p95_ms": 0.149,
+    "total_input_tokens": 147,
+    "total_output_tokens": 437,
+    "error_rate": 0.0,
+    "model": "offline-deterministic-v1",
+    "trace_file": "evidence\\traces\\agent-matrix.jsonl"
+  },
+  "rag": {
+    "documents": 100,
+    "chunks": 100,
+    "questions": 50,
+    "modes": {
+      "vector_only": {
+        "mode": "vector",
+        "rerank": false,
+        "questions": 50,
+        "recall_at_1": 0.92,
+        "recall_at_3": 0.92,
+        "recall_at_5": 0.92,
+        "mrr": 0.92,
+        "groundedness": 0.92,
+        "answer_relevance": 0.64
+      },
+      "hybrid": {
+        "mode": "hybrid",
+        "rerank": false,
+        "questions": 50,
+        "recall_at_1": 0.98,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "mrr": 0.99,
+        "groundedness": 1.0,
+        "answer_relevance": 0.666667
+      },
+      "hybrid_reranker": {
+        "mode": "hybrid",
+        "rerank": true,
+        "questions": 50,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "groundedness": 1.0,
+        "answer_relevance": 0.666667
+      }
+    }
+  },
+  "provenance": {
+    "offline": true,
+    "pythonpath": "src",
+    "commands": [
+      "PYTHONPATH=src python scripts/generate_evidence.py",
+      "PYTHONPATH=src python scripts/ci.py --strict"
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68,<81"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agent-engineering-sprint"
+version = "0.1.0"
+description = "Offline-first agent orchestration, evals, observability and hybrid RAG lab"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "ruff>=0.6",
+]
+api = [
+  "fastapi>=0.115",
+  "pydantic>=2.8",
+]
+
+[project.scripts]
+agent-lab = "agent_lab.cli:main"
+production-rag = "production_rag.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests", "evals"]
+addopts = "-q"

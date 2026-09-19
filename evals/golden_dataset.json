@@ -1,0 +1,552 @@
+[
+  {
+    "id": "q-000",
+    "question": "What is the verified fact-000 about observability and tracing?",
+    "expected_document": "doc-000",
+    "expected_terms": [
+      "fact-000",
+      "observability",
+      "tracing"
+    ],
+    "expected_answer": "fact-000"
+  },
+  {
+    "id": "q-001",
+    "question": "What is the verified fact-001 about evaluation and deterministic-eval?",
+    "expected_document": "doc-001",
+    "expected_terms": [
+      "fact-001",
+      "evaluation",
+      "deterministic-eval"
+    ],
+    "expected_answer": "fact-001"
+  },
+  {
+    "id": "q-002",
+    "question": "What is the verified fact-002 about retrieval and hybrid-search?",
+    "expected_document": "doc-002",
+    "expected_terms": [
+      "fact-002",
+      "retrieval",
+      "hybrid-search"
+    ],
+    "expected_answer": "fact-002"
+  },
+  {
+    "id": "q-003",
+    "question": "What is the verified fact-003 about security and least-privilege?",
+    "expected_document": "doc-003",
+    "expected_terms": [
+      "fact-003",
+      "security",
+      "least-privilege"
+    ],
+    "expected_answer": "fact-003"
+  },
+  {
+    "id": "q-004",
+    "question": "What is the verified fact-004 about mcp and mcp-boundary?",
+    "expected_document": "doc-004",
+    "expected_terms": [
+      "fact-004",
+      "mcp",
+      "mcp-boundary"
+    ],
+    "expected_answer": "fact-004"
+  },
+  {
+    "id": "q-005",
+    "question": "What is the verified fact-005 about reliability and bounded-retry?",
+    "expected_document": "doc-005",
+    "expected_terms": [
+      "fact-005",
+      "reliability",
+      "bounded-retry"
+    ],
+    "expected_answer": "fact-005"
+  },
+  {
+    "id": "q-006",
+    "question": "What is the verified fact-006 about structured-output and schema-validation?",
+    "expected_document": "doc-006",
+    "expected_terms": [
+      "fact-006",
+      "structured-output",
+      "schema-validation"
+    ],
+    "expected_answer": "fact-006"
+  },
+  {
+    "id": "q-007",
+    "question": "What is the verified fact-007 about ci-cd and pipeline-gates?",
+    "expected_document": "doc-007",
+    "expected_terms": [
+      "fact-007",
+      "ci-cd",
+      "pipeline-gates"
+    ],
+    "expected_answer": "fact-007"
+  },
+  {
+    "id": "q-008",
+    "question": "What is the verified fact-008 about rag and groundedness?",
+    "expected_document": "doc-008",
+    "expected_terms": [
+      "fact-008",
+      "rag",
+      "groundedness"
+    ],
+    "expected_answer": "fact-008"
+  },
+  {
+    "id": "q-009",
+    "question": "What is the verified fact-009 about performance and p95-latency?",
+    "expected_document": "doc-009",
+    "expected_terms": [
+      "fact-009",
+      "performance",
+      "p95-latency"
+    ],
+    "expected_answer": "fact-009"
+  },
+  {
+    "id": "q-010",
+    "question": "What is the verified fact-010 about observability and tracing?",
+    "expected_document": "doc-010",
+    "expected_terms": [
+      "fact-010",
+      "observability",
+      "tracing"
+    ],
+    "expected_answer": "fact-010"
+  },
+  {
+    "id": "q-011",
+    "question": "What is the verified fact-011 about evaluation and deterministic-eval?",
+    "expected_document": "doc-011",
+    "expected_terms": [
+      "fact-011",
+      "evaluation",
+      "deterministic-eval"
+    ],
+    "expected_answer": "fact-011"
+  },
+  {
+    "id": "q-012",
+    "question": "What is the verified fact-012 about retrieval and hybrid-search?",
+    "expected_document": "doc-012",
+    "expected_terms": [
+      "fact-012",
+      "retrieval",
+      "hybrid-search"
+    ],
+    "expected_answer": "fact-012"
+  },
+  {
+    "id": "q-013",
+    "question": "What is the verified fact-013 about security and least-privilege?",
+    "expected_document": "doc-013",
+    "expected_terms": [
+      "fact-013",
+      "security",
+      "least-privilege"
+    ],
+    "expected_answer": "fact-013"
+  },
+  {
+    "id": "q-014",
+    "question": "What is the verified fact-014 about mcp and mcp-boundary?",
+    "expected_document": "doc-014",
+    "expected_terms": [
+      "fact-014",
+      "mcp",
+      "mcp-boundary"
+    ],
+    "expected_answer": "fact-014"
+  },
+  {
+    "id": "q-015",
+    "question": "What is the verified fact-015 about reliability and bounded-retry?",
+    "expected_document": "doc-015",
+    "expected_terms": [
+      "fact-015",
+      "reliability",
+      "bounded-retry"
+    ],
+    "expected_answer": "fact-015"
+  },
+  {
+    "id": "q-016",
+    "question": "What is the verified fact-016 about structured-output and schema-validation?",
+    "expected_document": "doc-016",
+    "expected_terms": [
+      "fact-016",
+      "structured-output",
+      "schema-validation"
+    ],
+    "expected_answer": "fact-016"
+  },
+  {
+    "id": "q-017",
+    "question": "What is the verified fact-017 about ci-cd and pipeline-gates?",
+    "expected_document": "doc-017",
+    "expected_terms": [
+      "fact-017",
+      "ci-cd",
+      "pipeline-gates"
+    ],
+    "expected_answer": "fact-017"
+  },
+  {
+    "id": "q-018",
+    "question": "What is the verified fact-018 about rag and groundedness?",
+    "expected_document": "doc-018",
+    "expected_terms": [
+      "fact-018",
+      "rag",
+      "groundedness"
+    ],
+    "expected_answer": "fact-018"
+  },
+  {
+    "id": "q-019",
+    "question": "What is the verified fact-019 about performance and p95-latency?",
+    "expected_document": "doc-019",
+    "expected_terms": [
+      "fact-019",
+      "performance",
+      "p95-latency"
+    ],
+    "expected_answer": "fact-019"
+  },
+  {
+    "id": "q-020",
+    "question": "What is the verified fact-020 about observability and tracing?",
+    "expected_document": "doc-020",
+    "expected_terms": [
+      "fact-020",
+      "observability",
+      "tracing"
+    ],
+    "expected_answer": "fact-020"
+  },
+  {
+    "id": "q-021",
+    "question": "What is the verified fact-021 about evaluation and deterministic-eval?",
+    "expected_document": "doc-021",
+    "expected_terms": [
+      "fact-021",
+      "evaluation",
+      "deterministic-eval"
+    ],
+    "expected_answer": "fact-021"
+  },
+  {
+    "id": "q-022",
+    "question": "What is the verified fact-022 about retrieval and hybrid-search?",
+    "expected_document": "doc-022",
+    "expected_terms": [
+      "fact-022",
+      "retrieval",
+      "hybrid-search"
+    ],
+    "expected_answer": "fact-022"
+  },
+  {
+    "id": "q-023",
+    "question": "What is the verified fact-023 about security and least-privilege?",
+    "expected_document": "doc-023",
+    "expected_terms": [
+      "fact-023",
+      "security",
+      "least-privilege"
+    ],
+    "expected_answer": "fact-023"
+  },
+  {
+    "id": "q-024",
+    "question": "What is the verified fact-024 about mcp and mcp-boundary?",
+    "expected_document": "doc-024",
+    "expected_terms": [
+      "fact-024",
+      "mcp",
+      "mcp-boundary"
+    ],
+    "expected_answer": "fact-024"
+  },
+  {
+    "id": "q-025",
+    "question": "What is the verified fact-025 about reliability and bounded-retry?",
+    "expected_document": "doc-025",
+    "expected_terms": [
+      "fact-025",
+      "reliability",
+      "bounded-retry"
+    ],
+    "expected_answer": "fact-025"
+  },
+  {
+    "id": "q-026",
+    "question": "What is the verified fact-026 about structured-output and schema-validation?",
+    "expected_document": "doc-026",
+    "expected_terms": [
+      "fact-026",
+      "structured-output",
+      "schema-validation"
+    ],
+    "expected_answer": "fact-026"
+  },
+  {
+    "id": "q-027",
+    "question": "What is the verified fact-027 about ci-cd and pipeline-gates?",
+    "expected_document": "doc-027",
+    "expected_terms": [
+      "fact-027",
+      "ci-cd",
+      "pipeline-gates"
+    ],
+    "expected_answer": "fact-027"
+  },
+  {
+    "id": "q-028",
+    "question": "What is the verified fact-028 about rag and groundedness?",
+    "expected_document": "doc-028",
+    "expected_terms": [
+      "fact-028",
+      "rag",
+      "groundedness"
+    ],
+    "expected_answer": "fact-028"
+  },
+  {
+    "id": "q-029",
+    "question": "What is the verified fact-029 about performance and p95-latency?",
+    "expected_document": "doc-029",
+    "expected_terms": [
+      "fact-029",
+      "performance",
+      "p95-latency"
+    ],
+    "expected_answer": "fact-029"
+  },
+  {
+    "id": "q-030",
+    "question": "What is the verified fact-030 about observability and tracing?",
+    "expected_document": "doc-030",
+    "expected_terms": [
+      "fact-030",
+      "observability",
+      "tracing"
+    ],
+    "expected_answer": "fact-030"
+  },
+  {
+    "id": "q-031",
+    "question": "What is the verified fact-031 about evaluation and deterministic-eval?",
+    "expected_document": "doc-031",
+    "expected_terms": [
+      "fact-031",
+      "evaluation",
+      "deterministic-eval"
+    ],
+    "expected_answer": "fact-031"
+  },
+  {
+    "id": "q-032",
+    "question": "What is the verified fact-032 about retrieval and hybrid-search?",
+    "expected_document": "doc-032",
+    "expected_terms": [
+      "fact-032",
+      "retrieval",
+      "hybrid-search"
+    ],
+    "expected_answer": "fact-032"
+  },
+  {
+    "id": "q-033",
+    "question": "What is the verified fact-033 about security and least-privilege?",
+    "expected_document": "doc-033",
+    "expected_terms": [
+      "fact-033",
+      "security",
+      "least-privilege"
+    ],
+    "expected_answer": "fact-033"
+  },
+  {
+    "id": "q-034",
+    "question": "What is the verified fact-034 about mcp and mcp-boundary?",
+    "expected_document": "doc-034",
+    "expected_terms": [
+      "fact-034",
+      "mcp",
+      "mcp-boundary"
+    ],
+    "expected_answer": "fact-034"
+  },
+  {
+    "id": "q-035",
+    "question": "What is the verified fact-035 about reliability and bounded-retry?",
+    "expected_document": "doc-035",
+    "expected_terms": [
+      "fact-035",
+      "reliability",
+      "bounded-retry"
+    ],
+    "expected_answer": "fact-035"
+  },
+  {
+    "id": "q-036",
+    "question": "What is the verified fact-036 about structured-output and schema-validation?",
+    "expected_document": "doc-036",
+    "expected_terms": [
+      "fact-036",
+      "structured-output",
+      "schema-validation"
+    ],
+    "expected_answer": "fact-036"
+  },
+  {
+    "id": "q-037",
+    "question": "What is the verified fact-037 about ci-cd and pipeline-gates?",
+    "expected_document": "doc-037",
+    "expected_terms": [
+      "fact-037",
+      "ci-cd",
+      "pipeline-gates"
+    ],
+    "expected_answer": "fact-037"
+  },
+  {
+    "id": "q-038",
+    "question": "What is the verified fact-038 about rag and groundedness?",
+    "expected_document": "doc-038",
+    "expected_terms": [
+      "fact-038",
+      "rag",
+      "groundedness"
+    ],
+    "expected_answer": "fact-038"
+  },
+  {
+    "id": "q-039",
+    "question": "What is the verified fact-039 about performance and p95-latency?",
+    "expected_document": "doc-039",
+    "expected_terms": [
+      "fact-039",
+      "performance",
+      "p95-latency"
+    ],
+    "expected_answer": "fact-039"
+  },
+  {
+    "id": "q-040",
+    "question": "What is the verified fact-040 about observability and tracing?",
+    "expected_document": "doc-040",
+    "expected_terms": [
+      "fact-040",
+      "observability",
+      "tracing"
+    ],
+    "expected_answer": "fact-040"
+  },
+  {
+    "id": "q-041",
+    "question": "What is the verified fact-041 about evaluation and deterministic-eval?",
+    "expected_document": "doc-041",
+    "expected_terms": [
+      "fact-041",
+      "evaluation",
+      "deterministic-eval"
+    ],
+    "expected_answer": "fact-041"
+  },
+  {
+    "id": "q-042",
+    "question": "What is the verified fact-042 about retrieval and hybrid-search?",
+    "expected_document": "doc-042",
+    "expected_terms": [
+      "fact-042",
+      "retrieval",
+      "hybrid-search"
+    ],
+    "expected_answer": "fact-042"
+  },
+  {
+    "id": "q-043",
+    "question": "What is the verified fact-043 about security and least-privilege?",
+    "expected_document": "doc-043",
+    "expected_terms": [
+      "fact-043",
+      "security",
+      "least-privilege"
+    ],
+    "expected_answer": "fact-043"
+  },
+  {
+    "id": "q-044",
+    "question": "What is the verified fact-044 about mcp and mcp-boundary?",
+    "expected_document": "doc-044",
+    "expected_terms": [
+      "fact-044",
+      "mcp",
+      "mcp-boundary"
+    ],
+    "expected_answer": "fact-044"
+  },
+  {
+    "id": "q-045",
+    "question": "What is the verified fact-045 about reliability and bounded-retry?",
+    "expected_document": "doc-045",
+    "expected_terms": [
+      "fact-045",
+      "reliability",
+      "bounded-retry"
+    ],
+    "expected_answer": "fact-045"
+  },
+  {
+    "id": "q-046",
+    "question": "What is the verified fact-046 about structured-output and schema-validation?",
+    "expected_document": "doc-046",
+    "expected_terms": [
+      "fact-046",
+      "structured-output",
+      "schema-validation"
+    ],
+    "expected_answer": "fact-046"
+  },
+  {
+    "id": "q-047",
+    "question": "What is the verified fact-047 about ci-cd and pipeline-gates?",
+    "expected_document": "doc-047",
+    "expected_terms": [
+      "fact-047",
+      "ci-cd",
+      "pipeline-gates"
+    ],
+    "expected_answer": "fact-047"
+  },
+  {
+    "id": "q-048",
+    "question": "What is the verified fact-048 about rag and groundedness?",
+    "expected_document": "doc-048",
+    "expected_terms": [
+      "fact-048",
+      "rag",
+      "groundedness"
+    ],
+    "expected_answer": "fact-048"
+  },
+  {
+    "id": "q-049",
+    "question": "What is the verified fact-049 about performance and p95-latency?",
+    "expected_document": "doc-049",
+    "expected_terms": [
+      "fact-049",
+      "performance",
+      "p95-latency"
+    ],
+    "expected_answer": "fact-049"
+  }
+]

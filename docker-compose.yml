@@ -1,0 +1,6 @@
+services:
+  agent-lab:
+    build: .
+    command: ["python", "-m", "agent_lab.cli", "demo", "--json", "--trace", "/app/evidence/traces/docker-demo.jsonl"]
+    volumes:
+      - ./evidence:/app/evidence

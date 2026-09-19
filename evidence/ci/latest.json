@@ -1,0 +1,103 @@
+{
+  "status": "pass",
+  "gates": [
+    {
+      "name": "compile",
+      "command": [
+        "C:\\Users\\ganga\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+        "-m",
+        "compileall",
+        "-q",
+        "src",
+        "evals",
+        "tests",
+        "scripts"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.09164,
+      "stdout": "",
+      "stderr": "",
+      "status": "pass"
+    },
+    {
+      "name": "ruff",
+      "command": [
+        "C:\\Users\\ganga\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "check",
+        "src",
+        "tests",
+        "evals",
+        "scripts"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.091254,
+      "stdout": "All checks passed!\n",
+      "stderr": "",
+      "status": "pass"
+    },
+    {
+      "name": "unit_tests",
+      "command": [
+        "C:\\Users\\ganga\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.21413,
+      "stdout": "",
+      "stderr": "test_human_approval_is_explicit (test_agent_lab.AgentLabTests.test_human_approval_is_explicit) ... ok\ntest_router_selects_specialized_routes (test_agent_lab.AgentLabTests.test_router_selects_specialized_routes) ... ok\ntest_structured_contract_rejects_bad_confidence (test_agent_lab.AgentLabTests.test_structured_contract_rejects_bad_confidence) ... ok\ntest_structured_contract_rejects_non_string_answer (test_agent_lab.AgentLabTests.test_structured_contract_rejects_non_string_answer) ... ok\ntest_structured_output_retry_is_bounded_and_recovers (test_agent_lab.AgentLabTests.test_structured_output_retry_is_bounded_and_recovers) ... ok\ntest_tool_output_injection_is_blocked (test_agent_lab.AgentLabTests.test_tool_output_injection_is_blocked) ... ok\ntest_tool_run_and_jsonl_trace_have_required_fields (test_agent_lab.AgentLabTests.test_tool_run_and_jsonl_trace_have_required_fields) ... ok\ntest_unknown_tool_and_unsafe_name_are_not_executable (test_agent_lab.AgentLabTests.test_unknown_tool_and_unsafe_name_are_not_executable) ... ok\ntest_answer_has_citations_and_groundedness (test_rag.ProductionRagTests.test_answer_has_citations_and_groundedness) ... ok\ntest_hybrid_reranker_finds_exact_fact (test_rag.ProductionRagTests.test_hybrid_reranker_finds_exact_fact) ... ok\ntest_ingestion_preserves_all_documents (test_rag.ProductionRagTests.test_ingestion_preserves_all_documents) ... ok\ntest_measured_hybrid_metrics (test_rag.ProductionRagTests.test_measured_hybrid_metrics) ... ok\ntest_mode_comparison_returns_three_real_variants (test_rag.ProductionRagTests.test_mode_comparison_returns_three_real_variants) ... ok\n\n----------------------------------------------------------------------\nRan 13 tests in 0.077s\n\nOK\n",
+      "status": "pass"
+    },
+    {
+      "name": "evals",
+      "command": [
+        "C:\\Users\\ganga\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "evals",
+        "-v"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.527442,
+      "stdout": "",
+      "stderr": "test_retry_rate_is_measurable (test_agent_quality.AgentQualityEvaluation.test_retry_rate_is_measurable) ... ok\ntest_task_success_and_tool_selection_accuracy (test_agent_quality.AgentQualityEvaluation.test_task_success_and_tool_selection_accuracy) ... ok\ntest_golden_dataset_is_50_questions_over_100_documents (test_rag_retrieval.RagEvaluation.test_golden_dataset_is_50_questions_over_100_documents) ... ok\ntest_golden_route_cases (test_router.RouterEvaluation.test_golden_route_cases) ... ok\ntest_invalid_first_attempt_is_repaired_within_bound (test_structured_output.StructuredOutputEvaluation.test_invalid_first_attempt_is_repaired_within_bound) ... ok\ntest_calculator_and_faq_are_allowlisted (test_tools.ToolEvaluation.test_calculator_and_faq_are_allowlisted) ... ok\ntest_unknown_and_injection_outputs_are_blocked (test_tools.ToolEvaluation.test_unknown_and_injection_outputs_are_blocked) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.388s\n\nOK\n",
+      "status": "pass"
+    },
+    {
+      "name": "security",
+      "command": [
+        "C:\\Users\\ganga\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+        "scripts/security_scan.py",
+        "--json"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.083295,
+      "stdout": "{\n  \"status\": \"pass\",\n  \"files_scanned\": 25,\n  \"findings\": []\n}\n",
+      "stderr": "",
+      "status": "pass"
+    },
+    {
+      "name": "rag_smoke",
+      "command": [
+        "C:\\Users\\ganga\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+        "-m",
+        "production_rag.cli",
+        "evaluate",
+        "--json"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.528242,
+      "stdout": "{\n  \"documents\": 100,\n  \"chunks\": 100,\n  \"dataset\": \"evals\\\\golden_dataset.json\",\n  \"modes\": {\n    \"vector_only\": {\n      \"mode\": \"vector\",\n      \"rerank\": false,\n      \"questions\": 50,\n      \"recall_at_1\": 0.92,\n      \"recall_at_3\": 0.92,\n      \"recall_at_5\": 0.92,\n      \"mrr\": 0.92,\n      \"groundedness\": 0.92,\n      \"answer_relevance\": 0.64\n    },\n    \"hybrid\": {\n      \"mode\": \"hybrid\",\n      \"rerank\": false,\n      \"questions\": 50,\n      \"recall_at_1\": 0.98,\n      \"recall_at_3\": 1.0,\n      \"recall_at_5\": 1.0,\n      \"mrr\": 0.99,\n      \"groundedness\": 1.0,\n      \"answer_relevance\": 0.666667\n    },\n    \"hybrid_reranker\": {\n      \"mode\": \"hybrid\",\n      \"rerank\": true,\n      \"questions\": 50,\n      \"recall_at_1\": 1.0,\n      \"recall_at_3\": 1.0,\n      \"recall_at_5\": 1.0,\n      \"mrr\": 1.0,\n      \"groundedness\": 1.0,\n      \"answer_relevance\": 0.666667\n    }\n  }\n}\n",
+      "stderr": "",
+      "status": "pass"
+    }
+  ]
+}
