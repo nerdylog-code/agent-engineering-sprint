@@ -1,0 +1,25 @@
+{
+  "python_package": "agent-engineering-sprint==0.1.0",
+  "editable_install": "pass",
+  "entrypoints": {
+    "agent-lab": "pass",
+    "production-rag": "pass"
+  },
+  "ruff": {
+    "installed": true,
+    "version_observed": "0.16.8"
+  },
+  "pytest": {
+    "installed": true,
+    "version_observed": "9.1.1"
+  },
+  "docker": {
+    "installed": false,
+    "observed_result": "command not found"
+  },
+  "github": {
+    "remote_configured": false,
+    "hosted_actions_executed": false
+  },
+  "interpretation": "Local evidence is complete; Docker and hosted GitHub verification remain environment/account dependent."
+}
