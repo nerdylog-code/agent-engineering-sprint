@@ -17,6 +17,12 @@ if TYPE_CHECKING:
     from .embeddings import EmbeddingBackend
 
 _TOKEN_RE = re.compile(r"[a-z0-9À-ÿ_-]+", re.IGNORECASE)
+_STOPWORDS = {
+    "a", "an", "and", "are", "as", "at", "be", "by", "can", "do", "for", "from", "how", "i",
+    "in", "is", "it", "of", "on", "or", "the", "this", "to", "what", "which", "why", "with",
+    "um", "uma", "e", "em", "de", "da", "dos", "das", "o", "os", "que", "qual", "quais",
+    "por", "para", "como", "se", "não", "na", "no", "nas", "nos", "após", "sobre",
+}
 
 
 def tokenize(text: str) -> list[str]:
@@ -41,11 +47,12 @@ def cosine(left: tuple[float, ...], right: tuple[float, ...]) -> float:
 
 
 def keyword_score(query_tokens: list[str], text: str) -> float:
-    if not query_tokens:
+    content_tokens = {token for token in query_tokens if token not in _STOPWORDS}
+    if not content_tokens:
         return 0.0
     counts = Counter(tokenize(text))
-    matched = sum(1 for token in set(query_tokens) if counts[token])
-    return matched / len(set(query_tokens))
+    matched = sum(1 for token in content_tokens if counts[token])
+    return matched / len(content_tokens)
 
 
 class ScoreRow(TypedDict, total=False):
@@ -188,7 +195,8 @@ class HybridRetriever:
                 principal=principal,
             )
         )
-        if not hits or hits[0].keyword_score == 0.0:
+        max_keyword_score = max((hit.keyword_score for hit in hits), default=0.0)
+        if not hits or max_keyword_score < 0.25:
             return RagAnswer(query, "Não encontrei evidência local suficiente.", (), 0.0, 0.0, hits)
         top = hits[0]
         citations = tuple(dict.fromkeys(hit.chunk.document_id for hit in hits))

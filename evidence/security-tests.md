@@ -24,7 +24,7 @@ PYTHONPATH=src python -m unittest discover -s tests -q
 ```
 
 ```text
-Ran 41 tests
+Ran 43 tests
 OK
 ```
 The focused tests cover:

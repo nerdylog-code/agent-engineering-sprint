@@ -1,0 +1,219 @@
+{
+  "status": "pass",
+  "methodology": {
+    "corpus_documents": 24,
+    "chunks": 24,
+    "questions": 54,
+    "answerable_questions": 48,
+    "unanswerable_questions": 6,
+    "retrieval_mode": "vector_only",
+    "why": "isolates embedding quality from lexical fusion/reranker bonuses",
+    "model": "BAAI/bge-small-en-v1.5"
+  },
+  "hashing": {
+    "backend": "hashing",
+    "retrieval_mode": "vector_only",
+    "dimensions": 128,
+    "questions": 54,
+    "answerable_questions": 48,
+    "unanswerable_questions": 6,
+    "recall_at_1": 0.583333,
+    "recall_at_3": 0.729167,
+    "recall_at_5": 0.791667,
+    "mrr": 0.655903,
+    "abstention_rate": 1.0,
+    "false_positive_rate": 0.0,
+    "latency_p50_ms": 0.56525,
+    "latency_p95_ms": 1.0295,
+    "build_latency_ms": 1.0455,
+    "float32_index_bytes": 12288,
+    "memory_rss_before_bytes": 22458368,
+    "memory_rss_after_bytes": 22577152,
+    "memory_rss_delta_bytes": 118784,
+    "category_metrics": {
+      "abbreviation": {
+        "questions": 3,
+        "recall_at_1": 0.333333,
+        "recall_at_3": 0.666667,
+        "recall_at_5": 0.666667,
+        "mrr": 0.5
+      },
+      "abstention": {
+        "questions": 1,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "mrr": 1.0
+      },
+      "distractor": {
+        "questions": 2,
+        "recall_at_1": 0.5,
+        "recall_at_3": 0.5,
+        "recall_at_5": 1.0,
+        "mrr": 0.6
+      },
+      "multilingual": {
+        "questions": 1,
+        "recall_at_1": 0.0,
+        "recall_at_3": 0.0,
+        "recall_at_5": 0.0,
+        "mrr": 0.0
+      },
+      "paraphrase": {
+        "questions": 20,
+        "recall_at_1": 0.7,
+        "recall_at_3": 0.8,
+        "recall_at_5": 0.9,
+        "mrr": 0.764167
+      },
+      "reliability": {
+        "questions": 1,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "mrr": 1.0
+      },
+      "scope": {
+        "questions": 2,
+        "recall_at_1": 0.5,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "mrr": 0.666667
+      },
+      "security": {
+        "questions": 1,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "mrr": 1.0
+      },
+      "synonym": {
+        "questions": 14,
+        "recall_at_1": 0.428571,
+        "recall_at_3": 0.571429,
+        "recall_at_5": 0.571429,
+        "mrr": 0.488095
+      },
+      "timeout": {
+        "questions": 2,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "mrr": 1.0
+      },
+      "typo": {
+        "questions": 1,
+        "recall_at_1": 0.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "mrr": 0.333333
+      }
+    }
+  },
+  "fastembed": {
+    "backend": "fastembed",
+    "retrieval_mode": "vector_only",
+    "dimensions": 384,
+    "questions": 54,
+    "answerable_questions": 48,
+    "unanswerable_questions": 6,
+    "recall_at_1": 0.770833,
+    "recall_at_3": 0.916667,
+    "recall_at_5": 0.9375,
+    "mrr": 0.845486,
+    "abstention_rate": 1.0,
+    "false_positive_rate": 0.0,
+    "latency_p50_ms": 5.40105,
+    "latency_p95_ms": 10.3248,
+    "build_latency_ms": 983.6615,
+    "float32_index_bytes": 36864,
+    "memory_rss_before_bytes": 22577152,
+    "memory_rss_after_bytes": 241405952,
+    "memory_rss_delta_bytes": 218828800,
+    "category_metrics": {
+      "abbreviation": {
+        "questions": 3,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "mrr": 1.0
+      },
+      "abstention": {
+        "questions": 1,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "mrr": 1.0
+      },
+      "distractor": {
+        "questions": 2,
+        "recall_at_1": 0.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "mrr": 0.5
+      },
+      "multilingual": {
+        "questions": 1,
+        "recall_at_1": 0.0,
+        "recall_at_3": 0.0,
+        "recall_at_5": 0.0,
+        "mrr": 0.0
+      },
+      "paraphrase": {
+        "questions": 20,
+        "recall_at_1": 0.75,
+        "recall_at_3": 0.9,
+        "recall_at_5": 0.95,
+        "mrr": 0.8375
+      },
+      "reliability": {
+        "questions": 1,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "mrr": 1.0
+      },
+      "scope": {
+        "questions": 2,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "mrr": 1.0
+      },
+      "security": {
+        "questions": 1,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "mrr": 1.0
+      },
+      "synonym": {
+        "questions": 14,
+        "recall_at_1": 0.785714,
+        "recall_at_3": 0.928571,
+        "recall_at_5": 0.928571,
+        "mrr": 0.845238
+      },
+      "timeout": {
+        "questions": 2,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "mrr": 1.0
+      },
+      "typo": {
+        "questions": 1,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "mrr": 1.0
+      }
+    },
+    "model_cache_size_bytes": 67181330
+  },
+  "limitations": [
+    "FastEmbed model is BGE-small English; multilingual results are exploratory.",
+    "RSS is process-level and includes ONNX runtime allocations.",
+    "A 54-question benchmark is evidence of relative behavior, not production capacity."
+  ]
+}

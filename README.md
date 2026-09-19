@@ -19,27 +19,30 @@ default não depende de API paga, credencial, cloud ou modelo remoto.
 | Gate | Resultado observado |
 |---|---:|
 | Compilação `compileall` | PASS |
-| Testes de `tests/` | 41 passed |
+| Testes de `tests/` | 43 passed |
 | Evals de `evals/` | 7 passed |
-| Pytest total | 48 passed, 3 subtests |
-| Branch coverage | 81.41% |
+| Pytest total | 50 passed, 3 subtests |
+| Branch coverage | 81.66% |
 | Mypy | PASS |
 | Bandit | PASS |
 | Dependency audit | PASS, 0 known vulnerabilities in project runtime |
-| Security scan | 43 arquivos, 0 findings |
+| Security scan | 45 arquivos, 0 findings |
 | Agent task success | 1.0 (8/8 runs) |
 | Tool selection accuracy | 1.0 |
 | Structured-output validity | 1.0 |
 | RAG corpus | 100 documentos, 100 chunks |
 | RAG golden set | 50 perguntas |
+| Adversarial RAG set | 54 perguntas, 48 answerable + 6 abstention |
 | Hybrid + reranker Recall@1 | 1.0 |
 | Hybrid + reranker MRR | 1.0 |
 | MiniCPM5 real tool loop | PASS, 2 turns / 12.257931s |
 | Local benchmark | 100 runs, agent/RAG p50/p95 recorded |
 | FastEmbed benchmark | PASS, BGE small vs hashing measured |
+| Adversarial embedding benchmark | FastEmbed Recall@1 0.770833 vs hashing 0.583333 |
 | OpenTelemetry | SDK in-memory spans for HTTP/agent/provider/tool/RAG |
 | MCP HTTPS | PASS, self-signed TLS + JWT tool scope allow/deny |
 | Chaos/load | 100/100 requests; timeout/429/500/malformed/lock recovery |
+| Load curve | concurrency 1→200; P95 10.3327→677.4062 ms |
 
 Os artefatos completos ficam em:
 
@@ -52,11 +55,15 @@ Os artefatos completos ficam em:
 - `evidence/provider/mcp-stdio-protocol.json`
 - `evidence/benchmarks/local-baseline.json`
 - `evidence/benchmarks/embedding-comparison.json`
+- `evidence/benchmarks/adversarial-embedding-comparison.json`
+- `evidence/benchmarks/load-curve.json`
 - `evidence/benchmarks/chaos-load.json`
 - `evidence/security/mcp-http-tls.json`
 - `evidence/security-tests.md`
 - `evidence/traces/otel-spans-demo.json`
+- `evidence/demo/five-minute-demo.json`
 - `evals/golden_dataset.json`
+- `evals/adversarial_dataset.json`
 
 ## Production Readiness
 
@@ -65,6 +72,8 @@ Os artefatos completos ficam em:
 ✓ JWT authentication with claims, RBAC and tenant isolation
 
 ✓ Persistent RAG and real FastEmbed benchmark against hashing
+
+✓ Adversarial retrieval benchmark with semantic gain and explicit abstention
 
 ✓ Agent/tool execution and structured outputs
 
@@ -75,6 +84,8 @@ Os artefatos completos ficam em:
 ✓ OpenTelemetry SDK spans for HTTP, router, agent, provider, retrieval and tools
 
 ✓ Async load/chaos harness, static security analysis and automated tests
+
+✓ Load curve at concurrency 1, 10, 25, 50, 100 and 200
 
 ### Prepared but not externally verified
 
@@ -99,6 +110,30 @@ Os artefatos completos ficam em:
 ○ Azure/AWS production account and budget
 
 ○ Formal SOC 2/LGPD review and release approval
+
+## Five-minute demo
+
+The complete local demo is reproducible without Docker, cloud credentials or a
+remote model:
+
+```bash
+cd D:/Hermes/ErisWorkspace/agent-engineering-sprint
+PYTHONPATH=src python scripts/five_minute_demo.py
+PYTHONPATH=src python scripts/adversarial_embedding_benchmark.py
+PYTHONPATH=src python scripts/load_curve.py
+```
+
+What the demo proves:
+
+1. Agent and RAG requests complete with citations.
+2. Tenant A attempting tenant B returns `403`.
+3. A normal user attempting the admin route returns `403`; an admin returns `200`.
+4. An MCP calculator call with scope returns `200`; without scope returns `403`.
+5. The in-memory OpenTelemetry span names are emitted.
+6. The adversarial benchmark shows measured semantic retrieval separation.
+7. The load curve makes P95 degradation visible from concurrency 1 to 200.
+
+The demo is a local ASGI/TestClient proof, not a hosted public deployment.
 
 ## O que foi implementado
 
@@ -145,9 +180,12 @@ Os artefatos completos ficam em:
 - `scripts/minicpm5_tool_call_probe.py`: prova real do loop de tool calling local.
 - `scripts/benchmark.py`: baseline reproduzível de throughput e p50/p95.
 - `scripts/embedding_benchmark.py`: comparação hashing vs FastEmbed com Recall/MRR.
+- `scripts/adversarial_embedding_benchmark.py`: benchmark semântico separado do baseline lexical.
 - `scripts/mcp_https_demo.py`: HTTPS local real com JWT e scope de tool.
 - `scripts/chaos_load.py`: carga assíncrona e injeção de falhas com evidência JSON.
+- `scripts/load_curve.py`: curva local de concorrência 1→200.
 - `scripts/otel_trace_demo.py`: inventário de spans redigido para demonstração.
+- `scripts/five_minute_demo.py`: fluxo compacto de RAG, JWT, RBAC, MCP e OTel.
 
 ## Quickstart
 

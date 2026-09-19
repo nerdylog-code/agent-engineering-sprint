@@ -53,6 +53,7 @@ async def http_load(concurrency: int) -> dict[str, object]:
         "requests": concurrency,
         "successes": success,
         "success_rate": success / concurrency,
+        "error_rate": 1.0 - (success / concurrency),
         "throughput_requests_per_second": concurrency / duration,
         "latency_p50_ms": statistics.median(latencies),
         "latency_p95_ms": percentile(latencies, 0.95),

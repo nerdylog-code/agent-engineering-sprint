@@ -4,9 +4,10 @@
     "requests": 100,
     "successes": 100,
     "success_rate": 1.0,
-    "throughput_requests_per_second": 282.0520414221831,
-    "latency_p50_ms": 335.4229499991561,
-    "latency_p95_ms": 342.4128999995446,
+    "error_rate": 0.0,
+    "throughput_requests_per_second": 293.9686741111758,
+    "latency_p50_ms": 321.6419999989739,
+    "latency_p95_ms": 328.4747000034258,
     "status_counts": {
       "200": 100
     }
@@ -17,34 +18,34 @@
       "error_type": "ProviderTimeout",
       "error": "timeout after 45.0",
       "case": "provider_timeout",
-      "latency_ms": 0.10019999899668619
+      "latency_ms": 0.05570000212173909
     },
     "provider_429": {
       "status": "expected_failure",
       "error_type": "ProviderError",
       "error": "provider HTTP 429",
       "case": "provider_429",
-      "latency_ms": 0.08650000017951243
+      "latency_ms": 0.04380000245873816
     },
     "provider_500": {
       "status": "expected_failure",
       "error_type": "ProviderError",
       "error": "provider HTTP 500",
       "case": "provider_500",
-      "latency_ms": 0.044099999286117963
+      "latency_ms": 0.029499999072868377
     },
     "malformed_json": {
       "status": "expected_failure",
       "error_type": "ProviderResponseError",
       "error": "invalid provider response: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)",
       "case": "malformed_json",
-      "latency_ms": 0.07430000005115289
+      "latency_ms": 0.05390000296756625
     },
     "hanging_tool": {
       "case": "hanging_tool",
       "status": "expected_failure",
       "error": "tool timed out after 0.020s",
-      "latency_ms": 27.69569999873056
+      "latency_ms": 34.10680000160937
     },
     "sqlite_lock": {
       "case": "sqlite_lock",

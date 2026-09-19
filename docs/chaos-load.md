@@ -9,9 +9,9 @@
 | Concurrent requests | 100 |
 | Successful responses | 100 |
 | Success rate | 1.0 |
-| Throughput | 282.0520 requests/s |
-| Latency P50 | 335.42295 ms |
-| Latency P95 | 342.4129 ms |
+| Throughput | 293.9687 requests/s |
+| Latency P50 | 321.6420 ms |
+| Latency P95 | 328.4747 ms |
 
 The load uses `asyncio` + `httpx` against the FastAPI ASGI application and is
 not a claim about a distributed production cluster.

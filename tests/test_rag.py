@@ -27,6 +27,11 @@ class ProductionRagTests(unittest.TestCase):
         self.assertGreater(answer.groundedness, 0.5)
         self.assertGreater(answer.answer_relevance, 0.2)
 
+    def test_answer_abstains_when_only_stopwords_match(self):
+        answer = self.retriever.answer("What is the recipe for an unrelated object?")
+        self.assertEqual(answer.citations, ())
+        self.assertEqual(answer.groundedness, 0.0)
+
     def test_measured_hybrid_metrics(self):
         dataset = [
             {

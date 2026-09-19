@@ -1,0 +1,84 @@
+{
+  "status": "pass",
+  "methodology": "asyncio + httpx against local FastAPI ASGITransport; not distributed capacity",
+  "levels": [
+    {
+      "requests": 1,
+      "successes": 1,
+      "success_rate": 1.0,
+      "error_rate": 0.0,
+      "throughput_requests_per_second": 95.97021083200408,
+      "latency_p50_ms": 10.332699999707984,
+      "latency_p95_ms": 10.332699999707984,
+      "status_counts": {
+        "200": 1
+      },
+      "concurrency": 1
+    },
+    {
+      "requests": 10,
+      "successes": 10,
+      "success_rate": 1.0,
+      "error_rate": 0.0,
+      "throughput_requests_per_second": 289.33594507270277,
+      "latency_p50_ms": 32.887100000152714,
+      "latency_p95_ms": 33.79119999954128,
+      "status_counts": {
+        "200": 10
+      },
+      "concurrency": 10
+    },
+    {
+      "requests": 25,
+      "successes": 25,
+      "success_rate": 1.0,
+      "error_rate": 0.0,
+      "throughput_requests_per_second": 297.90240954779495,
+      "latency_p50_ms": 80.56690000012168,
+      "latency_p95_ms": 81.98950000223704,
+      "status_counts": {
+        "200": 25
+      },
+      "concurrency": 25
+    },
+    {
+      "requests": 50,
+      "successes": 50,
+      "success_rate": 1.0,
+      "error_rate": 0.0,
+      "throughput_requests_per_second": 294.0987901342932,
+      "latency_p50_ms": 163.04594999928668,
+      "latency_p95_ms": 166.19740000169259,
+      "status_counts": {
+        "200": 50
+      },
+      "concurrency": 50
+    },
+    {
+      "requests": 100,
+      "successes": 100,
+      "success_rate": 1.0,
+      "error_rate": 0.0,
+      "throughput_requests_per_second": 286.129254884594,
+      "latency_p50_ms": 335.75514999938605,
+      "latency_p95_ms": 342.08529999887105,
+      "status_counts": {
+        "200": 100
+      },
+      "concurrency": 100
+    },
+    {
+      "requests": 200,
+      "successes": 200,
+      "success_rate": 1.0,
+      "error_rate": 0.0,
+      "throughput_requests_per_second": 288.44399607314136,
+      "latency_p50_ms": 665.3955499987205,
+      "latency_p95_ms": 677.4062000004051,
+      "status_counts": {
+        "200": 200
+      },
+      "concurrency": 200
+    }
+  ]
+}

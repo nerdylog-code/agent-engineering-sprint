@@ -1,0 +1,49 @@
+{
+  "status": "pass",
+  "steps": [
+    {
+      "name": "rag_tenant_a",
+      "status_code": 200
+    },
+    {
+      "name": "agent_run",
+      "status_code": 200
+    },
+    {
+      "name": "cross_tenant",
+      "status_code": 403
+    },
+    {
+      "name": "user_admin_route",
+      "status_code": 403
+    },
+    {
+      "name": "admin_route",
+      "status_code": 200
+    },
+    {
+      "name": "mcp_scoped_tool",
+      "status_code": 200
+    },
+    {
+      "name": "mcp_missing_scope",
+      "status_code": 403
+    }
+  ],
+  "otel_spans_seen": [
+    "agent.run",
+    "http.request",
+    "retrieval.search",
+    "router.route",
+    "tool.call"
+  ],
+  "expected": {
+    "rag_tenant_a": 200,
+    "agent_run": 200,
+    "cross_tenant": 403,
+    "user_admin_route": 403,
+    "admin_route": 200,
+    "mcp_scoped_tool": 200,
+    "mcp_missing_scope": 403
+  }
+}

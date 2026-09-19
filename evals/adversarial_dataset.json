@@ -1,0 +1,601 @@
+{
+  "description": "Adversarial semantic retrieval benchmark; original lexical baseline remains separate.",
+  "documents": [
+    {
+      "document_id": "hr-annual-leave",
+      "title": "Annual leave entitlement",
+      "text": "After the accrual period is completed, employees receive thirty consecutive calendar days of annual leave for rest and recovery.",
+      "metadata": {
+        "category": "paraphrase",
+        "benchmark": "adversarial"
+      }
+    },
+    {
+      "document_id": "hr-business-days",
+      "title": "Business-day leave policy",
+      "text": "After the accrual period, employees receive twenty business days of leave; weekends and public holidays are excluded.",
+      "metadata": {
+        "category": "distractor",
+        "benchmark": "adversarial"
+      }
+    },
+    {
+      "document_id": "security-mtls",
+      "title": "Mutual TLS authentication",
+      "text": "Mutual TLS, abbreviated mTLS, authenticates both endpoints by requiring certificates from the client and the server during the handshake.",
+      "metadata": {
+        "category": "abbreviation",
+        "benchmark": "adversarial"
+      }
+    },
+    {
+      "document_id": "security-server-tls",
+      "title": "Server TLS authentication",
+      "text": "Server-side TLS encrypts traffic and authenticates the server, while the client connects without presenting a certificate.",
+      "metadata": {
+        "category": "distractor",
+        "benchmark": "adversarial"
+      }
+    },
+    {
+      "document_id": "observability-p95",
+      "title": "Tail latency percentile",
+      "text": "P95 latency is the response-time threshold that at least ninety-five percent of requests meet or beat; it exposes slow-tail behavior.",
+      "metadata": {
+        "category": "synonym",
+        "benchmark": "adversarial"
+      }
+    },
+    {
+      "document_id": "observability-average",
+      "title": "Average latency",
+      "text": "Mean latency is the arithmetic average of request durations and can hide a small group of extremely slow requests.",
+      "metadata": {
+        "category": "distractor",
+        "benchmark": "adversarial"
+      }
+    },
+    {
+      "document_id": "sqlite-wal",
+      "title": "SQLite write-ahead logging",
+      "text": "SQLite write-ahead logging, or WAL mode, lets readers continue while a writer appends changes to a log; checkpointing later merges those changes.",
+      "metadata": {
+        "category": "abbreviation",
+        "benchmark": "adversarial"
+      }
+    },
+    {
+      "document_id": "sqlite-journal",
+      "title": "SQLite rollback journal",
+      "text": "SQLite rollback-journal mode records original pages before replacing the database and commonly serializes readers with a writer.",
+      "metadata": {
+        "category": "distractor",
+        "benchmark": "adversarial"
+      }
+    },
+    {
+      "document_id": "mcp-scope",
+      "title": "MCP per-tool authorization",
+      "text": "An MCP scope such as tools:calculator grants permission to invoke one named tool; broad roles do not replace per-tool authorization.",
+      "metadata": {
+        "category": "scope",
+        "benchmark": "adversarial"
+      }
+    },
+    {
+      "document_id": "mcp-role",
+      "title": "MCP role authorization",
+      "text": "A role groups several permissions for a principal, but a role alone does not prove that a specific MCP tool scope was granted.",
+      "metadata": {
+        "category": "distractor",
+        "benchmark": "adversarial"
+      }
+    },
+    {
+      "document_id": "rag-abstention",
+      "title": "Grounded retrieval abstention",
+      "text": "A grounded RAG assistant should abstain when retrieved context does not contain evidence for the requested claim instead of inventing an answer.",
+      "metadata": {
+        "category": "abstention",
+        "benchmark": "adversarial"
+      }
+    },
+    {
+      "document_id": "rag-hallucination",
+      "title": "Ungrounded answer risk",
+      "text": "A hallucinated answer presents unsupported claims as facts even when the retrieval context is empty or irrelevant.",
+      "metadata": {
+        "category": "distractor",
+        "benchmark": "adversarial"
+      }
+    },
+    {
+      "document_id": "retry-idempotent",
+      "title": "Safe retry policy",
+      "text": "Automatic retries are safest for idempotent operations; retrying a non-idempotent write can duplicate its side effect.",
+      "metadata": {
+        "category": "reliability",
+        "benchmark": "adversarial"
+      }
+    },
+    {
+      "document_id": "retry-backoff",
+      "title": "Retry backoff",
+      "text": "Exponential backoff spaces repeated attempts so a failing dependency is not overwhelmed by synchronized clients.",
+      "metadata": {
+        "category": "distractor",
+        "benchmark": "adversarial"
+      }
+    },
+    {
+      "document_id": "ci-gates",
+      "title": "Continuous integration gates",
+      "text": "A CI pipeline should run tests, type checks, security audits and packaging gates before a change is promoted.",
+      "metadata": {
+        "category": "synonym",
+        "benchmark": "adversarial"
+      }
+    },
+    {
+      "document_id": "ci-deploy",
+      "title": "Continuous deployment",
+      "text": "A deployment workflow publishes an already validated artifact to a runtime environment and can trigger a rollback.",
+      "metadata": {
+        "category": "distractor",
+        "benchmark": "adversarial"
+      }
+    },
+    {
+      "document_id": "otel-trace",
+      "title": "Distributed trace identity",
+      "text": "A distributed trace links request, router, retrieval and tool spans through one shared trace identifier.",
+      "metadata": {
+        "category": "paraphrase",
+        "benchmark": "adversarial"
+      }
+    },
+    {
+      "document_id": "otel-metric",
+      "title": "Metrics versus traces",
+      "text": "A metric aggregates measurements over time, while a trace preserves the causal sequence of spans for one request.",
+      "metadata": {
+        "category": "distractor",
+        "benchmark": "adversarial"
+      }
+    },
+    {
+      "document_id": "mcp-timeout",
+      "title": "Tool timeout boundary",
+      "text": "A tool timeout bounds how long the host waits for a tool; cancelling the caller does not forcibly kill an already running Python thread.",
+      "metadata": {
+        "category": "timeout",
+        "benchmark": "adversarial"
+      }
+    },
+    {
+      "document_id": "mcp-retry",
+      "title": "Tool retry behavior",
+      "text": "A retry policy decides whether a failed tool call may be attempted again and should consider idempotency before repeating it.",
+      "metadata": {
+        "category": "distractor",
+        "benchmark": "adversarial"
+      }
+    },
+    {
+      "document_id": "rbac-tenant",
+      "title": "RBAC and tenant isolation",
+      "text": "Role-based access control grants permissions through roles, while tenant isolation prevents a principal from reading another tenant's resources.",
+      "metadata": {
+        "category": "security",
+        "benchmark": "adversarial"
+      }
+    },
+    {
+      "document_id": "acl-document",
+      "title": "Document ACL",
+      "text": "A document ACL lists the principals allowed to read one document and is narrower than a role shared across a tenant.",
+      "metadata": {
+        "category": "distractor",
+        "benchmark": "adversarial"
+      }
+    },
+    {
+      "document_id": "rpo-recovery",
+      "title": "Recovery point objective",
+      "text": "RPO is the maximum acceptable amount of data loss expressed as elapsed time between the latest recoverable copy and an incident.",
+      "metadata": {
+        "category": "synonym",
+        "benchmark": "adversarial"
+      }
+    },
+    {
+      "document_id": "rto-recovery",
+      "title": "Recovery time objective",
+      "text": "RTO is the target time to restore a service after disruption, not the amount of data that may be lost.",
+      "metadata": {
+        "category": "distractor",
+        "benchmark": "adversarial"
+      }
+    }
+  ],
+  "questions": [
+    {
+      "id": "adv-000",
+      "question": "How many calendar days of rest are granted after the qualifying accrual period ends?",
+      "expected_document": "hr-annual-leave",
+      "category": "paraphrase",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-001",
+      "question": "What is the vacation length once a worker completes the earning period?",
+      "expected_document": "hr-annual-leave",
+      "category": "synonym",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-002",
+      "question": "Após concluir o período aquisitivo, por quanto tempo posso me afastar para descanso?",
+      "expected_document": "hr-annual-leave",
+      "category": "multilingual",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-003",
+      "question": "If the employee finishes the accrual period, how long is the annual vacation?",
+      "expected_document": "hr-annual-leave",
+      "category": "paraphrase",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-004",
+      "question": "What does mTLS prove during a secure handshake?",
+      "expected_document": "security-mtls",
+      "category": "abbreviation",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-005",
+      "question": "Why would both sides present certificates when opening the encrypted channel?",
+      "expected_document": "security-mtls",
+      "category": "paraphrase",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-006",
+      "question": "What is mutual transport layer security used to authenticate?",
+      "expected_document": "security-mtls",
+      "category": "synonym",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-007",
+      "question": "How does client-and-server certificate authentication differ from ordinary TLS?",
+      "expected_document": "security-mtls",
+      "category": "distractor",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-008",
+      "question": "Which percentile exposes the slow tail instead of the average response time?",
+      "expected_document": "observability-p95",
+      "category": "synonym",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-009",
+      "question": "What does P95 tell an operator about request latency?",
+      "expected_document": "observability-p95",
+      "category": "abbreviation",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-010",
+      "question": "The boundary met by ninety-five percent of requests is called what?",
+      "expected_document": "observability-p95",
+      "category": "paraphrase",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-011",
+      "question": "latncy p95 reveals which part of system performance?",
+      "expected_document": "observability-p95",
+      "category": "typo",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-012",
+      "question": "What does WAL allow readers to do while a SQLite writer is active?",
+      "expected_document": "sqlite-wal",
+      "category": "abbreviation",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-013",
+      "question": "Why can a reader continue while new database changes are appended to a log?",
+      "expected_document": "sqlite-wal",
+      "category": "paraphrase",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-014",
+      "question": "What is SQLite write ahead logging useful for under concurrent access?",
+      "expected_document": "sqlite-wal",
+      "category": "synonym",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-015",
+      "question": "In SQLite, which mode separates appends from a later checkpoint merge?",
+      "expected_document": "sqlite-wal",
+      "category": "paraphrase",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-016",
+      "question": "What permission allows a caller to invoke only the calculator MCP tool?",
+      "expected_document": "mcp-scope",
+      "category": "scope",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-017",
+      "question": "Why is a role by itself insufficient to authorize one named tool?",
+      "expected_document": "mcp-scope",
+      "category": "paraphrase",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-018",
+      "question": "Which scope naming pattern represents permission for a single MCP function?",
+      "expected_document": "mcp-scope",
+      "category": "synonym",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-019",
+      "question": "How do per-tool scopes limit an MCP principal's authority?",
+      "expected_document": "mcp-scope",
+      "category": "scope",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-020",
+      "question": "When should a grounded RAG assistant refuse to answer?",
+      "expected_document": "rag-abstention",
+      "category": "abstention",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-021",
+      "question": "What should retrieval do when context contains no support for the claim?",
+      "expected_document": "rag-abstention",
+      "category": "paraphrase",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-022",
+      "question": "Why is inventing a response from an empty context unsafe?",
+      "expected_document": "rag-abstention",
+      "category": "synonym",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-023",
+      "question": "How can an assistant avoid unsupported claims in a cited answer?",
+      "expected_document": "rag-abstention",
+      "category": "paraphrase",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-024",
+      "question": "Which operations are safest to retry automatically?",
+      "expected_document": "retry-idempotent",
+      "category": "reliability",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-025",
+      "question": "Why can repeating a non-idempotent write be dangerous?",
+      "expected_document": "retry-idempotent",
+      "category": "paraphrase",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-026",
+      "question": "What property should a request have before a client repeats it after failure?",
+      "expected_document": "retry-idempotent",
+      "category": "synonym",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-027",
+      "question": "How can retries duplicate side effects?",
+      "expected_document": "retry-idempotent",
+      "category": "paraphrase",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-028",
+      "question": "Which checks belong in a CI promotion gate?",
+      "expected_document": "ci-gates",
+      "category": "synonym",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-029",
+      "question": "What must run before a software change is promoted?",
+      "expected_document": "ci-gates",
+      "category": "paraphrase",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-030",
+      "question": "Why are type and security checks part of continuous integration?",
+      "expected_document": "ci-gates",
+      "category": "paraphrase",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-031",
+      "question": "What is the difference between a CI gate and publishing a deployment?",
+      "expected_document": "ci-gates",
+      "category": "distractor",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-032",
+      "question": "What connects all spans belonging to one distributed request?",
+      "expected_document": "otel-trace",
+      "category": "paraphrase",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-033",
+      "question": "Why does a trace identifier matter across router and tool boundaries?",
+      "expected_document": "otel-trace",
+      "category": "synonym",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-034",
+      "question": "How is a causal request timeline represented in OpenTelemetry?",
+      "expected_document": "otel-trace",
+      "category": "paraphrase",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-035",
+      "question": "Which observability object preserves the sequence of spans for one request?",
+      "expected_document": "otel-trace",
+      "category": "synonym",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-036",
+      "question": "What does a tool timeout limit at the host boundary?",
+      "expected_document": "mcp-timeout",
+      "category": "timeout",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-037",
+      "question": "Does cancelling a Python caller necessarily kill its running tool thread?",
+      "expected_document": "mcp-timeout",
+      "category": "paraphrase",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-038",
+      "question": "Why is a deadline useful around an MCP tool invocation?",
+      "expected_document": "mcp-timeout",
+      "category": "synonym",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-039",
+      "question": "What failure remains possible after a timed-out thread is cancelled?",
+      "expected_document": "mcp-timeout",
+      "category": "timeout",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-040",
+      "question": "How do roles and tenant isolation protect different boundaries?",
+      "expected_document": "rbac-tenant",
+      "category": "security",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-041",
+      "question": "What prevents a valid principal from reading another tenant's data?",
+      "expected_document": "rbac-tenant",
+      "category": "paraphrase",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-042",
+      "question": "Which control grants capabilities and which control separates customers?",
+      "expected_document": "rbac-tenant",
+      "category": "synonym",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-043",
+      "question": "Why is tenant filtering needed even when a user has a valid role?",
+      "expected_document": "rbac-tenant",
+      "category": "paraphrase",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-044",
+      "question": "What does RPO measure after a disaster?",
+      "expected_document": "rpo-recovery",
+      "category": "synonym",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-045",
+      "question": "Is RPO about restore time or acceptable data loss?",
+      "expected_document": "rpo-recovery",
+      "category": "paraphrase",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-046",
+      "question": "How far back may the latest recoverable copy be under the RPO target?",
+      "expected_document": "rpo-recovery",
+      "category": "paraphrase",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-047",
+      "question": "Which recovery metric is expressed as a time window of lost data?",
+      "expected_document": "rpo-recovery",
+      "category": "synonym",
+      "answerability": "answerable"
+    },
+    {
+      "id": "adv-048",
+      "question": "Which policy governs the color of a mountain sunset on an unrelated planet?",
+      "expected_document": null,
+      "category": "no-answer",
+      "answerability": "unanswerable"
+    },
+    {
+      "id": "adv-049",
+      "question": "What is the recipe for a dish not mentioned anywhere in the corpus?",
+      "expected_document": null,
+      "category": "no-answer",
+      "answerability": "unanswerable"
+    },
+    {
+      "id": "adv-050",
+      "question": "Which employee badge number belongs to a person absent from these records?",
+      "expected_document": null,
+      "category": "no-answer",
+      "answerability": "unanswerable"
+    },
+    {
+      "id": "adv-051",
+      "question": "How many moons orbit the fictional object described outside this dataset?",
+      "expected_document": null,
+      "category": "no-answer",
+      "answerability": "unanswerable"
+    },
+    {
+      "id": "adv-052",
+      "question": "What is the chemical formula of a substance never discussed in the notes?",
+      "expected_document": null,
+      "category": "no-answer",
+      "answerability": "unanswerable"
+    },
+    {
+      "id": "adv-053",
+      "question": "Which unrelated sports result was omitted from every document?",
+      "expected_document": null,
+      "category": "no-answer",
+      "answerability": "unanswerable"
+    }
+  ]
+}

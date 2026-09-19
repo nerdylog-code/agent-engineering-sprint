@@ -8,10 +8,10 @@ security gates, CI and real MiniCPM5 execution.
 
 | Area | Evidence | Status |
 |---|---|---|
-| Unit/integration behavior | `pytest`: 48 passed, 3 subtests | PASS |
-| Branch coverage | `pytest-cov`: 81.41% | PASS (threshold 80%) |
+| Unit/integration behavior | `pytest`: 50 passed, 3 subtests | PASS |
+| Branch coverage | `pytest-cov`: 81.66% | PASS (threshold 80%) |
 | Ruff | `ruff check` | PASS |
-| Mypy | `mypy src` | PASS, 27 source files |
+| Mypy | `mypy src` | PASS, 28 source files |
 | Bandit | `bandit -q -r src -ll` | PASS |
 | Dependency audit | `pip-audit . --format json` | PASS, project runtime has no known vulnerable dependency |
 | Security baseline | `scripts/security_scan.py` | PASS, 0 findings |
@@ -25,8 +25,11 @@ security gates, CI and real MiniCPM5 execution.
 | Local MCP HTTPS | self-signed TLS + JWT per-tool scope | PASS: `evidence/security/mcp-http-tls.json` |
 | Real local model | MiniCPM5-2B-Q8 at `127.0.0.1:8082` | PASS: real tool loop |
 | Real FastEmbed | BGE-small ONNX vs hashing control | PASS: `evidence/benchmarks/embedding-comparison.json` |
+| Adversarial FastEmbed | 54 semantic/distractor questions; abstention | PASS: `evidence/benchmarks/adversarial-embedding-comparison.json` |
 | OpenTelemetry SDK | in-memory spans for HTTP/agent/provider/tool/RAG | PASS: contract tests |
 | Local load/chaos | 100 concurrent requests + failure injection | PASS: `evidence/benchmarks/chaos-load.json` |
+| Load curve | concurrency 1/10/25/50/100/200 | PASS: `evidence/benchmarks/load-curve.json` |
+| Five-minute demo | JWT/RAG/RBAC/MCP/OTel flow | PASS: `evidence/demo/five-minute-demo.json` |
 | Local benchmark | 100 agent/RAG runs with p50/p95 | PASS: evidence JSON |
 | Docker execution | Docker daemon on current host | NOT EXECUTED: command unavailable |
 | Hosted GitHub Actions | remote repository/run URL | NOT EXECUTED: no remote configured |
@@ -88,8 +91,12 @@ provider or external MCP server has the same capability.
 - Request ID propagation and Prometheus-compatible basic counters.
 - OpenTelemetry SDK spans with in-memory evidence and optional console export.
 - FastEmbed BGE-small ONNX backend with hashing control and Recall/MRR benchmark.
+- Adversarial retrieval corpus with semantic paraphrases, distractors, typos,
+  multilingual case and explicit no-answer abstention cases.
 - Async load/chaos evidence for provider failures, malformed responses, hanging
   tools, SQLite locks and recovery.
+- Local concurrency curve with P95 degradation recorded instead of a single
+  unsupported RPS claim.
 - Non-root Docker image, read-only compose service and healthcheck.
 - Mypy, Bandit, coverage and project-scoped pip-audit gates.
 
@@ -101,7 +108,7 @@ Use:
 > provider adapter, MiniCPM5 tool-calling validation, bounded retries and circuit
 > breaking, structured tool schemas, safety/PII gates, JWT-derived tenant/scopes,
 > FastAPI health/auth/metrics, SQLite-persisted RAG corpora, hybrid retrieval,
-> FastEmbed benchmark, OpenTelemetry spans, and 80%+ branch
+> FastEmbed benchmark, adversarial retrieval, OpenTelemetry spans, and 81.66% branch
 > coverage and CI quality/security gates.
 
 Do not claim yet:
@@ -115,7 +122,8 @@ Do not claim yet:
 
 ## Remaining production promotion blockers
 
-1. Connect a real GitHub remote, enable branch protection and capture a hosted
+1. Obtain explicit repository publication scope, connect a real GitHub remote,
+   enable branch protection and capture a hosted
    CI run URL.
 2. Run Docker build/smoke/scan on a Docker-enabled runner.
 3. Promote the local MCP HTTPS boundary to a full MCP client/server deployment

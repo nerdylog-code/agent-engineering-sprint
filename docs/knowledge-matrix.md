@@ -10,10 +10,12 @@
 | Evals | sim, deterministic + metrics | `evals/` | adicionar LLM-as-a-Judge opcional |
 | RAG ingest | sim, 100 docs + chunks | `evidence/eval-results/rag_metrics.json` | testar PDFs reais |
 | Hybrid retrieval / embeddings | GREEN: vector + keyword + RRF + FastEmbed medido | `docs/embedding-benchmark.md` | dataset semântico difícil |
+| Adversarial retrieval | GREEN: 54 cases, FastEmbed gain + abstention measured | `docs/adversarial-embedding-benchmark.md` | expand multilingual model/dataset |
 | Reranking | sim, score lexical/semântico | RAG metrics | comparar cross-encoder real |
 | MCP stdio + HTTP/TLS | GREEN local: scopes, timeout e audit; remoto ainda YELLOW | `evidence/security/mcp-http-tls.json` | isolar worker e conectar identidade externa |
 | JWT/RBAC/multi-tenancy | GREEN local: claims, exp/aud/iss, role e cross-tenant tests | `evidence/security-tests.md` | RS256/issuer/KMS externo |
 | Load/chaos | GREEN local: 100 concorrentes + falhas/recovery | `docs/chaos-load.md` | carga distribuída |
+| Load curve | GREEN local: 1→200 concorrência e P95 degradation | `docs/load-curve.md` | repeat on Docker/network |
 | CI/CD | workflows e CI local | `.github/workflows/` | conectar remote e observar Actions |
 | Docker | Dockerfile + workflow | `Dockerfile` | executar se daemon disponível |
 | Microsoft credential | não comprovada | `docs/credential-checklist.md` | login + assessment humano |
