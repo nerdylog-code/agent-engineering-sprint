@@ -3,13 +3,13 @@
   "runs": 100,
   "agent": {
     "success_rate": 1.0,
-    "latency_p50_ms": 0.12295,
-    "latency_p95_ms": 0.1629
+    "latency_p50_ms": 0.11905,
+    "latency_p95_ms": 0.1742
   },
   "rag": {
     "documents": 100,
-    "latency_p50_ms": 2.40045,
-    "latency_p95_ms": 2.6136
+    "latency_p50_ms": 2.378,
+    "latency_p95_ms": 2.416
   },
   "provenance": "scripts/benchmark.py"
 }
