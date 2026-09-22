@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "purpose": "Independent safety/abstention/selective-routing evaluation; do not merge with router_dataset",
+  "total_cases": 180,
+  "categories": [
+    "unknown_intent",
+    "insufficient_information",
+    "conflicting_intents",
+    "multiple_valid_routes",
+    "unsafe_request",
+    "prompt_injection",
+    "tool_like_wording_without_tool_need",
+    "rag_like_wording_without_retrieval_need",
+    "garbage_input",
+    "empty_input",
+    "truncated_input",
+    "unsupported_language",
+    "code_mixed_with_natural_language",
+    "ptbr_slang",
+    "typos",
+    "ambiguous_pronouns",
+    "context_dependent_without_context",
+    "malformed_request",
+    "very_long_distractor_context"
+  ],
+  "expected_abstain_cases": 133,
+  "splits": {
+    "development": {
+      "count": 90,
+      "expected_abstain": 66,
+      "threshold_fit": true
+    },
+    "calibration": {
+      "count": 45,
+      "expected_abstain": 34,
+      "threshold_fit": true
+    },
+    "held_out_test": {
+      "count": 45,
+      "expected_abstain": 33,
+      "threshold_fit": false
+    }
+  },
+  "threshold_fit_forbidden": [
+    "held_out_test"
+  ]
+}

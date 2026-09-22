@@ -5,9 +5,9 @@ from time import perf_counter
 from typing import Any
 
 from ..models import AgentRequest
-from .contracts import ROUTES, RouteDecisionResult, RouterRequest
+from .contracts import ABSTAIN_OPTION, ROUTES, RouteDecisionResult, RouterRequest
 
-QUESTION = {
+QUESTION: dict[str, Any] = {
     "route": {
         "type": "choice",
         "instructions": "Which existing agent should handle this request?",
@@ -21,6 +21,20 @@ QUESTION = {
         },
     }
 }
+
+
+def _question(abstention_mode: str) -> dict[str, Any]:
+    if abstention_mode != "explicit":
+        return QUESTION
+    return {
+        "route": {
+            **QUESTION["route"],
+            "criteria": {
+                **QUESTION["route"]["criteria"],
+                ABSTAIN_OPTION: "the request is unsafe, ambiguous, lacks context, or cannot be determined reliably",
+            },
+        }
+    }
 
 
 def _request(request: RouterRequest | AgentRequest) -> RouterRequest:
@@ -41,11 +55,15 @@ class LayaRouter:
         device: str | None = None,
         preload: bool = False,
         model: str = "auto",
+        abstention_mode: str = "none",
     ) -> None:
+        if abstention_mode not in {"none", "explicit"}:
+            raise ValueError("abstention_mode must be 'none' or 'explicit'")
         self.predictor = predictor
         self.device = device
         self.preload = preload
         self.model = model
+        self.abstention_mode = abstention_mode
         self._router: Any | None = None
 
     def _load(self) -> Any:
@@ -83,8 +101,9 @@ class LayaRouter:
         return "multilingual"
 
     def _predict(self, request: RouterRequest, state: dict[str, str]) -> Mapping[str, Any]:
+        question = _question(self.abstention_mode)
         if self.predictor is not None:
-            return self.predictor(state, QUESTION)
+            return self.predictor(state, question)
         router = self._load()
         kwargs: dict[str, Any] = {}
         selected_model = self._language_model(request.language)
@@ -92,7 +111,7 @@ class LayaRouter:
             selected_model = self.model
         if selected_model is not None:
             kwargs["model"] = selected_model
-        return router.predict(state, QUESTION, **kwargs)
+        return router.predict(state, question, **kwargs)
 
     def _result_from_answer(
         self,
@@ -105,28 +124,43 @@ class LayaRouter:
     ) -> RouteDecisionResult:
         if answer.get("type") != "choice":
             raise ValueError("Laya route answer is not a choice")
-        route = answer.get("choice")
+        route = str(answer.get("choice"))
         probabilities = {
             str(key): float(value) for key, value in (answer.get("probabilities") or {}).items()
         }
-        if route not in ROUTES:
+        selected_key = route
+        is_abstain = route.upper() in {ABSTAIN_OPTION, "UNABLE_TO_DETERMINE"}
+        if is_abstain:
+            selected_key = next(
+                (key for key in probabilities if key.upper() == ABSTAIN_OPTION),
+                route,
+            )
+            if selected_key not in probabilities:
+                raise ValueError("Laya abstention choice is missing its selected probability")
+        elif route not in ROUTES:
             raise ValueError(f"Laya returned unknown route: {route!r}")
-        if route not in probabilities:
+        elif route not in probabilities:
             raise ValueError("Laya choice is missing its selected probability")
         count = option_count or len(probabilities)
         calibration_status = "uncalibrated_high_cardinality" if count >= 11 else "unverified_domain"
+        common = {
+            "laya_model": model,
+            "option_count": count,
+            "abstention_mode": self.abstention_mode,
+            "selected_choice": selected_key,
+        }
         return RouteDecisionResult(
             strategy=self.strategy,
-            route=str(route),
-            disposition="route",
-            probability=probabilities[str(route)],
+            route=None if is_abstain else route,
+            disposition="abstain" if is_abstain else "route",
+            probability=probabilities[selected_key],
             entropy_confidence=float(answer["confidence"]),
             self_reported_confidence=None,
             probabilities=probabilities,
             probability_source="laya_choice_probability",
             calibration_status=calibration_status,
             latency_ms=latency_ms,
-            metadata={**dict(metadata or {}), "laya_model": model, "option_count": count},
+            metadata={**dict(metadata or {}), **common},
         )
 
     def route(self, request: RouterRequest | AgentRequest) -> RouteDecisionResult:

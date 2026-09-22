@@ -9,6 +9,7 @@ from uuid import uuid4
 from ..models import AgentRequest
 
 ROUTES = ("general_agent", "tool_agent", "rag_agent")
+ABSTAIN_OPTION = "ABSTAIN"
 Disposition = Literal["route", "abstain", "error"]
 
 
