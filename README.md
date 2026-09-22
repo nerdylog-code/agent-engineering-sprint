@@ -33,8 +33,8 @@ documents -> chunks -> vector + keyword retrieval -> RRF -> reranker -> cited an
 | Area | Status | Evidence boundary |
 |---|---|---|
 | Local strict CI gates | **Verified locally** | Fresh audit run of `python scripts/ci.py --strict` passed all gates on the checked commit. |
-| Hosted Python CI | **Verified in GitHub Actions** | [Baseline run](https://github.com/nerdylog-code/agent-engineering-sprint/actions/runs/35593625355) passed on `09d9404`. The dynamic badge above reflects the branch, not a manually minted result. |
-| Docker build/smoke test | **Workflow repaired; hosted verification pending for this change** | The baseline Docker run was cancelled because the image command stayed in the foreground. The workflow now uses a bounded background container, `/healthz` polling, failure logs, and cleanup. |
+| Hosted Python CI | **Verified in GitHub Actions** | [Current run](https://github.com/nerdylog-code/agent-engineering-sprint/actions/runs/35681408760) passed on `3cce18e`. The dynamic badge above reflects the branch, not a manually minted result. |
+| Docker build/smoke test | **Verified in GitHub Actions** | [Current run](https://github.com/nerdylog-code/agent-engineering-sprint/actions/runs/35681408654) passed on `3cce18e`: image build, detached startup, bounded `/healthz` readiness polling, and cleanup all completed. |
 | Default runtime | **Verified locally** | Deterministic synthetic corpus and local test clients; no remote provider required. |
 | Live cloud, tenant, managed vector DB, and centralized telemetry | **Not verified** | These require external infrastructure and credentials and are intentionally outside the default tests. |
 

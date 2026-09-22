@@ -91,11 +91,11 @@ Os artefatos completos ficam em:
 
 ### Prepared but not externally verified
 
-△ Docker image and compose deployment
+✓ Docker build e smoke test hospedados — [execução 35681408654](https://github.com/nerdylog-code/agent-engineering-sprint/actions/runs/35681408654)
 
-✓ GitHub Actions CI hospedado — [execução 35593625355](https://github.com/nerdylog-code/agent-engineering-sprint/actions/runs/35593625355)
+✓ GitHub Actions CI hospedado — [execução 35681408760](https://github.com/nerdylog-code/agent-engineering-sprint/actions/runs/35681408760)
 
-△ Docker smoke test hospedado após a correção do workflow
+△ Docker Compose fora do smoke test hospedado; validar localmente quando o daemon estiver disponível
 
 △ Qdrant/vector database deployment
 
@@ -282,6 +282,6 @@ evidence/               resultados medidos e traces
 - O timeout de tool limita o chamador, mas não mata thread Python já iniciada;
   tool não confiável ainda exige processo/container isolado em produção.
 - O CI principal já possui execução hospedada com sucesso: [run 35593625355](https://github.com/nerdylog-code/agent-engineering-sprint/actions/runs/35593625355). O badge acima é ligado ao workflow real.
-- O workflow Docker foi corrigido para iniciar o container em background, consultar `/healthz` com limite, imprimir logs em falhas e fazer cleanup. A execução hospedada pós-correção ainda é necessária para marcar Docker como verificado.
+- O workflow Docker inicia o container em background, consulta `/healthz` com limite, imprime logs em falhas e faz cleanup. A execução hospedada pós-correção passou: [run 35681408654](https://github.com/nerdylog-code/agent-engineering-sprint/actions/runs/35681408654).
 - MCP protocol completo com client/server remoto e isolamento continua pendente;
   o subconjunto stdio e o boundary HTTPS/JWT local já foram validados.
