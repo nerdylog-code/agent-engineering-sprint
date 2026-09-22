@@ -4,12 +4,54 @@ on:
   push:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
       - name: Build image
         run: docker build --tag agent-engineering-sprint:${{ github.sha }} .
       - name: Smoke test image
-        run: docker run --rm agent-engineering-sprint:${{ github.sha }}
+        shell: bash
+        env:
+          IMAGE: agent-engineering-sprint:${{ github.sha }}
+        run: |
+          set -Eeuo pipefail
+
+          container="agent-engineering-sprint-smoke-${GITHUB_RUN_ID}"
+
+          cleanup() {
+            status=$?
+            if [ "$status" -ne 0 ]; then
+              echo "Container logs (smoke test failed):"
+              docker logs "$container" 2>&1 || true
+            fi
+            docker rm -f "$container" >/dev/null 2>&1 || true
+            exit "$status"
+          }
+          trap cleanup EXIT
+
+          docker run --detach \
+            --name "$container" \
+            --publish 8000:8000 \
+            "$IMAGE"
+
+          for attempt in $(seq 1 30); do
+            if response="$(curl --fail --silent --show-error --max-time 3 http://127.0.0.1:8000/healthz)"; then
+              echo "Health check passed on attempt $attempt: $response"
+              exit 0
+            fi
+
+            if ! docker ps --filter "name=^/${container}$" --filter "status=running" --format '{{.Names}}' | grep -qx "$container"; then
+              echo "Container exited before /healthz became ready."
+              exit 1
+            fi
+            sleep 2
+          done
+
+          echo "Timed out waiting for /healthz after 30 attempts."
+          exit 1
