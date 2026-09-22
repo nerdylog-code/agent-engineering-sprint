@@ -1,0 +1,212 @@
+{
+  "status": "IMPLEMENTED_AND_VERIFIED",
+  "model": "convaiinnovations/laya",
+  "device": "cuda",
+  "load_latency_ms": 32198.777,
+  "option_counts": [
+    2,
+    3,
+    4,
+    5,
+    8,
+    10,
+    11,
+    12,
+    16
+  ],
+  "results": [
+    {
+      "option_count": 2,
+      "latency_ms": {
+        "samples": [
+          471.684,
+          25.237
+        ],
+        "p50": 248.461
+      },
+      "warnings": [
+        "laya: this checkpoint ships temperatures outside [0.5, 5] which would distort confidence; clamping choice:11+=0.1006. Treat confidence from the affected buckets as uncalibrated."
+      ],
+      "warning_present": true,
+      "errors": [],
+      "choice": "option_00",
+      "probability": 0.7579,
+      "entropy_confidence": 0.2015,
+      "finite": true,
+      "repeat_choice_same": true,
+      "calibration_status": "unverified_domain"
+    },
+    {
+      "option_count": 3,
+      "latency_ms": {
+        "samples": [
+          25.331,
+          25.202
+        ],
+        "p50": 25.266
+      },
+      "warnings": [
+        "laya: this checkpoint ships temperatures outside [0.5, 5] which would distort confidence; clamping choice:11+=0.1006. Treat confidence from the affected buckets as uncalibrated."
+      ],
+      "warning_present": true,
+      "errors": [],
+      "choice": "option_00",
+      "probability": 0.7702,
+      "entropy_confidence": 0.4064,
+      "finite": true,
+      "repeat_choice_same": true,
+      "calibration_status": "unverified_domain"
+    },
+    {
+      "option_count": 4,
+      "latency_ms": {
+        "samples": [
+          25.29,
+          25.463
+        ],
+        "p50": 25.376
+      },
+      "warnings": [
+        "laya: this checkpoint ships temperatures outside [0.5, 5] which would distort confidence; clamping choice:11+=0.1006. Treat confidence from the affected buckets as uncalibrated."
+      ],
+      "warning_present": true,
+      "errors": [],
+      "choice": "option_00",
+      "probability": 0.6944,
+      "entropy_confidence": 0.4271,
+      "finite": true,
+      "repeat_choice_same": true,
+      "calibration_status": "unverified_domain"
+    },
+    {
+      "option_count": 5,
+      "latency_ms": {
+        "samples": [
+          41.095,
+          25.756
+        ],
+        "p50": 33.426
+      },
+      "warnings": [
+        "laya: this checkpoint ships temperatures outside [0.5, 5] which would distort confidence; clamping choice:11+=0.1006. Treat confidence from the affected buckets as uncalibrated."
+      ],
+      "warning_present": true,
+      "errors": [],
+      "choice": "option_00",
+      "probability": 0.5767,
+      "entropy_confidence": 0.3831,
+      "finite": true,
+      "repeat_choice_same": true,
+      "calibration_status": "unverified_domain"
+    },
+    {
+      "option_count": 8,
+      "latency_ms": {
+        "samples": [
+          60.613,
+          28.45
+        ],
+        "p50": 44.531
+      },
+      "warnings": [
+        "laya: this checkpoint ships temperatures outside [0.5, 5] which would distort confidence; clamping choice:11+=0.1006. Treat confidence from the affected buckets as uncalibrated."
+      ],
+      "warning_present": true,
+      "errors": [],
+      "choice": "option_00",
+      "probability": 0.8431,
+      "entropy_confidence": 0.7443,
+      "finite": true,
+      "repeat_choice_same": true,
+      "calibration_status": "unverified_domain"
+    },
+    {
+      "option_count": 10,
+      "latency_ms": {
+        "samples": [
+          27.567,
+          29.004
+        ],
+        "p50": 28.286
+      },
+      "warnings": [
+        "laya: this checkpoint ships temperatures outside [0.5, 5] which would distort confidence; clamping choice:11+=0.1006. Treat confidence from the affected buckets as uncalibrated."
+      ],
+      "warning_present": true,
+      "errors": [],
+      "choice": "option_00",
+      "probability": 0.7353,
+      "entropy_confidence": 0.6413,
+      "finite": true,
+      "repeat_choice_same": true,
+      "calibration_status": "unverified_domain"
+    },
+    {
+      "option_count": 11,
+      "latency_ms": {
+        "samples": [
+          26.789,
+          26.093
+        ],
+        "p50": 26.441
+      },
+      "warnings": [
+        "laya: this checkpoint ships temperatures outside [0.5, 5] which would distort confidence; clamping choice:11+=0.1006. Treat confidence from the affected buckets as uncalibrated."
+      ],
+      "warning_present": true,
+      "errors": [],
+      "choice": "option_00",
+      "probability": 0.9973,
+      "entropy_confidence": 0.9917,
+      "finite": true,
+      "repeat_choice_same": true,
+      "calibration_status": "uncalibrated_high_cardinality"
+    },
+    {
+      "option_count": 12,
+      "latency_ms": {
+        "samples": [
+          25.653,
+          24.729
+        ],
+        "p50": 25.191
+      },
+      "warnings": [
+        "laya: this checkpoint ships temperatures outside [0.5, 5] which would distort confidence; clamping choice:11+=0.1006. Treat confidence from the affected buckets as uncalibrated."
+      ],
+      "warning_present": true,
+      "errors": [],
+      "choice": "option_00",
+      "probability": 0.9933,
+      "entropy_confidence": 0.9833,
+      "finite": true,
+      "repeat_choice_same": true,
+      "calibration_status": "uncalibrated_high_cardinality"
+    },
+    {
+      "option_count": 16,
+      "latency_ms": {
+        "samples": [
+          60.346,
+          25.294
+        ],
+        "p50": 42.82
+      },
+      "warnings": [
+        "laya: this checkpoint ships temperatures outside [0.5, 5] which would distort confidence; clamping choice:11+=0.1006. Treat confidence from the affected buckets as uncalibrated."
+      ],
+      "warning_present": true,
+      "errors": [],
+      "choice": "option_00",
+      "probability": 0.9972,
+      "entropy_confidence": 0.9922,
+      "finite": true,
+      "repeat_choice_same": true,
+      "calibration_status": "uncalibrated_high_cardinality"
+    }
+  ],
+  "interpretation": {
+    "warning_scope": "Warnings are captured during checkpoint load; calibration status is explicitly marked for 11+ options.",
+    "probability_field": "probability of the selected choice, not upstream entropy confidence."
+  }
+}
