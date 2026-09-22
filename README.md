@@ -1,284 +1,216 @@
 # Agent Engineering Sprint
 
-![Local CI](https://img.shields.io/badge/Local%20CI-PASS-2ea44f)
-![Security](https://img.shields.io/badge/Security-0%20findings-2ea44f)
-![Runtime](https://img.shields.io/badge/Runtime-offline--first-1f6feb)
+[![CI](https://github.com/nerdylog-code/agent-engineering-sprint/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/nerdylog-code/agent-engineering-sprint/actions/workflows/ci.yml)
+[![Docker](https://github.com/nerdylog-code/agent-engineering-sprint/actions/workflows/docker.yml/badge.svg?branch=main)](https://github.com/nerdylog-code/agent-engineering-sprint/actions/workflows/docker.yml)
+[![License](https://img.shields.io/github/license/nerdylog-code/agent-engineering-sprint)](LICENSE)
 
-Projeto isolado e reproduzível para transformar o sprint de Agents, CI/CD,
-evals, observabilidade, MCP e RAG em **prova técnica executável**. O runtime
-default não depende de API paga, credencial, cloud ou modelo remoto.
+**English** | [Português](README.pt-BR.md)
 
-> **Regra de evidência:** os números abaixo vêm de execução local registrada em
-> `evidence/`. Nenhuma credencial externa é marcada como concluída sem prova da
-> conta do usuário.
+A local-first Python lab for building and evaluating agent systems with explicit
+execution boundaries. It combines deterministic agent/tool workflows, structured
+outputs, hybrid RAG, adversarial retrieval evaluation, MCP, JWT/RBAC tenant
+controls, observability, and resilience checks in one reproducible codebase.
 
-## Estado verificado
+The default path is offline and synthetic: it does not require a paid model,
+cloud account, tenant, or secret.
 
-Última execução local do pacote:
+## What this project demonstrates
 
-| Gate | Resultado observado |
-|---|---:|
-| Compilação `compileall` | PASS |
-| Testes de `tests/` | 43 passed |
-| Evals de `evals/` | 7 passed |
-| Pytest total | 50 passed, 3 subtests |
-| Branch coverage | 81.66% |
-| Mypy | PASS |
-| Bandit | PASS |
-| Dependency audit | PASS, 0 known vulnerabilities in project runtime |
-| Security scan | 45 arquivos, 0 findings |
-| Agent task success | 1.0 (8/8 runs) |
-| Tool selection accuracy | 1.0 |
-| Structured-output validity | 1.0 |
-| RAG corpus | 100 documentos, 100 chunks |
-| RAG golden set | 50 perguntas |
-| Adversarial RAG set | 54 perguntas, 48 answerable + 6 abstention |
-| Hybrid + reranker Recall@1 | 1.0 |
-| Hybrid + reranker MRR | 1.0 |
-| MiniCPM5 real tool loop | PASS, 2 turns / 12.257931s |
-| Local benchmark | 100 runs, agent/RAG p50/p95 recorded |
-| FastEmbed benchmark | PASS, BGE small vs hashing measured |
-| Adversarial embedding benchmark | FastEmbed Recall@1 0.770833 vs hashing 0.583333 |
-| OpenTelemetry | SDK in-memory spans for HTTP/agent/provider/tool/RAG |
-| MCP HTTPS | PASS, self-signed TLS + JWT tool scope allow/deny |
-| Chaos/load | 100/100 requests; timeout/429/500/malformed/lock recovery |
-| Load curve | concurrency 1→200; P95 10.3327→677.4062 ms |
+The project is a compact proof of engineering practices needed around agents,
+not a claim of a production deployment. The main flows are:
 
-Os artefatos completos ficam em:
+```text
+request -> router -> bounded tool/agent execution -> structured response
+                         |             |
+                         v             v
+                   approval gate   JSONL/OTel trace
 
-- `evidence/latest.json`
-- `evidence/metrics/agent_metrics.json`
-- `evidence/eval-results/rag_metrics.json`
-- `evidence/traces/agent-matrix.jsonl`
-- `evidence/traces/minicpm5-tool-call.jsonl`
-- `evidence/provider/minicpm5-tool-call.json`
-- `evidence/provider/mcp-stdio-protocol.json`
-- `evidence/benchmarks/local-baseline.json`
-- `evidence/benchmarks/embedding-comparison.json`
-- `evidence/benchmarks/adversarial-embedding-comparison.json`
-- `evidence/benchmarks/load-curve.json`
-- `evidence/benchmarks/chaos-load.json`
-- `evidence/security/mcp-http-tls.json`
-- `evidence/security-tests.md`
-- `evidence/traces/otel-spans-demo.json`
-- `evidence/demo/five-minute-demo.json`
-- `evals/golden_dataset.json`
-- `evals/adversarial_dataset.json`
-
-## Production Readiness
-
-### Implemented and locally verified
-
-✓ JWT authentication with claims, RBAC and tenant isolation
-
-✓ Persistent RAG and real FastEmbed benchmark against hashing
-
-✓ Adversarial retrieval benchmark with semantic gain and explicit abstention
-
-✓ Agent/tool execution and structured outputs
-
-✓ MCP stdio plus local MCP HTTP/TLS, JWT scopes, timeout and audit decisions
-
-✓ Rate limiting, retries, circuit breaker and failure handling
-
-✓ OpenTelemetry SDK spans for HTTP, router, agent, provider, retrieval and tools
-
-✓ Async load/chaos harness, static security analysis and automated tests
-
-✓ Load curve at concurrency 1, 10, 25, 50, 100 and 200
-
-### Prepared but not externally verified
-
-△ Docker image and compose deployment
-
-△ GitHub Actions hosted execution and branch protection
-
-△ Qdrant/vector database deployment
-
-△ Managed secrets and centralized observability export
-
-△ Cloud deployment, rollback and distributed load testing
-
-### Requires external infrastructure or human approval
-
-○ Production identity provider and key rotation
-
-○ Managed vector database with production ACL policy
-
-○ Centralized telemetry backend, SLOs and retention
-
-○ Azure/AWS production account and budget
-
-○ Formal SOC 2/LGPD review and release approval
-
-## Five-minute demo
-
-The complete local demo is reproducible without Docker, cloud credentials or a
-remote model:
-
-```bash
-cd D:/Hermes/ErisWorkspace/agent-engineering-sprint
-PYTHONPATH=src python scripts/five_minute_demo.py
-PYTHONPATH=src python scripts/adversarial_embedding_benchmark.py
-PYTHONPATH=src python scripts/load_curve.py
+documents -> chunks -> vector + keyword retrieval -> RRF -> reranker -> cited answer
 ```
 
-What the demo proves:
+## Verification status
 
-1. Agent and RAG requests complete with citations.
-2. Tenant A attempting tenant B returns `403`.
-3. A normal user attempting the admin route returns `403`; an admin returns `200`.
-4. An MCP calculator call with scope returns `200`; without scope returns `403`.
-5. The in-memory OpenTelemetry span names are emitted.
-6. The adversarial benchmark shows measured semantic retrieval separation.
-7. The load curve makes P95 degradation visible from concurrency 1 to 200.
+| Area | Status | Evidence boundary |
+|---|---|---|
+| Local strict CI gates | **Verified locally** | Fresh audit run of `python scripts/ci.py --strict` passed all gates on the checked commit. |
+| Hosted Python CI | **Verified in GitHub Actions** | [Baseline run](https://github.com/nerdylog-code/agent-engineering-sprint/actions/runs/35593625355) passed on `09d9404`. The dynamic badge above reflects the branch, not a manually minted result. |
+| Docker build/smoke test | **Workflow repaired; hosted verification pending for this change** | The baseline Docker run was cancelled because the image command stayed in the foreground. The workflow now uses a bounded background container, `/healthz` polling, failure logs, and cleanup. |
+| Default runtime | **Verified locally** | Deterministic synthetic corpus and local test clients; no remote provider required. |
+| Live cloud, tenant, managed vector DB, and centralized telemetry | **Not verified** | These require external infrastructure and credentials and are intentionally outside the default tests. |
 
-The demo is a local ASGI/TestClient proof, not a hosted public deployment.
+The repository distinguishes implementation from evidence. Re-run the commands in
+[Quickstart](#quickstart) when changing the code or refreshing the generated
+artifacts in `evidence/`.
 
-## O que foi implementado
+## Key capabilities
 
-### Agent Lab (`src/agent_lab`)
-
-- Router determinístico para `general_agent`, `tool_agent` e `rag_agent`.
-- Tools allowlisted: `calculator` seguro via AST e `lookup_faq` somente leitura.
-- Structured output validado por contrato, com retries limitados a 5.
-- Human-in-the-loop explícito: `awaiting_approval`, `completed` ou `rejected`.
-- Proteção contra saída de tool com marcadores de prompt injection.
-- Traces JSONL com `trace_id`, `run_id`, `agent`, `model`, `tool`, tokens,
-  latência, status, retry count e erro.
-- Provider OpenAI-compatible real com timeout, retry, circuit breaker, parsing
-  de tool calls e loop provider → tool → provider.
-- Safety gate para prompt injection/PII e schemas de tools com propriedades
-  adicionais bloqueadas.
-- ACL por `tenant_id` e `principal` no retrieval, sem permitir cross-tenant
-  citations.
-- FastAPI com health/readiness, request IDs, métricas Prometheus básicas e
-  JWT HS256 opcional com claims tenant/principal para rotas `/v1/*`.
-- Rate limit por janela fixa com resposta `429` e `Retry-After`.
-- Servidor stdio JSON-RPC com `initialize`, `tools/list` e `tools/call`, além
-  de teste de subprocesso real sobre a registry allowlisted.
-
-### Production RAG (`src/production_rag`)
-
-- Corpus sintético determinístico de 100 documentos.
-- Chunking com overlap.
-- Embeddings locais por hashing, sem download de modelo.
-- Busca vector-only, keyword-only e hybrid com Reciprocal Rank Fusion.
-- Backend de embeddings substituível: hashing control e FastEmbed ONNX real.
-- Reranker lexical/semântico com bônus de evidência exata.
-- Respostas com citações, groundedness e answer relevance.
-- Comparação mensurada entre vector-only, hybrid e hybrid + reranker.
-
-### CI/CD e distribuição
-
-- `.github/workflows/ci.yml`: compile, Ruff, testes, evals, security gate,
-  mypy, Bandit, cobertura, pip-audit, geração de evidências e CI estrito.
-- `.github/workflows/docker.yml`: build e smoke test do container.
-- `Dockerfile` e `docker-compose.yml`.
-- `scripts/ci.py`: contrato local equivalente ao pipeline.
-- `scripts/security_scan.py`: secrets, private keys e shell escape patterns.
-- `scripts/minicpm5_tool_call_probe.py`: prova real do loop de tool calling local.
-- `scripts/benchmark.py`: baseline reproduzível de throughput e p50/p95.
-- `scripts/embedding_benchmark.py`: comparação hashing vs FastEmbed com Recall/MRR.
-- `scripts/adversarial_embedding_benchmark.py`: benchmark semântico separado do baseline lexical.
-- `scripts/mcp_https_demo.py`: HTTPS local real com JWT e scope de tool.
-- `scripts/chaos_load.py`: carga assíncrona e injeção de falhas com evidência JSON.
-- `scripts/load_curve.py`: curva local de concorrência 1→200.
-- `scripts/otel_trace_demo.py`: inventário de spans redigido para demonstração.
-- `scripts/five_minute_demo.py`: fluxo compacto de RAG, JWT, RBAC, MCP e OTel.
+- Deterministic agent routing, bounded retries, structured output validation, and explicit human approval states.
+- Allow-listed tools with input validation and prompt-injection/PII safety gates.
+- Hybrid keyword/vector retrieval with reciprocal-rank fusion, reranking, citations, groundedness, and explicit abstention.
+- Synthetic golden and adversarial retrieval datasets under `evals/`.
+- MCP stdio JSON-RPC plus a local HTTPS/JWT boundary with tool-scope allow/deny tests.
+- JWT authentication, RBAC, tenant isolation, fixed-window rate limiting, and request IDs.
+- OpenTelemetry SDK spans and JSONL traces for HTTP, routing, agent, provider, retrieval, and tool stages.
+- Circuit-breaker/retry behavior, chaos/load harnesses, benchmark scripts, and fail-closed security scanning.
+- Docker image and Compose definition for the FastAPI service.
 
 ## Quickstart
 
-Windows PowerShell e Git Bash podem usar o mesmo comando com `PYTHONPATH`:
+Python 3.11+ is required. The commands below use the local package layout and
+do not contact a remote model.
 
 ```bash
-cd D:/Hermes/ErisWorkspace/agent-engineering-sprint
+python -m venv .venv
+# Windows PowerShell: .venv\\Scripts\\Activate.ps1
+# Git Bash:          source .venv/Scripts/activate
+python -m pip install -e ".[dev,api,security,observability]"
+
+python -m unittest discover -s tests -v
+python -m unittest discover -s evals -v
+python scripts/ci.py --strict
+```
+
+A smaller first run is:
+
+```bash
 PYTHONPATH=src python -m agent_lab.cli demo --json
 PYTHONPATH=src python -m production_rag.cli evaluate --json
-PYTHONPATH=src python -m unittest discover -s tests -v
-PYTHONPATH=src python -m unittest discover -s evals -v
-PYTHONPATH=src python scripts/ci.py --strict
-PYTHONPATH=src python scripts/generate_evidence.py
 ```
 
-O núcleo determinístico não exige dependências de provider. Os extras `api`,
-`dev`, `security` e `observability` são instalados pelos gates para validar
-FastAPI, cobertura, mypy, Bandit, pip-audit e OpenTelemetry. `embeddings` é
-opcional porque baixa o modelo FastEmbed local.
+## Five-minute demo
 
-## Contrato de execução
-
-```text
-Agent request
-     |
-     v
-  Router -----> bounded retry ---> structured output
-     |                                  |
-     v                                  v
-  Tool registry ----> approval ----> final response
-     |
-     v
-   JSONL trace
+```bash
+PYTHONPATH=src python scripts/five_minute_demo.py
 ```
 
-```text
-Documents -> parser -> chunks -> vector + keyword -> RRF -> reranker
-                                                        |
-                                                        v
-                                              answer + citations + evals
+The demo exercises a local ASGI application and records a JSON result in
+`evidence/demo/five-minute-demo.json`. It checks:
+
+1. a cited RAG request and an agent run;
+2. cross-tenant access returning `403`;
+3. a normal user denied from the admin route while an admin is allowed;
+4. an MCP calculator call allowed with the scope and denied without it;
+5. emitted in-memory telemetry span names.
+
+This is a local contract test, not a hosted deployment or a live identity-provider
+authorization test.
+
+## Evaluation
+
+The committed evidence is generated by scripts rather than typed into the README.
+The current deterministic evidence includes:
+
+- 100 synthetic documents and 50 RAG questions;
+- vector-only, hybrid, and hybrid-plus-reranker comparisons;
+- explicit answerable and abstention cases in `evals/adversarial_dataset.json`;
+- Recall/MRR and answer-quality metrics in `evidence/eval-results/` and
+  `evidence/latest.json`.
+
+The metrics are specific to the checked synthetic corpus. They are useful for
+regression detection, not a general claim about retrieval quality on unseen data.
+
+## Security
+
+The local security gate and `scripts/security_scan.py` inspect source, tests,
+evals, scripts, and evidence for credential-like material, private keys, and
+unsafe shell patterns. The public repository uses synthetic identifiers and
+redacted evidence. Do not place real tokens, tenant data, customer documents,
+or production logs in this repository.
+
+For the threat model and security decisions, see:
+
+- [`docs/QA_SECURITY_PLAN.md`](docs/QA_SECURITY_PLAN.md)
+- [`docs/ENTERPRISE_READINESS.md`](docs/ENTERPRISE_READINESS.md)
+- [`scripts/security_scan.py`](scripts/security_scan.py)
+
+## Observability
+
+The application emits request IDs, counters, JSONL traces, and in-memory
+OpenTelemetry spans. The OTel demo is intentionally local; exporting spans to a
+managed collector, defining retention, and operating SLOs remain external work.
+See [`docs/architecture.md`](docs/architecture.md) and the generated traces under
+`evidence/traces/`.
+
+## Load and resilience
+
+The repository contains reproducible local scripts for:
+
+```bash
+PYTHONPATH=src python scripts/benchmark.py --runs 100
+PYTHONPATH=src python scripts/chaos_load.py
+PYTHONPATH=src python scripts/load_curve.py
 ```
 
-Leia `docs/architecture.md`, `docs/QA_SECURITY_PLAN.md` e
-`docs/ENTERPRISE_READINESS.md` para os contratos
-mais detalhados.
+These scripts exercise the local process and synthetic data. They do not prove
+capacity, isolation, or latency targets for a distributed production system.
 
 ## Docker
 
-Se o daemon Docker estiver disponível:
+The Docker image runs the FastAPI service as a non-root user and exposes
+`/healthz` and `/readyz`.
 
 ```bash
 docker build -t agent-engineering-sprint:local .
-docker run --rm agent-engineering-sprint:local
-# ou
- docker compose run --rm agent-lab
+docker run --rm -p 8000:8000 agent-engineering-sprint:local
+# In another shell:
+curl --fail http://127.0.0.1:8000/healthz
 ```
 
-A verificação do daemon é uma condição do ambiente; o workflow GitHub continua
-sendo fornecido mesmo quando o host local não possui Docker Desktop.
+The hosted Docker workflow builds the image, starts a detached container, polls
+`/healthz` for a bounded period, prints container logs on failure, and removes the
+container with a shell trap. The job has an explicit timeout. Docker availability
+on the local host is an environment prerequisite; it is not assumed by the local
+Python gates.
 
-## Credenciais externas
-
-`docs/credential-checklist.md` separa o que o agente pode preparar do que exige
-login e avaliação da pessoa: Microsoft Applied Skills, cursos externos,
-Hugging Face e AWS. Este repositório **não afirma** que qualquer uma delas foi
-concluída.
-
-## Estrutura
+## Architecture and project structure
 
 ```text
-src/agent_lab/          API, provider, tools, safety, traces, storage
-src/production_rag/     ingestão, retrieval, ACL, reranker, SQLite, métricas
-tests/                  testes de comportamento
- evals/                 golden dataset + eval suite
-scripts/                CI local, security scan, evidence generator
-docs/                   arquitetura, ADRs, entrevista, conhecimento
-evidence/               resultados medidos e traces
-.github/workflows/      ci.yml e docker.yml
+src/agent_lab/       FastAPI boundary, auth, tools, MCP, orchestration, telemetry
+src/production_rag/  ingestion, storage, hybrid retrieval, reranking, metrics
+tests/               behavior and control tests
+evals/               golden and adversarial datasets/evaluation suite
+scripts/              CI contract, demos, benchmarks, security, evidence generation
+docs/                 architecture, ADRs, QA/security, interview notes
+ evidence/            generated JSON, traces, benchmark and demo artifacts
+.github/workflows/    hosted Python CI and Docker workflow
 ```
 
-## Limites deliberados
+Start with:
 
-- O baseline default é determinístico, mas o loop real MiniCPM5 foi validado e
-  está separado em evidência própria; isso não generaliza para todos os modelos.
-- O embedding por hashing é baseline reproduzível, não substituto de um modelo
-  de embedding de produção.
-- FastEmbed BGE small foi executado localmente; neste dataset lexical ambos
-  tiveram Recall/MRR 1.0, portanto nenhum vencedor é declarado sem dataset
-  semanticamente ambíguo.
-- O timeout de tool limita o chamador, mas não mata thread Python já iniciada;
-  tool não confiável ainda exige processo/container isolado em produção.
-- Não há GitHub Actions hospedado executado porque este diretório não possui
-  remote GitHub configurado; o workflow está pronto para um push futuro.
-- Não há certificado ou badge externo inventado.
-- MCP protocol completo com client/server remoto e isolamento continua pendente;
-  o subconjunto stdio e o boundary HTTPS/JWT local já foram validados.
+- [`docs/architecture.md`](docs/architecture.md)
+- [`docs/QA_SECURITY_PLAN.md`](docs/QA_SECURITY_PLAN.md)
+- [`docs/ENTERPRISE_READINESS.md`](docs/ENTERPRISE_READINESS.md)
+- [`docs/credential-checklist.md`](docs/credential-checklist.md)
+
+## Limitations
+
+- The default provider is deterministic and local; optional provider probes do
+  not generalize to every model or hosted API.
+- Hashing embeddings are a reproducible baseline, not a production embedding
+  service. FastEmbed and its model download are optional.
+- The retrieval metrics use a synthetic dataset and should not be presented as a
+  benchmark for unrelated corpora.
+- A Python thread that times out is not the same as process-level isolation; an
+  untrusted production tool still needs a stronger sandbox boundary.
+- Managed secrets, production identity, vector-database ACLs, distributed load,
+  cloud deployment, rollback, and formal compliance review are not provided.
+- The public MCP implementation covers bounded local contracts; it is not a
+  claim of a complete remote MCP deployment.
+
+## Reproducible evidence
+
+Generated artifacts are kept under `evidence/`, including:
+
+- `latest.json` — aggregate agent/RAG metrics and provenance;
+- `eval-results/` — evaluation outputs;
+- `benchmarks/` — local, embedding, chaos, and load-curve results;
+- `security/` — local security boundary evidence;
+- `traces/` — redacted traces and span demonstrations;
+- `demo/` — five-minute demo output.
+
+When an artifact depends on optional software or external infrastructure, its
+status is documented as prepared or unverified rather than promoted to verified.
+
+## License
+
+MIT. See [`LICENSE`](LICENSE).
