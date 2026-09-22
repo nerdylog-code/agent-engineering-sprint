@@ -109,6 +109,98 @@ The current deterministic evidence includes:
 The metrics are specific to the checked synthetic corpus. They are useful for
 regression detection, not a general claim about retrieval quality on unseen data.
 
+## Adaptive decision routing
+
+This phase adds `src/agent_lab/decision/` without changing the existing
+`agent_lab.router.route_request()` contract. It compares four strategies over a
+separate, deterministic routing dataset:
+
+```text
+Rules → Laya → LLM → Hybrid
+```
+
+The dataset is synthetic and balanced across `general_agent`, `tool_agent`, and
+`rag_agent`, with `development` (120), `calibration` (60), and untouched
+`held_out_test` (60) splits. It includes English, PT-BR, mixed-language,
+ambiguous, prompt-injection, empty-input, keyword-distractor, and 30k-character
+long-input cases. It is intentionally separate from the RAG evaluation corpus.
+
+### Held-out evidence
+
+The table below is generated from
+[`evidence/router-benchmark-heldout-final.json`](evidence/router-benchmark-heldout-final.json)
+(60 cases, including 12 long-input cases). Accuracy includes correct abstentions;
+`p50/p95` are timed routing latency in milliseconds.
+
+| Strategy | Accuracy | Macro-F1 | Abstention | p50 / p95 ms | Brier / ECE |
+|---|---:|---:|---:|---:|---:|
+| Rules | 0.3667 | 0.2713 | 0.0500 | 0.003 / 0.018 | n/a / n/a |
+| Laya (`cuda`) | **0.7500** | **0.7436** | 0.0500 | 19.677 / 42.261 | 0.2962 / 0.0676 |
+| LLM (`qwen2.5:7b`, local Ollama) | 0.7167 | 0.7194 | 0.0500 | 545.733 / 918.574 | n/a / n/a |
+| Hybrid (threshold 0.90) | 0.5500 | 0.5263 | 0.0500 | 9.168 / 2067.819 | 0.0021 / 0.0269 |
+
+Interpretation is deliberately limited: on this held-out synthetic corpus Laya
+was the best of the four, while Hybrid reduced median latency on obvious rule
+cases but paid a large p95 when escalating to the local LLM and did not improve
+accuracy. On the same 60 cases, Hybrid made 22 LLM calls versus 60 for the full
+LLM baseline (38 fewer, 63.33% call reduction). The provider was local and cost
+rates were configured as zero, so the artifact reports estimated USD savings of
+`0.0`; no cloud-dollar saving is claimed. The Hybrid Brier/ECE sample contains
+only seven Laya-accepted probability vectors, so it is selection-biased and is
+not directly comparable to Laya's 55-vector sample. LLM self-reported confidence
+For language slices, the same artifact reports PT-BR accuracy of Rules 0.2917,
+Laya multilingual 0.7083, local LLM 0.7917, and Hybrid 0.5417 (n=24 each);
+these are measurements, not a multilingual guarantee.
+
+### Confidence semantics and calibration
+
+The exact upstream semantics are documented in
+[`docs/ADAPTIVE_DECISION_ROUTING.md`](docs/ADAPTIVE_DECISION_ROUTING.md):
+
+- for a Laya `choice`, `probability` is the selected-choice probability, while
+  `entropy_confidence` is normalized distribution entropy; they are not the
+  same number;
+- `score` confidence is also entropy over ordinal levels, not a scalar
+  probability;
+- `noul` returns the true-class probability separately from binary certainty;
+- temperature scaling happens before softmax, and the upstream warning clamps
+  `choice:11+` temperature `0.1006` to `0.5`.
+
+Brier/ECE are computed only from Laya's choice probability vectors. Rules are
+marked deterministic, and LLM confidence is marked `not_a_probability`.
+
+Thresholds were swept only on `calibration`; the documented policy selected
+`0.90` (accuracy within 0.05 of the grid maximum, then lowest ECE with a
+reasonable escalation budget) before the held-out run. The complete sweep is in
+[`evidence/router-benchmark-calibration.json`](evidence/router-benchmark-calibration.json).
+Provider calls in the sweep are memoized across thresholds and the artifact
+labels that token/cost totals count only first calls, not cache hits.
+
+### Laya cardinality and failure evidence
+
+[`evidence/router-high-cardinality.json`](evidence/router-high-cardinality.json)
+probes 2, 3, 4, 5, 8, 10, 11, 12, and 16 choices on CUDA. Predictions were
+finite and repeat-stable, but the checkpoint emitted the explicit warning that
+`choice:11+` is uncalibrated after temperature clamping; 11+ cases are therefore
+blocked from automatic Hybrid gating by the adapter. Failure tests cover missing
+Laya, invalid Laya output, unavailable LLM, empty input, and Hybrid fallback.
+Redacted decision traces expose strategy, route, selected probability, separate
+confidence fields, calibration source/status, latency, fallback, and trace ID
+under `evidence/traces/` without copying request text.
+
+Run the local deterministic suite with:
+
+```bash
+python scripts/generate_router_dataset.py
+python -m pytest -q tests/decision tests/test_router_dataset.py tests/test_router_metrics.py
+python scripts/router_benchmark.py --split held_out_test --strategies rules --no-threshold-sweep
+```
+
+Laya and Ollama are optional external runtimes; the checked evidence was run
+with the POC virtualenv, `laya` checkpoints offline, CUDA `12.6`, an RTX 4060,
+and local Ollama `qwen2.5:7b`. A clone without those runtimes can still run the
+Rules strategy and all deterministic tests; it must not claim Laya/LLM evidence.
+
 ## Security
 
 The local security gate and `scripts/security_scan.py` inspect source, tests,

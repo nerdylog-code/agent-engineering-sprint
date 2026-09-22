@@ -191,6 +191,49 @@ The demo is a local ASGI/TestClient proof, not a hosted public deployment.
 - `scripts/otel_trace_demo.py`: inventário de spans redigido para demonstração.
 - `scripts/five_minute_demo.py`: fluxo compacto de RAG, JWT, RBAC, MCP e OTel.
 
+## Roteamento adaptativo e evidência de decisão
+
+A fase adiciona `src/agent_lab/decision/` sem alterar o contrato de
+`agent_lab.router.route_request()`. O dataset independente tem 240 casos:
+`development` 120, `calibration` 60 e `held_out_test` 60, balanceados entre
+`general_agent`, `tool_agent` e `rag_agent`, com PT-BR, mixed, ambiguidade,
+prompt injection, input vazio e 30k caracteres.
+
+No held-out final (60 casos; números gerados em
+`evidence/router-benchmark-heldout-final.json`):
+
+| Estratégia | Accuracy | Macro-F1 | p50 / p95 ms | Brier / ECE |
+|---|---:|---:|---:|---:|
+| Rules | 0.3667 | 0.2713 | 0.003 / 0.018 | n/a / n/a |
+| Laya CUDA | **0.7500** | **0.7436** | 19.677 / 42.261 | 0.2962 / 0.0676 |
+| LLM local `qwen2.5:7b` | 0.7167 | 0.7194 | 545.733 / 918.574 | n/a / n/a |
+| Hybrid, threshold 0.90 | 0.5500 | 0.5263 | 9.168 / 2067.819 | 0.0021 / 0.0269 |
+
+Esses números valem somente para este corpus sintético. O Hybrid fez 22 chamadas
+LLM contra 60 do baseline LLM (38 a menos; redução de 63,33%). O provider foi
+local e os custos foram configurados como zero, então a evidência registra
+economia estimada de `0.0` USD; nenhuma economia em cloud é reivindicada. O
+Brier/ECE do Hybrid usa apenas sete vetores Laya aceitos e, portanto, é
+seleção-biased; a confiança autodeclarada do LLM não é probabilidade calibrada.
+No mesmo artefato, PT-BR (n=24 por estratégia) mede Rules 0.2917, Laya
+multilingual 0.7083, LLM local 0.7917 e Hybrid 0.5417; isso é medição, não
+garantia multilíngue.
+A semântica detalhada de `probability`, `entropy_confidence`, `score`, `noul` e
+`temperature` está em `docs/ADAPTIVE_DECISION_ROUTING.md`. A varredura de
+thresholds usa somente `calibration`; a política registrada selecionou 0.90
+antes do held-out.
+
+Os probes de cardinalidade 2/3/4/5/8/10/11/12/16 estão em
+`evidence/router-high-cardinality.json`. O warning real do checkpoint informa
+que `choice:11+` foi clampado de `0.1006` para `0.5`; esses buckets ficam
+marcados como não calibrados e não passam pelo gate automático do Hybrid.
+Traces redigidos ficam em `evidence/traces/`, e a análise de erros em
+`docs/ROUTING_ERROR_ANALYSIS.md`.
+
+Laya/Ollama são runtimes opcionais. Sem eles, execute os testes determinísticos
+e o benchmark Rules; não atribua evidência Laya/LLM a um clone que não os
+executou.
+
 ## Quickstart
 
 Windows PowerShell e Git Bash podem usar o mesmo comando com `PYTHONPATH`:

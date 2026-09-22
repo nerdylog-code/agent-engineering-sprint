@@ -2,7 +2,7 @@
 
 **Status:** active
 **Owner:** Rise / Investigation Team
-**Date:** 2026-09-19
+**Date:** 2026-09-22
 **Scope:** isolated, local-first implementation of the attached Agents + CI/CD + Evals + Observability + RAG + MCP study sprint.
 
 ## Why this project exists
@@ -85,3 +85,20 @@ The current workspace contains `hermes-local-control`, while the attached plan r
 Phase 2 preserves the original benchmark and generated caches remain ignored.
 Rollback is a `git revert` of the Phase 2 commit; no destructive external action
 is authorized without an explicit remote/credential decision.
+
+## Phase 3 — adaptive decision routing follow-up
+
+- Branch: `feature/adaptive-decision-router`.
+- Base commit before edits: `64fe6e6`.
+- Backup verified before edits: `backups/agent-engineering-sprint-baseline-64fe6e6.zip`.
+- Allowed scope: `src/agent_lab/decision/`, `tests/decision/`, routing dataset/scripts,
+  routing docs, README sections, and generated routing evidence.
+- Forbidden scope: `src/agent_lab/router.py` / `route_request()` behavior, fiscal
+  repositories, enterprise platform work, credentials, and destructive external changes.
+- Dataset: 240 synthetic cases split 120/60/60; threshold fitting is forbidden on
+  `held_out_test`.
+- Evidence gate: deterministic tests plus real CUDA Laya, local Ollama, calibration
+  sweep, held-out run, cardinality probe, error analysis, and redacted JSONL traces.
+- Calibration policy: select the Hybrid threshold from calibration only; the current
+  recorded selection is `0.90`. This is not a claim that Hybrid is superior—the
+  held-out evidence must decide.
