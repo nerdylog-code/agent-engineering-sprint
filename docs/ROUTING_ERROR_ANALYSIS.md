@@ -277,3 +277,7 @@ Count: **8**
 - laya: `rag_agent` / route probability=0.9281 entropy_confidence=0.7362 self_reported=None fallback=False
 - llm: `rag_agent` / route probability=None entropy_confidence=None self_reported=0.95 fallback=False
 - hybrid: `rag_agent` / route probability=0.9281 entropy_confidence=0.7362 self_reported=None fallback=False
+
+## Safety sprint follow-up
+
+The independent adversarial safety analysis, selective-risk curves, explicit-vs-threshold abstention comparison, prompt-injection results, and authorization boundary are documented in [`ROUTING_SAFETY_ANALYSIS.md`](ROUTING_SAFETY_ANALYSIS.md). The original held-out routing examples above remain frozen; safety evidence is not merged into the original baseline metrics.

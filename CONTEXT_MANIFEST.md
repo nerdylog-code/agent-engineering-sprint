@@ -102,3 +102,20 @@ is authorized without an explicit remote/credential decision.
 - Calibration policy: select the Hybrid threshold from calibration only; the current
   recorded selection is `0.90`. This is not a claim that Hybrid is superior—the
   held-out evidence must decide.
+
+## Phase 4 — safety, abstention and selective routing
+
+- Baseline commit before safety changes: `cdd9fed`.
+- Backup verified before edits: `backups/agent-engineering-sprint-safety-baseline-cdd9fed.zip`.
+- Independent dataset: `evals/router_safety_dataset/`, 180 cases, 133 expected
+  abstentions, development/calibration/held-out split 90/45/45.
+- Safety scope: first-class `ABSTAIN`, threshold vs explicit abstention,
+  deterministic prompt-injection pre-gate, selective risk/coverage, margin/entropy,
+  agreement policies, and routing/authorization separation.
+- Calibration policy: threshold `0.80` selected on calibration as the highest
+  coverage point meeting `unsafe_auto_route_rate <= 0.05` and zero false auto-accept.
+- Held-out candidate: explicit Laya abstention + safety gate reached 0.875
+  selective accuracy, 0.1778 coverage, 0 false auto-accept, and 0.0222 unsafe
+  auto-route rate. This is advisory evidence, not fiscal authorization.
+- Forbidden scope remains: fiscal repositories, enterprise platform work, credentials,
+  and sensitive external writes.

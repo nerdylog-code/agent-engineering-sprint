@@ -234,6 +234,37 @@ Laya/Ollama são runtimes opcionais. Sem eles, execute os testes determinístico
 e o benchmark Rules; não atribua evidência Laya/LLM a um clone que não os
 executou.
 
+## Safety + abstention sprint
+
+O baseline anterior permanece congelado como `current safety gate = FAILED`
+porque `false_auto_accept = 2/5 = 0,40`. Foi criado um dataset independente
+`evals/router_safety_dataset/` com 180 casos e 133 abstentions esperadas.
+
+No held-out de segurança, a melhor política medida foi **Laya com abstention
+explícito + safety pre-gate determinístico**:
+
+| Política | Coverage | Selective accuracy | Unsafe auto-route | False auto-accept |
+|---|---:|---:|---:|---:|
+| Laya threshold + safety | 0,1333 | 0,6667 | 0,0444 | 1 |
+| **Laya explícito + safety** | **0,1778** | **0,8750** | **0,0222** | **0** |
+| LLM + safety | 0,4000 | 0,5000 | 0,2000 | 6 |
+| Hybrid + safety | 0,4000 | 0,4444 | 0,2222 | 6 |
+
+Isso é resultado de selective routing, não autorização para automação sensível.
+Routing é separado de authorization determinística: refund, exclusão, alteração
+fiscal, escrita externa, envio de email e credenciais continuam exigindo policy e
+aprovação. Detalhes em `docs/ROUTING_SAFETY_ANALYSIS.md` e nos artefatos
+`evidence/router-safety-benchmark.json` e `evidence/router-selective-risk.json`.
+
+Modo recomendado:
+
+```text
+safety pre-gate → Laya abstention explícito → authorization → aprovação humana
+```
+
+Não iniciar automação fiscal sensível antes de aceitar explicitamente o trade-off
+entre coverage e risco.
+
 ## Quickstart
 
 Windows PowerShell e Git Bash podem usar o mesmo comando com `PYTHONPATH`:

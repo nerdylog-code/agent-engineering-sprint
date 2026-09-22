@@ -202,6 +202,43 @@ with the POC virtualenv, `laya` checkpoints offline, CUDA `12.6`, an RTX 4060,
 and local Ollama `qwen2.5:7b`. A clone without those runtimes can still run the
 Rules strategy and all deterministic tests; it must not claim Laya/LLM evidence.
 
+## Safety + abstention sprint
+
+The original routing baseline is frozen with `current safety gate = FAILED` because
+`false_auto_accept = 2/5 = 0.40`. A separate `evals/router_safety_dataset/`
+now contains 180 adversarial cases with 133 expected abstentions, including
+prompt injection, missing context, unsafe requests, malformed input, PT-BR
+slang, unsupported language, and long distractor context.
+
+The safety benchmark makes `ABSTAIN` a first-class result and compares threshold
+abstention with an explicit Laya abstention choice. On the held-out safety set,
+the strongest measured candidate was **Laya explicit abstention + deterministic
+safety pre-gate**:
+
+| Policy | Coverage | Selective accuracy | Unsafe auto-route | False auto-accept |
+|---|---:|---:|---:|---:|
+| Laya threshold + safety | 0.1333 | 0.6667 | 0.0444 | 1 |
+| **Laya explicit + safety** | **0.1778** | **0.8750** | **0.0222** | **0** |
+| LLM + safety | 0.4000 | 0.5000 | 0.2000 | 6 |
+| Hybrid + safety | 0.4000 | 0.4444 | 0.2222 | 6 |
+
+This is a selective-routing result, not permission for sensitive automation.
+Routing is separate from deterministic authorization; refunds, deletion, fiscal
+alteration, external writes, email sends, and credential operations remain
+approval-gated. The safety policy evidence and Pareto/threshold curves are in
+[`docs/ROUTING_SAFETY_ANALYSIS.md`](docs/ROUTING_SAFETY_ANALYSIS.md),
+[`evidence/router-safety-benchmark.json`](evidence/router-safety-benchmark.json),
+and [`evidence/router-selective-risk.json`](evidence/router-selective-risk.json).
+
+The current recommendation is advisory use only:
+
+```text
+safety pre-gate → Laya explicit abstention → authorization policy → human approval
+```
+
+Do not begin sensitive Fiscal Intelligence Platform automation until the safety
+coverage/risk trade-off is accepted explicitly.
+
 ## Security
 
 The local security gate and `scripts/security_scan.py` inspect source, tests,
