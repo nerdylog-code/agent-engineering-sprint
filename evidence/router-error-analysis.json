@@ -20,12 +20,12 @@
           "probabilities": {},
           "probability_source": "deterministic_rule",
           "calibration_status": "not_applicable",
-          "latency_ms": 0.0016000012692529708,
+          "latency_ms": 0.0015000005078036338,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-379ff51c7f5a",
+          "trace_id": "trace-84f36646481e",
           "metadata": {
             "reason": "retrieval/citation language detected",
             "stages": [
@@ -47,12 +47,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 23.85829999911948,
+          "latency_ms": 23.279799999727402,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-7ba71a695ab9",
+          "trace_id": "trace-70300b4a2be8",
           "metadata": {
             "routing": {
               "model": "english",
@@ -82,12 +82,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 542.7844999994704,
+          "latency_ms": 554.3596999996225,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-aad6b47fdce7",
+          "trace_id": "trace-1e3edd47c3b6",
           "metadata": {
             "stages": [
               "llm"
@@ -107,12 +107,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 1647.7134999986447,
+          "latency_ms": 1660.106999999698,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-34fcd8701767",
+          "trace_id": "trace-966dcffb1aa3",
           "metadata": {
             "stages": [
               "laya",
@@ -148,12 +148,12 @@
           "probabilities": {},
           "probability_source": "deterministic_rule",
           "calibration_status": "not_applicable",
-          "latency_ms": 0.01700000029813964,
+          "latency_ms": 0.016899999536690302,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-126d002143fc",
+          "trace_id": "trace-5f1f9facbe2a",
           "metadata": {
             "reason": "retrieval/citation language detected",
             "stages": [
@@ -175,12 +175,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 42.53419999986363,
+          "latency_ms": 41.7089999991731,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-210bfbe665e4",
+          "trace_id": "trace-9436684ace8d",
           "metadata": {
             "routing": {
               "model": "english",
@@ -210,12 +210,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 911.8726999986393,
+          "latency_ms": 922.2171999990678,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-d3242929f6b0",
+          "trace_id": "trace-edaae2182f46",
           "metadata": {
             "stages": [
               "llm"
@@ -235,12 +235,12 @@
           "probabilities": {},
           "probability_source": "deterministic_rule",
           "calibration_status": "not_applicable",
-          "latency_ms": 0.02750000021478627,
+          "latency_ms": 0.021300000298651867,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-79e180c35931",
+          "trace_id": "trace-58cc681f566c",
           "metadata": {
             "reason": "retrieval/citation language detected",
             "stages": [
@@ -273,12 +273,12 @@
           "probabilities": {},
           "probability_source": "deterministic_rule",
           "calibration_status": "not_applicable",
-          "latency_ms": 0.016799998775240965,
+          "latency_ms": 0.01650000012887176,
           "selected_tool": "lookup_faq",
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-672806b3edd7",
+          "trace_id": "trace-873f270f1faf",
           "metadata": {
             "reason": "explicit tool or arithmetic intent detected",
             "stages": [
@@ -300,12 +300,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 260.98450000063167,
+          "latency_ms": 367.31829999916954,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-d8d0e165f1e5",
+          "trace_id": "trace-e917d0254bdd",
           "metadata": {
             "routing": {
               "model": "english",
@@ -335,12 +335,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 14379.044200000862,
+          "latency_ms": 14096.96249999979,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-418af00e4853",
+          "trace_id": "trace-7417667eec2d",
           "metadata": {
             "stages": [
               "llm"
@@ -360,12 +360,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 1807.9815999990387,
+          "latency_ms": 1765.2326999996149,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-d0c52a4ed0e9",
+          "trace_id": "trace-01f04c9ef628",
           "metadata": {
             "stages": [
               "laya",
@@ -401,12 +401,12 @@
           "probabilities": {},
           "probability_source": "deterministic_rule",
           "calibration_status": "not_applicable",
-          "latency_ms": 0.030500001230393536,
+          "latency_ms": 0.04160000025876798,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-1ff7aa0f02f9",
+          "trace_id": "trace-87f83a41404a",
           "metadata": {
             "reason": "retrieval/citation language detected",
             "stages": [
@@ -428,12 +428,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 44.80409999996482,
+          "latency_ms": 43.63949999969918,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-a5cb48fddc94",
+          "trace_id": "trace-f3d6217f1056",
           "metadata": {
             "routing": {
               "model": "english",
@@ -463,12 +463,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 1656.4865999989706,
+          "latency_ms": 1670.387699999992,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-a2d4de76679a",
+          "trace_id": "trace-b0f4d6b5f99f",
           "metadata": {
             "stages": [
               "llm"
@@ -488,12 +488,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 2148.239600001034,
+          "latency_ms": 2118.253200000254,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-e07f557be162",
+          "trace_id": "trace-c03784851dee",
           "metadata": {
             "stages": [
               "laya",
@@ -529,12 +529,12 @@
           "probabilities": {},
           "probability_source": "deterministic_rule",
           "calibration_status": "not_applicable",
-          "latency_ms": 0.006000000212225132,
+          "latency_ms": 0.009599998520570807,
           "selected_tool": "lookup_faq",
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-09f7280373f6",
+          "trace_id": "trace-c4066c19701f",
           "metadata": {
             "reason": "explicit tool or arithmetic intent detected",
             "stages": [
@@ -556,12 +556,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 32.35069999936968,
+          "latency_ms": 23.56600000166509,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-fa6007fcb79b",
+          "trace_id": "trace-a229a9babd26",
           "metadata": {
             "routing": {
               "model": "english",
@@ -591,12 +591,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 539.8556999989523,
+          "latency_ms": 559.5501000007062,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-a96515cce6cf",
+          "trace_id": "trace-5a30d2bd552f",
           "metadata": {
             "stages": [
               "llm"
@@ -616,12 +616,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 1772.0449999997072,
+          "latency_ms": 1721.0405999994691,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-85b890444ae4",
+          "trace_id": "trace-685c78851e88",
           "metadata": {
             "stages": [
               "laya",
@@ -657,12 +657,12 @@
           "probabilities": {},
           "probability_source": "deterministic_rule",
           "calibration_status": "not_applicable",
-          "latency_ms": 0.018400000044493936,
+          "latency_ms": 0.018599999748403206,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-591b6d1c5edb",
+          "trace_id": "trace-4d7dbfedbee2",
           "metadata": {
             "reason": "retrieval/citation language detected",
             "stages": [
@@ -684,12 +684,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 42.180799999187,
+          "latency_ms": 42.310999999244814,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-f0ab823fdb59",
+          "trace_id": "trace-08b335d73f8b",
           "metadata": {
             "routing": {
               "model": "english",
@@ -719,12 +719,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 907.0117999999638,
+          "latency_ms": 902.7719000005163,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-4b8065650e12",
+          "trace_id": "trace-5d2ca7b514ef",
           "metadata": {
             "stages": [
               "llm"
@@ -744,12 +744,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 2112.998800001151,
+          "latency_ms": 2141.498299999512,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-843f9a03337f",
+          "trace_id": "trace-6022ae5019e5",
           "metadata": {
             "stages": [
               "laya",
@@ -785,12 +785,12 @@
           "probabilities": {},
           "probability_source": "deterministic_rule",
           "calibration_status": "not_applicable",
-          "latency_ms": 0.006399999620043673,
+          "latency_ms": 0.006299998858594336,
           "selected_tool": "lookup_faq",
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-bec3a7f504b2",
+          "trace_id": "trace-603f5af1add8",
           "metadata": {
             "reason": "explicit tool or arithmetic intent detected",
             "stages": [
@@ -812,12 +812,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 23.659200000111014,
+          "latency_ms": 23.879200000010314,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-31caf45d38a1",
+          "trace_id": "trace-e0c6bf10bc3c",
           "metadata": {
             "routing": {
               "model": "english",
@@ -847,12 +847,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 540.2888000007806,
+          "latency_ms": 539.1541999997571,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-d52300834982",
+          "trace_id": "trace-85e751a8feaf",
           "metadata": {
             "stages": [
               "llm"
@@ -872,12 +872,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 1724.273699999685,
+          "latency_ms": 1710.432199999559,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-7948ef5620a9",
+          "trace_id": "trace-8006c1efa26f",
           "metadata": {
             "stages": [
               "laya",
@@ -913,12 +913,12 @@
           "probabilities": {},
           "probability_source": "deterministic_rule",
           "calibration_status": "not_applicable",
-          "latency_ms": 0.00540000110049732,
+          "latency_ms": 0.00529999852005858,
           "selected_tool": "lookup_faq",
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-3c1225c9b73f",
+          "trace_id": "trace-8f069a37426d",
           "metadata": {
             "reason": "explicit tool or arithmetic intent detected",
             "stages": [
@@ -940,12 +940,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 18.778900001052534,
+          "latency_ms": 23.983299999599694,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-8e822a88cf88",
+          "trace_id": "trace-b3696c575a43",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -975,12 +975,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 541.0475999997288,
+          "latency_ms": 539.7274000006291,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-4836b54d5579",
+          "trace_id": "trace-bb002e1f9041",
           "metadata": {
             "stages": [
               "llm"
@@ -1000,12 +1000,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 1738.4819999988395,
+          "latency_ms": 1710.5430999999953,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-416256ff220f",
+          "trace_id": "trace-825679ede296",
           "metadata": {
             "stages": [
               "laya",
@@ -1041,12 +1041,12 @@
           "probabilities": {},
           "probability_source": "deterministic_rule",
           "calibration_status": "not_applicable",
-          "latency_ms": 0.017700000171316788,
+          "latency_ms": 0.01759999940986745,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-d52d5fdb7874",
+          "trace_id": "trace-415ef09c0115",
           "metadata": {
             "reason": "retrieval/citation language detected",
             "stages": [
@@ -1068,12 +1068,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 41.822199998932774,
+          "latency_ms": 46.474599999783095,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-90c12bcb3cc2",
+          "trace_id": "trace-fab4d24ea3cd",
           "metadata": {
             "routing": {
               "model": "english",
@@ -1103,12 +1103,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 917.788599999767,
+          "latency_ms": 919.9136000006547,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-5cec2ed448a4",
+          "trace_id": "trace-1ecfe6bbd29d",
           "metadata": {
             "stages": [
               "llm"
@@ -1128,12 +1128,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 2066.5973000013764,
+          "latency_ms": 2107.942600001479,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-c88d195c6481",
+          "trace_id": "trace-86697b46ce1d",
           "metadata": {
             "stages": [
               "laya",
@@ -1169,12 +1169,12 @@
           "probabilities": {},
           "probability_source": "deterministic_rule",
           "calibration_status": "not_applicable",
-          "latency_ms": 0.001999998858082108,
+          "latency_ms": 0.0017999991541728377,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-1b4e0d5cd80f",
+          "trace_id": "trace-d68eda9d3f38",
           "metadata": {
             "reason": "retrieval/citation language detected",
             "stages": [
@@ -1196,12 +1196,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 19.282100000054925,
+          "latency_ms": 19.29500000005646,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-fee38ec0ef59",
+          "trace_id": "trace-9ef035936d81",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -1231,12 +1231,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 595.309600001201,
+          "latency_ms": 568.7823999996908,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-5ba1acf7b4e3",
+          "trace_id": "trace-a7014c34f8d8",
           "metadata": {
             "stages": [
               "llm"
@@ -1256,12 +1256,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 1732.1599000006245,
+          "latency_ms": 1743.1940000005852,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-1e8d50ac1565",
+          "trace_id": "trace-e46b2c077807",
           "metadata": {
             "stages": [
               "laya",
@@ -1299,12 +1299,12 @@
           "probabilities": {},
           "probability_source": "deterministic_rule",
           "calibration_status": "not_applicable",
-          "latency_ms": 0.005600000804406591,
+          "latency_ms": 0.005799998689326458,
           "selected_tool": "lookup_faq",
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-a7ccd5f1ecc4",
+          "trace_id": "trace-54f1cfecc791",
           "metadata": {
             "reason": "explicit tool or arithmetic intent detected",
             "stages": [
@@ -1326,12 +1326,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 27.86039999955392,
+          "latency_ms": 18.90609999827575,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-0de00b81a4de",
+          "trace_id": "trace-b9edefebca2d",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -1361,12 +1361,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 558.1203000001551,
+          "latency_ms": 539.6795000015118,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-01c15550b61f",
+          "trace_id": "trace-22d5f910ea21",
           "metadata": {
             "stages": [
               "llm"
@@ -1386,12 +1386,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 1722.385300001406,
+          "latency_ms": 1697.2110999995493,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-d7ab899704f0",
+          "trace_id": "trace-c65bb55827c6",
           "metadata": {
             "stages": [
               "laya",
@@ -1427,12 +1427,12 @@
           "probabilities": {},
           "probability_source": "deterministic_rule",
           "calibration_status": "not_applicable",
-          "latency_ms": 0.006599999323952943,
+          "latency_ms": 0.0070000005507608876,
           "selected_tool": "lookup_faq",
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-25d35f4feaeb",
+          "trace_id": "trace-976a8c60fad0",
           "metadata": {
             "reason": "explicit tool or arithmetic intent detected",
             "stages": [
@@ -1454,12 +1454,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 19.267100000433857,
+          "latency_ms": 18.567799999800627,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-5288c90def3f",
+          "trace_id": "trace-ab24f8fc4922",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -1489,12 +1489,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 539.8065000008501,
+          "latency_ms": 536.7753000009543,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-0fe3d198dd01",
+          "trace_id": "trace-8c3c20b79cef",
           "metadata": {
             "stages": [
               "llm"
@@ -1514,12 +1514,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 1756.0028999996575,
+          "latency_ms": 1730.4186999990634,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-274e7ffb2fce",
+          "trace_id": "trace-4f4949b6dd9e",
           "metadata": {
             "stages": [
               "laya",
@@ -1555,12 +1555,12 @@
           "probabilities": {},
           "probability_source": "deterministic_rule",
           "calibration_status": "not_applicable",
-          "latency_ms": 0.002099999619531445,
+          "latency_ms": 0.002200000380980782,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-18144987684d",
+          "trace_id": "trace-a1ccd03ba228",
           "metadata": {
             "reason": "retrieval/citation language detected",
             "stages": [
@@ -1582,12 +1582,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 18.697299999985262,
+          "latency_ms": 18.926599999758764,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-ddb53cdfc2e3",
+          "trace_id": "trace-d0e5260659b6",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -1617,12 +1617,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 542.468600000575,
+          "latency_ms": 543.0825999992521,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-bf14371291c0",
+          "trace_id": "trace-7be97d675b20",
           "metadata": {
             "stages": [
               "llm"
@@ -1642,12 +1642,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 1737.6130000011472,
+          "latency_ms": 1749.3738000011945,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-1e549caf35a0",
+          "trace_id": "trace-4a422fabb73c",
           "metadata": {
             "stages": [
               "laya",
@@ -1688,7 +1688,7 @@
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-83ffe04af22c",
+          "trace_id": "trace-7e1408b25b4c",
           "metadata": {
             "reason": "retrieval/citation language detected",
             "stages": [
@@ -1710,12 +1710,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 18.485599999621627,
+          "latency_ms": 18.80399999936344,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-61a9e195a996",
+          "trace_id": "trace-12db02986d59",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -1745,12 +1745,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 547.5679999999556,
+          "latency_ms": 539.0408000002935,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-61cff088747e",
+          "trace_id": "trace-61ef51390e0a",
           "metadata": {
             "stages": [
               "llm"
@@ -1770,12 +1770,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 1717.2863000014331,
+          "latency_ms": 1704.798299999311,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-aa6deaa6307f",
+          "trace_id": "trace-7f42c186257d",
           "metadata": {
             "stages": [
               "laya",
@@ -1811,12 +1811,12 @@
           "probabilities": {},
           "probability_source": "deterministic_rule",
           "calibration_status": "not_applicable",
-          "latency_ms": 0.004699999408330768,
+          "latency_ms": 0.004499999704421498,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-c20374f7c0d3",
+          "trace_id": "trace-81af147b39d6",
           "metadata": {
             "reason": "no specialized intent detected",
             "stages": [
@@ -1838,12 +1838,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 20.09820000057516,
+          "latency_ms": 18.773600000713486,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-f3a7e1dc7b4c",
+          "trace_id": "trace-735ddb4a3e90",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -1873,12 +1873,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 605.4636999997456,
+          "latency_ms": 603.3552999997482,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-109a5b255c04",
+          "trace_id": "trace-d8112297aaf6",
           "metadata": {
             "stages": [
               "llm"
@@ -1898,12 +1898,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 1635.3761999998824,
+          "latency_ms": 1628.617000000304,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-7706a392a74f",
+          "trace_id": "trace-29d8f353ab62",
           "metadata": {
             "stages": [
               "laya",
@@ -1939,12 +1939,12 @@
           "probabilities": {},
           "probability_source": "deterministic_rule",
           "calibration_status": "not_applicable",
-          "latency_ms": 0.01700000029813964,
+          "latency_ms": 0.016899999536690302,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-126d002143fc",
+          "trace_id": "trace-5f1f9facbe2a",
           "metadata": {
             "reason": "retrieval/citation language detected",
             "stages": [
@@ -1966,12 +1966,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 42.53419999986363,
+          "latency_ms": 41.7089999991731,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-210bfbe665e4",
+          "trace_id": "trace-9436684ace8d",
           "metadata": {
             "routing": {
               "model": "english",
@@ -2001,12 +2001,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 911.8726999986393,
+          "latency_ms": 922.2171999990678,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-d3242929f6b0",
+          "trace_id": "trace-edaae2182f46",
           "metadata": {
             "stages": [
               "llm"
@@ -2026,12 +2026,12 @@
           "probabilities": {},
           "probability_source": "deterministic_rule",
           "calibration_status": "not_applicable",
-          "latency_ms": 0.02750000021478627,
+          "latency_ms": 0.021300000298651867,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-79e180c35931",
+          "trace_id": "trace-58cc681f566c",
           "metadata": {
             "reason": "retrieval/citation language detected",
             "stages": [
@@ -2064,12 +2064,12 @@
           "probabilities": {},
           "probability_source": "deterministic_rule",
           "calibration_status": "not_applicable",
-          "latency_ms": 0.016799998775240965,
+          "latency_ms": 0.01650000012887176,
           "selected_tool": "lookup_faq",
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-672806b3edd7",
+          "trace_id": "trace-873f270f1faf",
           "metadata": {
             "reason": "explicit tool or arithmetic intent detected",
             "stages": [
@@ -2091,12 +2091,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 260.98450000063167,
+          "latency_ms": 367.31829999916954,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-d8d0e165f1e5",
+          "trace_id": "trace-e917d0254bdd",
           "metadata": {
             "routing": {
               "model": "english",
@@ -2126,12 +2126,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 14379.044200000862,
+          "latency_ms": 14096.96249999979,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-418af00e4853",
+          "trace_id": "trace-7417667eec2d",
           "metadata": {
             "stages": [
               "llm"
@@ -2151,12 +2151,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 1807.9815999990387,
+          "latency_ms": 1765.2326999996149,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-d0c52a4ed0e9",
+          "trace_id": "trace-01f04c9ef628",
           "metadata": {
             "stages": [
               "laya",
@@ -2192,12 +2192,12 @@
           "probabilities": {},
           "probability_source": "deterministic_rule",
           "calibration_status": "not_applicable",
-          "latency_ms": 0.005600000804406591,
+          "latency_ms": 0.005799998689326458,
           "selected_tool": "lookup_faq",
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-a7ccd5f1ecc4",
+          "trace_id": "trace-54f1cfecc791",
           "metadata": {
             "reason": "explicit tool or arithmetic intent detected",
             "stages": [
@@ -2219,12 +2219,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 27.86039999955392,
+          "latency_ms": 18.90609999827575,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-0de00b81a4de",
+          "trace_id": "trace-b9edefebca2d",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -2254,12 +2254,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 558.1203000001551,
+          "latency_ms": 539.6795000015118,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-01c15550b61f",
+          "trace_id": "trace-22d5f910ea21",
           "metadata": {
             "stages": [
               "llm"
@@ -2279,12 +2279,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 1722.385300001406,
+          "latency_ms": 1697.2110999995493,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-d7ab899704f0",
+          "trace_id": "trace-c65bb55827c6",
           "metadata": {
             "stages": [
               "laya",
@@ -2320,12 +2320,12 @@
           "probabilities": {},
           "probability_source": "deterministic_rule",
           "calibration_status": "not_applicable",
-          "latency_ms": 0.006000000212225132,
+          "latency_ms": 0.009599998520570807,
           "selected_tool": "lookup_faq",
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-09f7280373f6",
+          "trace_id": "trace-c4066c19701f",
           "metadata": {
             "reason": "explicit tool or arithmetic intent detected",
             "stages": [
@@ -2347,12 +2347,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 32.35069999936968,
+          "latency_ms": 23.56600000166509,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-fa6007fcb79b",
+          "trace_id": "trace-a229a9babd26",
           "metadata": {
             "routing": {
               "model": "english",
@@ -2382,12 +2382,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 539.8556999989523,
+          "latency_ms": 559.5501000007062,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-a96515cce6cf",
+          "trace_id": "trace-5a30d2bd552f",
           "metadata": {
             "stages": [
               "llm"
@@ -2407,12 +2407,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 1772.0449999997072,
+          "latency_ms": 1721.0405999994691,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-85b890444ae4",
+          "trace_id": "trace-685c78851e88",
           "metadata": {
             "stages": [
               "laya",
@@ -2448,12 +2448,12 @@
           "probabilities": {},
           "probability_source": "deterministic_rule",
           "calibration_status": "not_applicable",
-          "latency_ms": 0.006599999323952943,
+          "latency_ms": 0.0070000005507608876,
           "selected_tool": "lookup_faq",
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-25d35f4feaeb",
+          "trace_id": "trace-976a8c60fad0",
           "metadata": {
             "reason": "explicit tool or arithmetic intent detected",
             "stages": [
@@ -2475,12 +2475,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 19.267100000433857,
+          "latency_ms": 18.567799999800627,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-5288c90def3f",
+          "trace_id": "trace-ab24f8fc4922",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -2510,12 +2510,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 539.8065000008501,
+          "latency_ms": 536.7753000009543,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-0fe3d198dd01",
+          "trace_id": "trace-8c3c20b79cef",
           "metadata": {
             "stages": [
               "llm"
@@ -2535,12 +2535,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 1756.0028999996575,
+          "latency_ms": 1730.4186999990634,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-274e7ffb2fce",
+          "trace_id": "trace-4f4949b6dd9e",
           "metadata": {
             "stages": [
               "laya",
@@ -2576,12 +2576,12 @@
           "probabilities": {},
           "probability_source": "deterministic_rule",
           "calibration_status": "not_applicable",
-          "latency_ms": 0.006399999620043673,
+          "latency_ms": 0.006299998858594336,
           "selected_tool": "lookup_faq",
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-bec3a7f504b2",
+          "trace_id": "trace-603f5af1add8",
           "metadata": {
             "reason": "explicit tool or arithmetic intent detected",
             "stages": [
@@ -2603,12 +2603,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 23.659200000111014,
+          "latency_ms": 23.879200000010314,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-31caf45d38a1",
+          "trace_id": "trace-e0c6bf10bc3c",
           "metadata": {
             "routing": {
               "model": "english",
@@ -2638,12 +2638,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 540.2888000007806,
+          "latency_ms": 539.1541999997571,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-d52300834982",
+          "trace_id": "trace-85e751a8feaf",
           "metadata": {
             "stages": [
               "llm"
@@ -2663,12 +2663,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 1724.273699999685,
+          "latency_ms": 1710.432199999559,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-7948ef5620a9",
+          "trace_id": "trace-8006c1efa26f",
           "metadata": {
             "stages": [
               "laya",
@@ -2704,12 +2704,12 @@
           "probabilities": {},
           "probability_source": "deterministic_rule",
           "calibration_status": "not_applicable",
-          "latency_ms": 0.002099999619531445,
+          "latency_ms": 0.002200000380980782,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-18144987684d",
+          "trace_id": "trace-a1ccd03ba228",
           "metadata": {
             "reason": "retrieval/citation language detected",
             "stages": [
@@ -2731,12 +2731,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 18.697299999985262,
+          "latency_ms": 18.926599999758764,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-ddb53cdfc2e3",
+          "trace_id": "trace-d0e5260659b6",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -2766,12 +2766,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 542.468600000575,
+          "latency_ms": 543.0825999992521,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-bf14371291c0",
+          "trace_id": "trace-7be97d675b20",
           "metadata": {
             "stages": [
               "llm"
@@ -2791,12 +2791,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 1737.6130000011472,
+          "latency_ms": 1749.3738000011945,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-1e549caf35a0",
+          "trace_id": "trace-4a422fabb73c",
           "metadata": {
             "stages": [
               "laya",
@@ -2832,12 +2832,12 @@
           "probabilities": {},
           "probability_source": "deterministic_rule",
           "calibration_status": "not_applicable",
-          "latency_ms": 0.00540000110049732,
+          "latency_ms": 0.00529999852005858,
           "selected_tool": "lookup_faq",
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-3c1225c9b73f",
+          "trace_id": "trace-8f069a37426d",
           "metadata": {
             "reason": "explicit tool or arithmetic intent detected",
             "stages": [
@@ -2859,12 +2859,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 18.778900001052534,
+          "latency_ms": 23.983299999599694,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-8e822a88cf88",
+          "trace_id": "trace-b3696c575a43",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -2894,12 +2894,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 541.0475999997288,
+          "latency_ms": 539.7274000006291,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-4836b54d5579",
+          "trace_id": "trace-bb002e1f9041",
           "metadata": {
             "stages": [
               "llm"
@@ -2919,12 +2919,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 1738.4819999988395,
+          "latency_ms": 1710.5430999999953,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-416256ff220f",
+          "trace_id": "trace-825679ede296",
           "metadata": {
             "stages": [
               "laya",
@@ -2965,7 +2965,7 @@
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-83ffe04af22c",
+          "trace_id": "trace-7e1408b25b4c",
           "metadata": {
             "reason": "retrieval/citation language detected",
             "stages": [
@@ -2987,12 +2987,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 18.485599999621627,
+          "latency_ms": 18.80399999936344,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-61a9e195a996",
+          "trace_id": "trace-12db02986d59",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -3022,12 +3022,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 547.5679999999556,
+          "latency_ms": 539.0408000002935,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-61cff088747e",
+          "trace_id": "trace-61ef51390e0a",
           "metadata": {
             "stages": [
               "llm"
@@ -3047,12 +3047,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 1717.2863000014331,
+          "latency_ms": 1704.798299999311,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-aa6deaa6307f",
+          "trace_id": "trace-7f42c186257d",
           "metadata": {
             "stages": [
               "laya",
@@ -3090,12 +3090,12 @@
           "probabilities": {},
           "probability_source": "deterministic_rule",
           "calibration_status": "not_applicable",
-          "latency_ms": 0.002999999196617864,
+          "latency_ms": 0.003099999958067201,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-583d1862c4e2",
+          "trace_id": "trace-18a0adbd6f99",
           "metadata": {
             "reason": "retrieval/citation language detected",
             "stages": [
@@ -3117,12 +3117,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 20.886799999061623,
+          "latency_ms": 19.935100001021056,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-8aa6c9c57e37",
+          "trace_id": "trace-dc5b31a85584",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -3152,12 +3152,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 541.4336999983789,
+          "latency_ms": 528.6409999989701,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-05699a0ac6be",
+          "trace_id": "trace-25e583da96c5",
           "metadata": {
             "stages": [
               "llm"
@@ -3177,12 +3177,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 1684.7585000014078,
+          "latency_ms": 1718.3566999992763,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-3e7195abca38",
+          "trace_id": "trace-55d0632aa381",
           "metadata": {
             "stages": [
               "laya",
@@ -3218,12 +3218,12 @@
           "probabilities": {},
           "probability_source": "deterministic_rule",
           "calibration_status": "not_applicable",
-          "latency_ms": 0.002300001142430119,
+          "latency_ms": 0.0022999993234407157,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-d149aaa6b8a9",
+          "trace_id": "trace-e4529100dc75",
           "metadata": {
             "reason": "retrieval/citation language detected",
             "stages": [
@@ -3245,12 +3245,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 34.447199999704026,
+          "latency_ms": 19.639500000266708,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-7cf116665540",
+          "trace_id": "trace-1d55dbc188e7",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -3280,12 +3280,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 556.6023000010318,
+          "latency_ms": 576.0152999991988,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-093b05463919",
+          "trace_id": "trace-cfcd139e30b4",
           "metadata": {
             "stages": [
               "llm"
@@ -3305,12 +3305,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 1710.519899999781,
+          "latency_ms": 1684.4199000006483,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-42319b00c778",
+          "trace_id": "trace-2b0754544cef",
           "metadata": {
             "stages": [
               "laya",
@@ -3346,12 +3346,12 @@
           "probabilities": {},
           "probability_source": "deterministic_rule",
           "calibration_status": "not_applicable",
-          "latency_ms": 0.0018999999156221747,
+          "latency_ms": 0.0025000008463393897,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-fee8b74dcbd2",
+          "trace_id": "trace-27e38bcf2608",
           "metadata": {
             "reason": "retrieval/citation language detected",
             "stages": [
@@ -3373,12 +3373,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 22.91209999930288,
+          "latency_ms": 18.941199999972014,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-11f0c6e1e2be",
+          "trace_id": "trace-610442d1c7a4",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -3408,12 +3408,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 524.7383999994781,
+          "latency_ms": 520.7449000008637,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-10d551486b55",
+          "trace_id": "trace-9d7ce2865ff9",
           "metadata": {
             "stages": [
               "llm"
@@ -3433,12 +3433,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 1711.3843000006455,
+          "latency_ms": 1681.363899999269,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-2098b0d13e51",
+          "trace_id": "trace-d57f4d7b606c",
           "metadata": {
             "stages": [
               "laya",
@@ -3474,12 +3474,12 @@
           "probabilities": {},
           "probability_source": "deterministic_rule",
           "calibration_status": "not_applicable",
-          "latency_ms": 0.0022999993234407157,
+          "latency_ms": 0.002099999619531445,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-1636e7bde3b1",
+          "trace_id": "trace-5c961a63106a",
           "metadata": {
             "reason": "retrieval/citation language detected",
             "stages": [
@@ -3501,12 +3501,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 19.37240000006568,
+          "latency_ms": 19.129899999825284,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-4d4cc7ff6024",
+          "trace_id": "trace-e4d049aaefe8",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -3536,12 +3536,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 556.6933000009158,
+          "latency_ms": 594.3148000005749,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-97046ff3b4f6",
+          "trace_id": "trace-9e2f7a6b1d7d",
           "metadata": {
             "stages": [
               "llm"
@@ -3561,12 +3561,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 1735.2568000005704,
+          "latency_ms": 1701.1806999998953,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-0c6eed191d48",
+          "trace_id": "trace-9ebb4918aec7",
           "metadata": {
             "stages": [
               "laya",
@@ -3602,12 +3602,12 @@
           "probabilities": {},
           "probability_source": "deterministic_rule",
           "calibration_status": "not_applicable",
-          "latency_ms": 0.004600000465870835,
+          "latency_ms": 0.004800000169780105,
           "selected_tool": "lookup_faq",
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-f95714162a5b",
+          "trace_id": "trace-f8059cfac5fc",
           "metadata": {
             "reason": "explicit tool or arithmetic intent detected",
             "stages": [
@@ -3629,12 +3629,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 23.41850000084378,
+          "latency_ms": 23.608299999978044,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-13c7f0d94a0e",
+          "trace_id": "trace-1ed28f1e743e",
           "metadata": {
             "routing": {
               "model": "english",
@@ -3664,12 +3664,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 532.1375000003172,
+          "latency_ms": 531.6208000003826,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-32dc7dec5b79",
+          "trace_id": "trace-7fc2075a25c3",
           "metadata": {
             "stages": [
               "llm"
@@ -3689,12 +3689,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 1681.8472999984806,
+          "latency_ms": 1669.2261999996845,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-bdea5b44f30a",
+          "trace_id": "trace-31e30d9a0c94",
           "metadata": {
             "stages": [
               "laya",
@@ -3735,7 +3735,7 @@
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-6a9025c7b8e5",
+          "trace_id": "trace-6f0666f95531",
           "metadata": {
             "reason": "no specialized intent detected",
             "stages": [
@@ -3757,12 +3757,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 18.971699999383418,
+          "latency_ms": 18.99339999908989,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-543c87c8a2e9",
+          "trace_id": "trace-f163dd013cb3",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -3792,12 +3792,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 548.1601999999839,
+          "latency_ms": 536.4754000001994,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-55b8f43178c9",
+          "trace_id": "trace-d537b6f1e63d",
           "metadata": {
             "stages": [
               "llm"
@@ -3817,12 +3817,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 1683.3722999999736,
+          "latency_ms": 1657.8337000009924,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-784ec1340a50",
+          "trace_id": "trace-00c1e9dcd735",
           "metadata": {
             "stages": [
               "laya",
@@ -3858,12 +3858,12 @@
           "probabilities": {},
           "probability_source": "deterministic_rule",
           "calibration_status": "not_applicable",
-          "latency_ms": 0.017299998944508843,
+          "latency_ms": 0.01739999970595818,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-b950d28bedf1",
+          "trace_id": "trace-3aa6a0eb030f",
           "metadata": {
             "reason": "retrieval/citation language detected",
             "stages": [
@@ -3885,12 +3885,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 41.66150000128255,
+          "latency_ms": 42.20779999923252,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-0954cd632dc6",
+          "trace_id": "trace-ef2e3eb5302d",
           "metadata": {
             "routing": {
               "model": "english",
@@ -3920,12 +3920,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 914.3466000004992,
+          "latency_ms": 933.7126999998873,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-bd85eacc7431",
+          "trace_id": "trace-d1a5f5044492",
           "metadata": {
             "stages": [
               "llm"
@@ -3945,12 +3945,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 2091.0242999998445,
+          "latency_ms": 2060.691999999108,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-0eb36648c1b0",
+          "trace_id": "trace-2fd5baed495c",
           "metadata": {
             "stages": [
               "laya",
@@ -3991,7 +3991,7 @@
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-983939844570",
+          "trace_id": "trace-d32b63fef04e",
           "metadata": {
             "reason": "retrieval/citation language detected",
             "stages": [
@@ -4013,12 +4013,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 18.92740000039339,
+          "latency_ms": 18.57220000056259,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-b40fb0ef7848",
+          "trace_id": "trace-a719d1bc6714",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -4048,12 +4048,12 @@
           "probabilities": {},
           "probability_source": "self_reported_confidence",
           "calibration_status": "not_a_probability",
-          "latency_ms": 542.5338999993983,
+          "latency_ms": 539.969999999812,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-73472720418c",
+          "trace_id": "trace-111b48d57130",
           "metadata": {
             "stages": [
               "llm"
@@ -4077,12 +4077,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 672.1241000013833,
+          "latency_ms": 670.4015000013896,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-b63ecafdb5bc",
+          "trace_id": "trace-089b31d3b0e1",
           "metadata": {
             "routing": {
               "model": "multilingual",

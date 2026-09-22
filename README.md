@@ -135,9 +135,9 @@ The table below is generated from
 | Strategy | Accuracy | Macro-F1 | Abstention | p50 / p95 ms | Brier / ECE |
 |---|---:|---:|---:|---:|---:|
 | Rules | 0.3667 | 0.2713 | 0.0500 | 0.003 / 0.018 | n/a / n/a |
-| Laya (`cuda`) | **0.7500** | **0.7436** | 0.0500 | 19.677 / 42.261 | 0.2962 / 0.0676 |
-| LLM (`qwen2.5:7b`, local Ollama) | 0.7167 | 0.7194 | 0.0500 | 545.733 / 918.574 | n/a / n/a |
-| Hybrid (threshold 0.90) | 0.5500 | 0.5263 | 0.0500 | 9.168 / 2067.819 | 0.0021 / 0.0269 |
+| Laya (`cuda`) | **0.7500** | **0.7436** | 0.0500 | 19.685 / 42.843 | 0.2962 / 0.0676 |
+| LLM (`qwen2.5:7b`, local Ollama) | 0.7167 | 0.7194 | 0.0500 | 540.750 / 940.697 | n/a / n/a |
+| Hybrid (threshold 0.90) | 0.5500 | 0.5263 | 0.0500 | 9.316 / 2063.055 | 0.0021 / 0.0269 |
 
 Interpretation is deliberately limited: on this held-out synthetic corpus Laya
 was the best of the four, while Hybrid reduced median latency on obvious rule
@@ -145,9 +145,10 @@ cases but paid a large p95 when escalating to the local LLM and did not improve
 accuracy. On the same 60 cases, Hybrid made 22 LLM calls versus 60 for the full
 LLM baseline (38 fewer, 63.33% call reduction). The provider was local and cost
 rates were configured as zero, so the artifact reports estimated USD savings of
-`0.0`; no cloud-dollar saving is claimed. The Hybrid Brier/ECE sample contains
-only seven Laya-accepted probability vectors, so it is selection-biased and is
-not directly comparable to Laya's 55-vector sample. LLM self-reported confidence
+`0.0`; no cloud-dollar saving is claimed. Each strategy produced 2
+`false_auto_accept` decisions out of 5 expected-abstention cases (rate 0.40),
+so none is approved as a strict abstention safety gate. The Hybrid Brier/ECE
+sample contains only seven Laya-accepted probability vectors, so it is selection-biased and is not directly comparable to Laya's 55-vector sample. LLM self-reported confidence is explicitly excluded from Brier/ECE because it is not a calibrated probability.
 For language slices, the same artifact reports PT-BR accuracy of Rules 0.2917,
 Laya multilingual 0.7083, local LLM 0.7917, and Hybrid 0.5417 (n=24 each);
 these are measurements, not a multilingual guarantee.

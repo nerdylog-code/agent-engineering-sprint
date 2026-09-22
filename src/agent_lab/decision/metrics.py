@@ -97,6 +97,8 @@ def summarize_results(
     llm_calls = sum(1 for _, result in items if "llm" in result.metadata.get("stages", []))
     input_tokens = sum(int(result.metadata.get("input_tokens", 0) or 0) for _, result in items)
     output_tokens = sum(int(result.metadata.get("output_tokens", 0) or 0) for _, result in items)
+    false_auto_accept = sum(expected == "abstain" and actual is not None for expected, actual in pairs)
+    expected_abstentions = sum(expected == "abstain" for expected, _ in pairs)
     return {
         "count": len(items),
         "accuracy": sum(correct) / len(correct) if correct else None,
@@ -107,6 +109,10 @@ def summarize_results(
         "incorrect_automatic_routing": sum(
             actual is not None and actual != expected for expected, actual in pairs
         ),
+        "false_auto_accept": false_auto_accept,
+        "false_auto_accept_rate": false_auto_accept / expected_abstentions
+        if expected_abstentions
+        else None,
         "fallback_rate": sum(result.fallback for _, result in items) / len(items)
         if items
         else None,

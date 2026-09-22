@@ -105,7 +105,8 @@ Threshold selection is calibration-only: grid `[0.50, 0.60, 0.70, 0.75, 0.80,
 0.85, 0.90, 0.95]`, retain accuracy within 0.05 of the grid maximum, then
 choose the lowest ECE under the 0.90 escalation budget. This selected `0.90`
 for the held-out Hybrid run; the selection and cache policy are recorded in
-`evidence/router-benchmark-calibration.json`.
+`evidence/router-benchmark-calibration.json`. The metrics also report
+`false_auto_accept`: an automatic route when the gold disposition is abstain.
 
 ## Evidence commands
 

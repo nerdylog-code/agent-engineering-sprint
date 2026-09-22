@@ -41,6 +41,14 @@ def test_summary_does_not_treat_self_report_as_probability() -> None:
     assert summary["calibration_sample_count"] == 1
 
 
+def test_summary_exposes_false_auto_accept() -> None:
+    result = _result("general_agent", None, {}, disposition="route")
+    summary = summarize_results([("abstain", result)])
+    assert summary["false_auto_accept"] == 1
+    assert summary["false_auto_accept_rate"] == 1.0
+
+
+
 def test_metrics_helpers_are_deterministic() -> None:
     pairs = [
         ("general_agent", "general_agent"),

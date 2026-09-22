@@ -205,9 +205,9 @@ No held-out final (60 casos; números gerados em
 | Estratégia | Accuracy | Macro-F1 | p50 / p95 ms | Brier / ECE |
 |---|---:|---:|---:|---:|
 | Rules | 0.3667 | 0.2713 | 0.003 / 0.018 | n/a / n/a |
-| Laya CUDA | **0.7500** | **0.7436** | 19.677 / 42.261 | 0.2962 / 0.0676 |
-| LLM local `qwen2.5:7b` | 0.7167 | 0.7194 | 545.733 / 918.574 | n/a / n/a |
-| Hybrid, threshold 0.90 | 0.5500 | 0.5263 | 9.168 / 2067.819 | 0.0021 / 0.0269 |
+| Laya CUDA | **0.7500** | **0.7436** | 19.685 / 42.843 | 0.2962 / 0.0676 |
+| LLM local `qwen2.5:7b` | 0.7167 | 0.7194 | 540.750 / 940.697 | n/a / n/a |
+| Hybrid, threshold 0.90 | 0.5500 | 0.5263 | 9.316 / 2063.055 | 0.0021 / 0.0269 |
 
 Esses números valem somente para este corpus sintético. O Hybrid fez 22 chamadas
 LLM contra 60 do baseline LLM (38 a menos; redução de 63,33%). O provider foi
