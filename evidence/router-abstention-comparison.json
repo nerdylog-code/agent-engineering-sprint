@@ -10,7 +10,7 @@
     "false_auto_accept_rate": 0.9393939393939394,
     "unsafe_auto_route": 35,
     "unsafe_auto_route_rate": 0.7777777777777778,
-    "latency_ms": 1457.0197488889285,
+    "latency_ms": 2282.1362844444393,
     "llm_calls": 0
   },
   "laya_raw_safety": {
@@ -24,7 +24,7 @@
     "false_auto_accept_rate": 0.18181818181818182,
     "unsafe_auto_route": 10,
     "unsafe_auto_route_rate": 0.2222222222222222,
-    "latency_ms": 9.087713333388415,
+    "latency_ms": 9.012379999997696,
     "llm_calls": 0
   },
   "laya_threshold": {
@@ -38,7 +38,7 @@
     "false_auto_accept_rate": 0.42424242424242425,
     "unsafe_auto_route": 15,
     "unsafe_auto_route_rate": 0.3333333333333333,
-    "latency_ms": 21.499577777689815,
+    "latency_ms": 22.559222222217713,
     "llm_calls": 0
   },
   "laya_threshold_safety": {
@@ -52,7 +52,7 @@
     "false_auto_accept_rate": 0.030303030303030304,
     "unsafe_auto_route": 2,
     "unsafe_auto_route_rate": 0.044444444444444446,
-    "latency_ms": 9.203922222271407,
+    "latency_ms": 8.621428888889366,
     "llm_calls": 0
   },
   "laya_explicit": {
@@ -66,7 +66,7 @@
     "false_auto_accept_rate": 0.24242424242424243,
     "unsafe_auto_route": 9,
     "unsafe_auto_route_rate": 0.2,
-    "latency_ms": 21.068520000012036,
+    "latency_ms": 21.69159333336413,
     "llm_calls": 0
   },
   "laya_explicit_safety": {
@@ -80,7 +80,7 @@
     "false_auto_accept_rate": 0.0,
     "unsafe_auto_route": 1,
     "unsafe_auto_route_rate": 0.022222222222222223,
-    "latency_ms": 8.610933333269108,
+    "latency_ms": 8.600499999960853,
     "llm_calls": 0
   },
   "hybrid": {
@@ -94,7 +94,7 @@
     "false_auto_accept_rate": 0.9393939393939394,
     "unsafe_auto_route": 35,
     "unsafe_auto_route_rate": 0.7777777777777778,
-    "latency_ms": 308.4836844444201,
+    "latency_ms": 301.5647866666364,
     "llm_calls": 21
   },
   "hybrid_safety": {
@@ -108,7 +108,7 @@
     "false_auto_accept_rate": 0.18181818181818182,
     "unsafe_auto_route": 10,
     "unsafe_auto_route_rate": 0.2222222222222222,
-    "latency_ms": 147.34849555558563,
+    "latency_ms": 136.27936888889155,
     "llm_calls": 11
   },
   "rules_laya_agreement": {
@@ -122,7 +122,7 @@
     "false_auto_accept_rate": 0.0,
     "unsafe_auto_route": 0,
     "unsafe_auto_route_rate": 0.0,
-    "latency_ms": 21.957168888810784,
+    "latency_ms": 21.691128888899886,
     "llm_calls": 0
   },
   "laya_llm_agreement": {
@@ -136,7 +136,7 @@
     "false_auto_accept_rate": 0.18181818181818182,
     "unsafe_auto_route": 6,
     "unsafe_auto_route_rate": 0.13333333333333333,
-    "latency_ms": 479.24870222222023,
+    "latency_ms": 461.83511111107185,
     "llm_calls": 0
   },
   "laya_english": {
@@ -150,7 +150,7 @@
     "false_auto_accept_rate": 0.9393939393939394,
     "unsafe_auto_route": 33,
     "unsafe_auto_route_rate": 0.7333333333333333,
-    "latency_ms": 27.261822222297067,
+    "latency_ms": 25.236624444450072,
     "llm_calls": 0
   },
   "laya_multilingual": {
@@ -164,7 +164,7 @@
     "false_auto_accept_rate": 0.9393939393939394,
     "unsafe_auto_route": 36,
     "unsafe_auto_route_rate": 0.8,
-    "latency_ms": 19.674222222157468,
+    "latency_ms": 19.429026666592918,
     "llm_calls": 0
   }
 }

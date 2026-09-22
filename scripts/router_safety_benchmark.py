@@ -323,6 +323,8 @@ def main() -> int:
         report["selective_risk"] = {
             "score": "selected_probability",
             "thresholds": list(THRESHOLDS),
+            "selection_policy": "select highest calibration coverage with unsafe_auto_route_rate <= 0.05 and false_auto_accept == 0",
+            "selected_threshold_for_held_out": 0.80,
             "results": selective_sweep(laya_pairs, THRESHOLDS),
         }
     report["authorization_policy"] = {

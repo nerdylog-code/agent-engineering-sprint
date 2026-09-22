@@ -36,12 +36,12 @@
         }
       },
       "latency_ms": {
-        "p50": 26.476100000763836,
-        "p95": 43.70495999974078,
-        "p99": 57.03257999994094,
-        "mean": 27.261822222297067
+        "p50": 24.609000000054948,
+        "p95": 41.70516000031054,
+        "p99": 47.26385600002688,
+        "mean": 25.236624444450072
       },
-      "throughput_per_second": 36.68133376580065,
+      "throughput_per_second": 39.62495072196217,
       "brier_score": 0.45869730833333333,
       "ece": 0.48189999999999994,
       "calibration_sample_count": 12,
@@ -60,7 +60,7 @@
       "false_auto_accept_rate": 0.9393939393939394,
       "unsafe_auto_route": 33,
       "unsafe_auto_route_rate": 0.7333333333333333,
-      "latency_ms": 27.261822222297067,
+      "latency_ms": 25.236624444450072,
       "llm_calls": 0
     },
     "ptbr_rows": [
@@ -88,12 +88,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 24.964299999737705,
+          "latency_ms": 25.497100000393402,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-b87aacc2e87f",
+          "trace_id": "trace-5c9d044452ef",
           "metadata": {
             "routing": {
               "model": "english",
@@ -116,7 +116,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-b87aacc2e87f",
+          "trace_id": "trace-5c9d044452ef",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "tool_agent",
@@ -134,7 +134,7 @@
             "tool_agent": 0.7872,
             "rag_agent": 0.0986
           },
-          "latency_ms": 24.964299999737705,
+          "latency_ms": 25.497100000393402,
           "fallback": false,
           "fallback_reason": null,
           "language": "pt-BR",
@@ -167,12 +167,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 25.313099999948463,
+          "latency_ms": 24.713400000109687,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-d75c282a1107",
+          "trace_id": "trace-f541c08e4b00",
           "metadata": {
             "routing": {
               "model": "english",
@@ -195,7 +195,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-d75c282a1107",
+          "trace_id": "trace-f541c08e4b00",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "tool_agent",
@@ -213,7 +213,7 @@
             "tool_agent": 0.3566,
             "rag_agent": 0.322
           },
-          "latency_ms": 25.313099999948463,
+          "latency_ms": 24.713400000109687,
           "fallback": false,
           "fallback_reason": null,
           "language": "mixed",
@@ -246,12 +246,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 24.903399999857356,
+          "latency_ms": 24.75330000015674,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-ca9203f3b422",
+          "trace_id": "trace-4bc780d865cf",
           "metadata": {
             "routing": {
               "model": "english",
@@ -274,7 +274,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-ca9203f3b422",
+          "trace_id": "trace-4bc780d865cf",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "general_agent",
@@ -292,7 +292,7 @@
             "tool_agent": 0.4193,
             "rag_agent": 0.1395
           },
-          "latency_ms": 24.903399999857356,
+          "latency_ms": 24.75330000015674,
           "fallback": false,
           "fallback_reason": null,
           "language": "pt-BR",
@@ -325,12 +325,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 26.47160000014992,
+          "latency_ms": 24.55420000023878,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-ffb5ae28c95b",
+          "trace_id": "trace-bf082a0d5359",
           "metadata": {
             "routing": {
               "model": "english",
@@ -353,7 +353,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-ffb5ae28c95b",
+          "trace_id": "trace-bf082a0d5359",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "general_agent",
@@ -371,7 +371,7 @@
             "tool_agent": 0.3725,
             "rag_agent": 0.1504
           },
-          "latency_ms": 26.47160000014992,
+          "latency_ms": 24.55420000023878,
           "fallback": false,
           "fallback_reason": null,
           "language": "mixed",
@@ -404,12 +404,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 24.561700000049314,
+          "latency_ms": 24.1835999995601,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-970b533670af",
+          "trace_id": "trace-86a466003fde",
           "metadata": {
             "routing": {
               "model": "english",
@@ -432,7 +432,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-970b533670af",
+          "trace_id": "trace-86a466003fde",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "tool_agent",
@@ -450,7 +450,7 @@
             "tool_agent": 0.4467,
             "rag_agent": 0.2174
           },
-          "latency_ms": 24.561700000049314,
+          "latency_ms": 24.1835999995601,
           "fallback": false,
           "fallback_reason": null,
           "language": "pt-BR",
@@ -483,12 +483,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 26.59880000010162,
+          "latency_ms": 25.267299999541137,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-ec332fd98f0b",
+          "trace_id": "trace-452df2471911",
           "metadata": {
             "routing": {
               "model": "english",
@@ -511,7 +511,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-ec332fd98f0b",
+          "trace_id": "trace-452df2471911",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "general_agent",
@@ -529,7 +529,7 @@
             "tool_agent": 0.3414,
             "rag_agent": 0.2925
           },
-          "latency_ms": 26.59880000010162,
+          "latency_ms": 25.267299999541137,
           "fallback": false,
           "fallback_reason": null,
           "language": "mixed",
@@ -562,12 +562,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 28.912000000673288,
+          "latency_ms": 33.84939999978087,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-9050055fcfa3",
+          "trace_id": "trace-94096da60f37",
           "metadata": {
             "routing": {
               "model": "english",
@@ -590,7 +590,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-9050055fcfa3",
+          "trace_id": "trace-94096da60f37",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "general_agent",
@@ -608,7 +608,7 @@
             "tool_agent": 0.3068,
             "rag_agent": 0.1993
           },
-          "latency_ms": 28.912000000673288,
+          "latency_ms": 33.84939999978087,
           "fallback": false,
           "fallback_reason": null,
           "language": "mixed",
@@ -641,12 +641,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 26.081300000441843,
+          "latency_ms": 25.07580000019516,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-d910c33185ae",
+          "trace_id": "trace-c825f1efd316",
           "metadata": {
             "routing": {
               "model": "english",
@@ -669,7 +669,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-d910c33185ae",
+          "trace_id": "trace-c825f1efd316",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "tool_agent",
@@ -687,7 +687,7 @@
             "tool_agent": 0.8597,
             "rag_agent": 0.0664
           },
-          "latency_ms": 26.081300000441843,
+          "latency_ms": 25.07580000019516,
           "fallback": false,
           "fallback_reason": null,
           "language": "pt-BR",
@@ -720,12 +720,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 26.476100000763836,
+          "latency_ms": 25.219600000127684,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-a9d53309c0df",
+          "trace_id": "trace-a6cd42e31821",
           "metadata": {
             "routing": {
               "model": "english",
@@ -748,7 +748,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-a9d53309c0df",
+          "trace_id": "trace-a6cd42e31821",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "tool_agent",
@@ -766,7 +766,7 @@
             "tool_agent": 0.597,
             "rag_agent": 0.1392
           },
-          "latency_ms": 26.476100000763836,
+          "latency_ms": 25.219600000127684,
           "fallback": false,
           "fallback_reason": null,
           "language": "mixed",
@@ -799,12 +799,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 27.931500000704546,
+          "latency_ms": 24.82730000065203,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-2f25b5985012",
+          "trace_id": "trace-99f544a5055b",
           "metadata": {
             "routing": {
               "model": "english",
@@ -827,7 +827,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-2f25b5985012",
+          "trace_id": "trace-99f544a5055b",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "tool_agent",
@@ -845,7 +845,7 @@
             "tool_agent": 0.8954,
             "rag_agent": 0.039
           },
-          "latency_ms": 27.931500000704546,
+          "latency_ms": 24.82730000065203,
           "fallback": false,
           "fallback_reason": null,
           "language": "pt-BR",
@@ -878,12 +878,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 26.71239999926911,
+          "latency_ms": 25.6718999999066,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-878cfb0d9b48",
+          "trace_id": "trace-e680eba42c7f",
           "metadata": {
             "routing": {
               "model": "english",
@@ -906,7 +906,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-878cfb0d9b48",
+          "trace_id": "trace-e680eba42c7f",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "general_agent",
@@ -924,7 +924,7 @@
             "tool_agent": 0.225,
             "rag_agent": 0.2893
           },
-          "latency_ms": 26.71239999926911,
+          "latency_ms": 25.6718999999066,
           "fallback": false,
           "fallback_reason": null,
           "language": "mixed",
@@ -957,12 +957,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 26.16829999988113,
+          "latency_ms": 24.609000000054948,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-d94831e19131",
+          "trace_id": "trace-666a70b2fabe",
           "metadata": {
             "routing": {
               "model": "english",
@@ -985,7 +985,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-d94831e19131",
+          "trace_id": "trace-666a70b2fabe",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "general_agent",
@@ -1003,7 +1003,7 @@
             "tool_agent": 0.3427,
             "rag_agent": 0.2031
           },
-          "latency_ms": 26.16829999988113,
+          "latency_ms": 24.609000000054948,
           "fallback": false,
           "fallback_reason": null,
           "language": "pt-BR",
@@ -1036,12 +1036,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 25.497000000541448,
+          "latency_ms": 24.173099999643455,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-0856f5c98a8c",
+          "trace_id": "trace-29effc32f9cf",
           "metadata": {
             "routing": {
               "model": "english",
@@ -1064,7 +1064,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-0856f5c98a8c",
+          "trace_id": "trace-29effc32f9cf",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "rag_agent",
@@ -1082,7 +1082,7 @@
             "tool_agent": 0.3815,
             "rag_agent": 0.4113
           },
-          "latency_ms": 25.497000000541448,
+          "latency_ms": 24.173099999643455,
           "fallback": false,
           "fallback_reason": null,
           "language": "mixed",
@@ -1115,12 +1115,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 25.80020000004879,
+          "latency_ms": 24.084099999527098,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-c43b4c39d721",
+          "trace_id": "trace-6b175fda7052",
           "metadata": {
             "routing": {
               "model": "english",
@@ -1143,7 +1143,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-c43b4c39d721",
+          "trace_id": "trace-6b175fda7052",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "tool_agent",
@@ -1161,7 +1161,7 @@
             "tool_agent": 0.3566,
             "rag_agent": 0.322
           },
-          "latency_ms": 25.80020000004879,
+          "latency_ms": 24.084099999527098,
           "fallback": false,
           "fallback_reason": null,
           "language": "pt-BR",
@@ -1194,12 +1194,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 31.989600000088103,
+          "latency_ms": 24.37629999985802,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-0990e7a1daed",
+          "trace_id": "trace-57cd154190ea",
           "metadata": {
             "routing": {
               "model": "english",
@@ -1222,7 +1222,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-0990e7a1daed",
+          "trace_id": "trace-57cd154190ea",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "general_agent",
@@ -1240,7 +1240,7 @@
             "tool_agent": 0.3852,
             "rag_agent": 0.1589
           },
-          "latency_ms": 31.989600000088103,
+          "latency_ms": 24.37629999985802,
           "fallback": false,
           "fallback_reason": null,
           "language": "mixed",
@@ -1273,12 +1273,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 31.500600000072154,
+          "latency_ms": 25.140400000054797,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-7acfa634d567",
+          "trace_id": "trace-3502de04b965",
           "metadata": {
             "routing": {
               "model": "english",
@@ -1301,7 +1301,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-7acfa634d567",
+          "trace_id": "trace-3502de04b965",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "general_agent",
@@ -1319,7 +1319,7 @@
             "tool_agent": 0.3725,
             "rag_agent": 0.1504
           },
-          "latency_ms": 31.500600000072154,
+          "latency_ms": 25.140400000054797,
           "fallback": false,
           "fallback_reason": null,
           "language": "pt-BR",
@@ -1353,7 +1353,7 @@
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-3790cbe2fb6b",
+          "trace_id": "trace-a2f2f315cd19",
           "metadata": {
             "reason": "empty_input",
             "stages": [
@@ -1362,7 +1362,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-3790cbe2fb6b",
+          "trace_id": "trace-a2f2f315cd19",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": null,
@@ -1409,12 +1409,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 25.242400000024645,
+          "latency_ms": 24.323099999492115,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-48cf1ca81976",
+          "trace_id": "trace-43717c91e37e",
           "metadata": {
             "routing": {
               "model": "english",
@@ -1437,7 +1437,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-48cf1ca81976",
+          "trace_id": "trace-43717c91e37e",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "general_agent",
@@ -1455,7 +1455,7 @@
             "tool_agent": 0.3414,
             "rag_agent": 0.2925
           },
-          "latency_ms": 25.242400000024645,
+          "latency_ms": 24.323099999492115,
           "fallback": false,
           "fallback_reason": null,
           "language": "pt-BR",
@@ -1488,12 +1488,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 26.392399999167537,
+          "latency_ms": 24.342100000467326,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-624c0f8a7c11",
+          "trace_id": "trace-b876c2688005",
           "metadata": {
             "routing": {
               "model": "english",
@@ -1516,7 +1516,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-624c0f8a7c11",
+          "trace_id": "trace-b876c2688005",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "tool_agent",
@@ -1534,7 +1534,7 @@
             "tool_agent": 0.6445,
             "rag_agent": 0.0977
           },
-          "latency_ms": 26.392399999167537,
+          "latency_ms": 24.342100000467326,
           "fallback": false,
           "fallback_reason": null,
           "language": "mixed",
@@ -1567,12 +1567,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 25.47919999960868,
+          "latency_ms": 24.377499999900465,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-8b6f87bd28bf",
+          "trace_id": "trace-47ff2965c506",
           "metadata": {
             "routing": {
               "model": "english",
@@ -1595,7 +1595,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-8b6f87bd28bf",
+          "trace_id": "trace-47ff2965c506",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "general_agent",
@@ -1613,7 +1613,7 @@
             "tool_agent": 0.3068,
             "rag_agent": 0.1993
           },
-          "latency_ms": 25.47919999960868,
+          "latency_ms": 24.377499999900465,
           "fallback": false,
           "fallback_reason": null,
           "language": "pt-BR",
@@ -1646,12 +1646,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 27.467700000670447,
+          "latency_ms": 24.432299999716633,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-073b52d5f411",
+          "trace_id": "trace-1d6694069a8a",
           "metadata": {
             "routing": {
               "model": "english",
@@ -1674,7 +1674,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-073b52d5f411",
+          "trace_id": "trace-1d6694069a8a",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "tool_agent",
@@ -1692,7 +1692,7 @@
             "tool_agent": 0.4774,
             "rag_agent": 0.2219
           },
-          "latency_ms": 27.467700000670447,
+          "latency_ms": 24.432299999716633,
           "fallback": false,
           "fallback_reason": null,
           "language": "mixed",
@@ -1725,12 +1725,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 29.066899999634188,
+          "latency_ms": 24.81430000079854,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-0efe1395cbed",
+          "trace_id": "trace-16d324e09c40",
           "metadata": {
             "routing": {
               "model": "english",
@@ -1753,7 +1753,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-0efe1395cbed",
+          "trace_id": "trace-16d324e09c40",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "tool_agent",
@@ -1771,7 +1771,7 @@
             "tool_agent": 0.597,
             "rag_agent": 0.1392
           },
-          "latency_ms": 29.066899999634188,
+          "latency_ms": 24.81430000079854,
           "fallback": false,
           "fallback_reason": null,
           "language": "pt-BR",
@@ -1804,12 +1804,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 46.633799999654,
+          "latency_ms": 43.669100000442995,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-e531359902ba",
+          "trace_id": "trace-534799586134",
           "metadata": {
             "routing": {
               "model": "english",
@@ -1832,7 +1832,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-e531359902ba",
+          "trace_id": "trace-534799586134",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "tool_agent",
@@ -1850,7 +1850,7 @@
             "tool_agent": 0.4718,
             "rag_agent": 0.2089
           },
-          "latency_ms": 46.633799999654,
+          "latency_ms": 43.669100000442995,
           "fallback": false,
           "fallback_reason": null,
           "language": "mixed",
@@ -1883,12 +1883,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 24.633799999719486,
+          "latency_ms": 24.556200000006356,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-cd99a8637b7d",
+          "trace_id": "trace-0b0f61866252",
           "metadata": {
             "routing": {
               "model": "english",
@@ -1911,7 +1911,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-cd99a8637b7d",
+          "trace_id": "trace-0b0f61866252",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "general_agent",
@@ -1929,7 +1929,7 @@
             "tool_agent": 0.2725,
             "rag_agent": 0.2078
           },
-          "latency_ms": 24.633799999719486,
+          "latency_ms": 24.556200000006356,
           "fallback": false,
           "fallback_reason": null,
           "language": "pt-BR",
@@ -1962,12 +1962,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 25.43760000025941,
+          "latency_ms": 24.77180000005319,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-2aebdb885b77",
+          "trace_id": "trace-212a4c5eb90f",
           "metadata": {
             "routing": {
               "model": "english",
@@ -1990,7 +1990,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-2aebdb885b77",
+          "trace_id": "trace-212a4c5eb90f",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "tool_agent",
@@ -2008,7 +2008,7 @@
             "tool_agent": 0.7872,
             "rag_agent": 0.0986
           },
-          "latency_ms": 25.43760000025941,
+          "latency_ms": 24.77180000005319,
           "fallback": false,
           "fallback_reason": null,
           "language": "mixed",
@@ -2041,12 +2041,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 26.936600000226463,
+          "latency_ms": 24.31229999911011,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-0db940785d84",
+          "trace_id": "trace-666099f05de3",
           "metadata": {
             "routing": {
               "model": "english",
@@ -2069,7 +2069,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-0db940785d84",
+          "trace_id": "trace-666099f05de3",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "rag_agent",
@@ -2087,7 +2087,7 @@
             "tool_agent": 0.3815,
             "rag_agent": 0.4113
           },
-          "latency_ms": 26.936600000226463,
+          "latency_ms": 24.31229999911011,
           "fallback": false,
           "fallback_reason": null,
           "language": "pt-BR",
@@ -2120,12 +2120,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 26.018099999419064,
+          "latency_ms": 24.602999999842723,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-3bf49f62a6ac",
+          "trace_id": "trace-9a3b664f0d05",
           "metadata": {
             "routing": {
               "model": "english",
@@ -2148,7 +2148,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-3bf49f62a6ac",
+          "trace_id": "trace-9a3b664f0d05",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "rag_agent",
@@ -2166,7 +2166,7 @@
             "tool_agent": 0.2302,
             "rag_agent": 0.5803
           },
-          "latency_ms": 26.018099999419064,
+          "latency_ms": 24.602999999842723,
           "fallback": false,
           "fallback_reason": null,
           "language": "mixed",
@@ -2199,12 +2199,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 26.742299999568786,
+          "latency_ms": 24.57109999977547,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-e2be57c8b9e8",
+          "trace_id": "trace-004cc95a85cc",
           "metadata": {
             "routing": {
               "model": "english",
@@ -2227,7 +2227,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-e2be57c8b9e8",
+          "trace_id": "trace-004cc95a85cc",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "general_agent",
@@ -2245,7 +2245,7 @@
             "tool_agent": 0.3852,
             "rag_agent": 0.1589
           },
-          "latency_ms": 26.742299999568786,
+          "latency_ms": 24.57109999977547,
           "fallback": false,
           "fallback_reason": null,
           "language": "pt-BR",
@@ -2278,12 +2278,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 27.852500000335567,
+          "latency_ms": 24.972300000627,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-285e7db3e955",
+          "trace_id": "trace-5982dc0a5f99",
           "metadata": {
             "routing": {
               "model": "english",
@@ -2306,7 +2306,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-285e7db3e955",
+          "trace_id": "trace-5982dc0a5f99",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "tool_agent",
@@ -2324,7 +2324,7 @@
             "tool_agent": 0.5134,
             "rag_agent": 0.1795
           },
-          "latency_ms": 27.852500000335567,
+          "latency_ms": 24.972300000627,
           "fallback": false,
           "fallback_reason": null,
           "language": "mixed",
@@ -2372,12 +2372,12 @@
         }
       },
       "latency_ms": {
-        "p50": 19.71659999981057,
-        "p95": 21.946679999746266,
-        "p99": 32.7736000002551,
-        "mean": 19.674222222157468
+        "p50": 19.671099999868602,
+        "p95": 20.467220000500674,
+        "p99": 32.438991999697464,
+        "mean": 19.429026666592918
       },
-      "throughput_per_second": 50.82793051273873,
+      "throughput_per_second": 51.46938223721943,
       "brier_score": 0.6020085233333333,
       "ece": 0.39005,
       "calibration_sample_count": 12,
@@ -2396,7 +2396,7 @@
       "false_auto_accept_rate": 0.9393939393939394,
       "unsafe_auto_route": 36,
       "unsafe_auto_route_rate": 0.8,
-      "latency_ms": 19.674222222157468,
+      "latency_ms": 19.429026666592918,
       "llm_calls": 0
     },
     "ptbr_rows": [
@@ -2424,12 +2424,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 21.620599999550905,
+          "latency_ms": 20.04579999993439,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-cd47a58fa0d6",
+          "trace_id": "trace-ef385b424c08",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -2452,7 +2452,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-cd47a58fa0d6",
+          "trace_id": "trace-ef385b424c08",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "tool_agent",
@@ -2470,7 +2470,7 @@
             "tool_agent": 0.9532,
             "rag_agent": 0.0438
           },
-          "latency_ms": 21.620599999550905,
+          "latency_ms": 20.04579999993439,
           "fallback": false,
           "fallback_reason": null,
           "language": "pt-BR",
@@ -2503,12 +2503,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 19.800500000201282,
+          "latency_ms": 19.366700000318815,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-e605e96454d5",
+          "trace_id": "trace-bef219cc5679",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -2531,7 +2531,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-e605e96454d5",
+          "trace_id": "trace-bef219cc5679",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "rag_agent",
@@ -2549,7 +2549,7 @@
             "tool_agent": 0.1208,
             "rag_agent": 0.6428
           },
-          "latency_ms": 19.800500000201282,
+          "latency_ms": 19.366700000318815,
           "fallback": false,
           "fallback_reason": null,
           "language": "mixed",
@@ -2582,12 +2582,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 19.93979999951989,
+          "latency_ms": 19.645999999738706,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-d827b57b3aa9",
+          "trace_id": "trace-cd56576e1de6",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -2610,7 +2610,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-d827b57b3aa9",
+          "trace_id": "trace-cd56576e1de6",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "tool_agent",
@@ -2628,7 +2628,7 @@
             "tool_agent": 0.9593,
             "rag_agent": 0.0187
           },
-          "latency_ms": 19.93979999951989,
+          "latency_ms": 19.645999999738706,
           "fallback": false,
           "fallback_reason": null,
           "language": "pt-BR",
@@ -2661,12 +2661,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 19.6538000000146,
+          "latency_ms": 19.421699999838893,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-f8af1d1df248",
+          "trace_id": "trace-8e8b92ed6aea",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -2689,7 +2689,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-f8af1d1df248",
+          "trace_id": "trace-8e8b92ed6aea",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "general_agent",
@@ -2707,7 +2707,7 @@
             "tool_agent": 0.007,
             "rag_agent": 0.0111
           },
-          "latency_ms": 19.6538000000146,
+          "latency_ms": 19.421699999838893,
           "fallback": false,
           "fallback_reason": null,
           "language": "mixed",
@@ -2740,12 +2740,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 18.94110000012006,
+          "latency_ms": 19.20909999989817,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-4eab04da0425",
+          "trace_id": "trace-c1ce55c7fbbf",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -2768,7 +2768,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-4eab04da0425",
+          "trace_id": "trace-c1ce55c7fbbf",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "rag_agent",
@@ -2786,7 +2786,7 @@
             "tool_agent": 0.1242,
             "rag_agent": 0.8585
           },
-          "latency_ms": 18.94110000012006,
+          "latency_ms": 19.20909999989817,
           "fallback": false,
           "fallback_reason": null,
           "language": "pt-BR",
@@ -2819,12 +2819,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 19.71659999981057,
+          "latency_ms": 20.222699999976612,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-22bb2f4dd78e",
+          "trace_id": "trace-97bf6c470699",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -2847,7 +2847,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-22bb2f4dd78e",
+          "trace_id": "trace-97bf6c470699",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "general_agent",
@@ -2865,7 +2865,7 @@
             "tool_agent": 0.0221,
             "rag_agent": 0.062
           },
-          "latency_ms": 19.71659999981057,
+          "latency_ms": 20.222699999976612,
           "fallback": false,
           "fallback_reason": null,
           "language": "mixed",
@@ -2898,12 +2898,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 21.400000000539876,
+          "latency_ms": 19.744700000046578,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-750dde0da61b",
+          "trace_id": "trace-85362089c690",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -2926,7 +2926,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-750dde0da61b",
+          "trace_id": "trace-85362089c690",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "general_agent",
@@ -2944,7 +2944,7 @@
             "tool_agent": 0.2693,
             "rag_agent": 0.0759
           },
-          "latency_ms": 21.400000000539876,
+          "latency_ms": 19.744700000046578,
           "fallback": false,
           "fallback_reason": null,
           "language": "mixed",
@@ -2977,12 +2977,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 20.881599999484024,
+          "latency_ms": 19.91089999955875,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-8a417ba88a4e",
+          "trace_id": "trace-f8400ead64f3",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -3005,7 +3005,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-8a417ba88a4e",
+          "trace_id": "trace-f8400ead64f3",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "tool_agent",
@@ -3023,7 +3023,7 @@
             "tool_agent": 1.0,
             "rag_agent": 0.0
           },
-          "latency_ms": 20.881599999484024,
+          "latency_ms": 19.91089999955875,
           "fallback": false,
           "fallback_reason": null,
           "language": "pt-BR",
@@ -3056,12 +3056,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 20.566300000609772,
+          "latency_ms": 20.049200000357814,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-51620e7bee4b",
+          "trace_id": "trace-7a5cb75871ce",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -3084,7 +3084,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-51620e7bee4b",
+          "trace_id": "trace-7a5cb75871ce",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "tool_agent",
@@ -3102,7 +3102,7 @@
             "tool_agent": 0.8708,
             "rag_agent": 0.0374
           },
-          "latency_ms": 20.566300000609772,
+          "latency_ms": 20.049200000357814,
           "fallback": false,
           "fallback_reason": null,
           "language": "mixed",
@@ -3135,12 +3135,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 19.30389999961335,
+          "latency_ms": 19.11519999976008,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-70f4c10e07a1",
+          "trace_id": "trace-22f075edb307",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -3163,7 +3163,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-70f4c10e07a1",
+          "trace_id": "trace-22f075edb307",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "tool_agent",
@@ -3181,7 +3181,7 @@
             "tool_agent": 0.9996,
             "rag_agent": 0.0003
           },
-          "latency_ms": 19.30389999961335,
+          "latency_ms": 19.11519999976008,
           "fallback": false,
           "fallback_reason": null,
           "language": "pt-BR",
@@ -3214,12 +3214,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 19.541199999366654,
+          "latency_ms": 20.139600000220526,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-0e40fa4c6598",
+          "trace_id": "trace-78f531191ec6",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -3242,7 +3242,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-0e40fa4c6598",
+          "trace_id": "trace-78f531191ec6",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "rag_agent",
@@ -3260,7 +3260,7 @@
             "tool_agent": 0.2122,
             "rag_agent": 0.4353
           },
-          "latency_ms": 19.541199999366654,
+          "latency_ms": 20.139600000220526,
           "fallback": false,
           "fallback_reason": null,
           "language": "mixed",
@@ -3293,12 +3293,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 19.757099999878847,
+          "latency_ms": 19.79479999954492,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-70abc7056ed3",
+          "trace_id": "trace-a880ecb6aa1f",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -3321,7 +3321,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-70abc7056ed3",
+          "trace_id": "trace-a880ecb6aa1f",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "rag_agent",
@@ -3339,7 +3339,7 @@
             "tool_agent": 0.0659,
             "rag_agent": 0.7809
           },
-          "latency_ms": 19.757099999878847,
+          "latency_ms": 19.79479999954492,
           "fallback": false,
           "fallback_reason": null,
           "language": "pt-BR",
@@ -3372,12 +3372,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 19.366599999557366,
+          "latency_ms": 19.990900000266265,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-af0f3477d3e2",
+          "trace_id": "trace-79316c99e391",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -3400,7 +3400,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-af0f3477d3e2",
+          "trace_id": "trace-79316c99e391",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "rag_agent",
@@ -3418,7 +3418,7 @@
             "tool_agent": 0.0081,
             "rag_agent": 0.991
           },
-          "latency_ms": 19.366599999557366,
+          "latency_ms": 19.990900000266265,
           "fallback": false,
           "fallback_reason": null,
           "language": "mixed",
@@ -3451,12 +3451,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 19.149300000208314,
+          "latency_ms": 19.352899999830697,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-5fd251f8139a",
+          "trace_id": "trace-87c1a52d7aa2",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -3479,7 +3479,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-5fd251f8139a",
+          "trace_id": "trace-87c1a52d7aa2",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "rag_agent",
@@ -3497,7 +3497,7 @@
             "tool_agent": 0.1208,
             "rag_agent": 0.6428
           },
-          "latency_ms": 19.149300000208314,
+          "latency_ms": 19.352899999830697,
           "fallback": false,
           "fallback_reason": null,
           "language": "pt-BR",
@@ -3530,12 +3530,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 19.535800000085146,
+          "latency_ms": 19.48369999990973,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-17e22d25e8ab",
+          "trace_id": "trace-a5de2b432938",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -3558,7 +3558,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-17e22d25e8ab",
+          "trace_id": "trace-a5de2b432938",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "tool_agent",
@@ -3576,7 +3576,7 @@
             "tool_agent": 0.7303,
             "rag_agent": 0.0386
           },
-          "latency_ms": 19.535800000085146,
+          "latency_ms": 19.48369999990973,
           "fallback": false,
           "fallback_reason": null,
           "language": "mixed",
@@ -3609,12 +3609,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 19.303999999465304,
+          "latency_ms": 19.57490000040707,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-9ba88cce3479",
+          "trace_id": "trace-8d7bce76408e",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -3637,7 +3637,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-9ba88cce3479",
+          "trace_id": "trace-8d7bce76408e",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "general_agent",
@@ -3655,7 +3655,7 @@
             "tool_agent": 0.007,
             "rag_agent": 0.0111
           },
-          "latency_ms": 19.303999999465304,
+          "latency_ms": 19.57490000040707,
           "fallback": false,
           "fallback_reason": null,
           "language": "pt-BR",
@@ -3689,7 +3689,7 @@
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-ea57f3b94e23",
+          "trace_id": "trace-dd6b795413cf",
           "metadata": {
             "reason": "empty_input",
             "stages": [
@@ -3698,7 +3698,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-ea57f3b94e23",
+          "trace_id": "trace-dd6b795413cf",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": null,
@@ -3745,12 +3745,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 19.33649999955378,
+          "latency_ms": 19.698000000062166,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-f0cdc10b802d",
+          "trace_id": "trace-c4be3e50bd59",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -3773,7 +3773,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-f0cdc10b802d",
+          "trace_id": "trace-c4be3e50bd59",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "general_agent",
@@ -3791,7 +3791,7 @@
             "tool_agent": 0.0221,
             "rag_agent": 0.062
           },
-          "latency_ms": 19.33649999955378,
+          "latency_ms": 19.698000000062166,
           "fallback": false,
           "fallback_reason": null,
           "language": "pt-BR",
@@ -3824,12 +3824,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 19.475100000818202,
+          "latency_ms": 19.624300000032235,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-91fd796402d2",
+          "trace_id": "trace-8e81063e4bb8",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -3852,7 +3852,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-91fd796402d2",
+          "trace_id": "trace-8e81063e4bb8",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "tool_agent",
@@ -3870,7 +3870,7 @@
             "tool_agent": 0.9268,
             "rag_agent": 0.0037
           },
-          "latency_ms": 19.475100000818202,
+          "latency_ms": 19.624300000032235,
           "fallback": false,
           "fallback_reason": null,
           "language": "mixed",
@@ -3903,12 +3903,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 19.892799999979616,
+          "latency_ms": 20.490100000642997,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-6f99051ef4f4",
+          "trace_id": "trace-44f5d2b07c0b",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -3931,7 +3931,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-6f99051ef4f4",
+          "trace_id": "trace-44f5d2b07c0b",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "general_agent",
@@ -3949,7 +3949,7 @@
             "tool_agent": 0.2693,
             "rag_agent": 0.0759
           },
-          "latency_ms": 19.892799999979616,
+          "latency_ms": 20.490100000642997,
           "fallback": false,
           "fallback_reason": null,
           "language": "pt-BR",
@@ -3982,12 +3982,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 19.944200000281853,
+          "latency_ms": 19.965099999353697,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-0e24e8551df3",
+          "trace_id": "trace-09fe5f8cdb63",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -4010,7 +4010,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-0e24e8551df3",
+          "trace_id": "trace-09fe5f8cdb63",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "general_agent",
@@ -4028,7 +4028,7 @@
             "tool_agent": 0.1171,
             "rag_agent": 0.3285
           },
-          "latency_ms": 19.944200000281853,
+          "latency_ms": 19.965099999353697,
           "fallback": false,
           "fallback_reason": null,
           "language": "mixed",
@@ -4061,12 +4061,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 20.036899999468005,
+          "latency_ms": 19.65420000033191,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-2dfef83af0c3",
+          "trace_id": "trace-dc9b7a914ef5",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -4089,7 +4089,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-2dfef83af0c3",
+          "trace_id": "trace-dc9b7a914ef5",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "tool_agent",
@@ -4107,7 +4107,7 @@
             "tool_agent": 0.8708,
             "rag_agent": 0.0374
           },
-          "latency_ms": 20.036899999468005,
+          "latency_ms": 19.65420000033191,
           "fallback": false,
           "fallback_reason": null,
           "language": "pt-BR",
@@ -4140,12 +4140,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 32.67700000014884,
+          "latency_ms": 32.39800000028481,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-86a7d5c5f0d5",
+          "trace_id": "trace-1d8234b4ea43",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -4168,7 +4168,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-86a7d5c5f0d5",
+          "trace_id": "trace-1d8234b4ea43",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "general_agent",
@@ -4186,7 +4186,7 @@
             "tool_agent": 0.3784,
             "rag_agent": 0.1994
           },
-          "latency_ms": 32.67700000014884,
+          "latency_ms": 32.39800000028481,
           "fallback": false,
           "fallback_reason": null,
           "language": "mixed",
@@ -4219,12 +4219,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 20.729500000015832,
+          "latency_ms": 19.587599999795202,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-e16983cd26a2",
+          "trace_id": "trace-1497f3c8ee9c",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -4247,7 +4247,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-e16983cd26a2",
+          "trace_id": "trace-1497f3c8ee9c",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "general_agent",
@@ -4265,7 +4265,7 @@
             "tool_agent": 0.2632,
             "rag_agent": 0.3598
           },
-          "latency_ms": 20.729500000015832,
+          "latency_ms": 19.587599999795202,
           "fallback": false,
           "fallback_reason": null,
           "language": "pt-BR",
@@ -4298,12 +4298,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 19.36999999998079,
+          "latency_ms": 19.611399999121204,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-413fe0789958",
+          "trace_id": "trace-4eebf9f44cf2",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -4326,7 +4326,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-413fe0789958",
+          "trace_id": "trace-4eebf9f44cf2",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "tool_agent",
@@ -4344,7 +4344,7 @@
             "tool_agent": 0.9532,
             "rag_agent": 0.0438
           },
-          "latency_ms": 19.36999999998079,
+          "latency_ms": 19.611399999121204,
           "fallback": false,
           "fallback_reason": null,
           "language": "mixed",
@@ -4377,12 +4377,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 19.705700000486104,
+          "latency_ms": 20.375699999931385,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-28b5526f9514",
+          "trace_id": "trace-afcb8c7b53ea",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -4405,7 +4405,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-28b5526f9514",
+          "trace_id": "trace-afcb8c7b53ea",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "rag_agent",
@@ -4423,7 +4423,7 @@
             "tool_agent": 0.0081,
             "rag_agent": 0.991
           },
-          "latency_ms": 19.705700000486104,
+          "latency_ms": 20.375699999931385,
           "fallback": false,
           "fallback_reason": null,
           "language": "pt-BR",
@@ -4456,12 +4456,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 20.266800000172225,
+          "latency_ms": 19.492199999149307,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-756f3500a698",
+          "trace_id": "trace-7fab145f95df",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -4484,7 +4484,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-756f3500a698",
+          "trace_id": "trace-7fab145f95df",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "rag_agent",
@@ -4502,7 +4502,7 @@
             "tool_agent": 0.0044,
             "rag_agent": 0.9954
           },
-          "latency_ms": 20.266800000172225,
+          "latency_ms": 19.492199999149307,
           "fallback": false,
           "fallback_reason": null,
           "language": "mixed",
@@ -4535,12 +4535,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 19.727699999748438,
+          "latency_ms": 19.628000000011525,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-cc550dc784a7",
+          "trace_id": "trace-7abc2a471047",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -4563,7 +4563,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-cc550dc784a7",
+          "trace_id": "trace-7abc2a471047",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "tool_agent",
@@ -4581,7 +4581,7 @@
             "tool_agent": 0.7303,
             "rag_agent": 0.0386
           },
-          "latency_ms": 19.727699999748438,
+          "latency_ms": 19.628000000011525,
           "fallback": false,
           "fallback_reason": null,
           "language": "pt-BR",
@@ -4614,12 +4614,12 @@
           },
           "probability_source": "laya_choice_probability",
           "calibration_status": "unverified_domain",
-          "latency_ms": 21.625200000016775,
+          "latency_ms": 20.09760000055394,
           "selected_tool": null,
           "fallback": false,
           "fallback_reason": null,
           "error": null,
-          "trace_id": "trace-bafd228c31cd",
+          "trace_id": "trace-24a1bd4e762f",
           "metadata": {
             "routing": {
               "model": "multilingual",
@@ -4642,7 +4642,7 @@
           }
         },
         "trace": {
-          "trace_id": "trace-bafd228c31cd",
+          "trace_id": "trace-24a1bd4e762f",
           "router_strategy": "laya",
           "decision_engine": "laya",
           "selected_route": "tool_agent",
@@ -4660,7 +4660,7 @@
             "tool_agent": 0.652,
             "rag_agent": 0.3311
           },
-          "latency_ms": 21.625200000016775,
+          "latency_ms": 20.09760000055394,
           "fallback": false,
           "fallback_reason": null,
           "language": "mixed",

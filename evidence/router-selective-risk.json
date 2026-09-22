@@ -11,6 +11,8 @@
     0.95,
     0.98
   ],
+  "selection_policy": "select highest calibration coverage with unsafe_auto_route_rate <= 0.05 and false_auto_accept == 0",
+  "selected_threshold_for_held_out": 0.8,
   "results": [
     {
       "threshold": 0.5,
@@ -24,7 +26,7 @@
       "false_auto_accept_rate": 0.08823529411764706,
       "unsafe_auto_route": 7,
       "unsafe_auto_route_rate": 0.15555555555555556,
-      "latency_ms": 8.634837777754,
+      "latency_ms": 27.77286888883989,
       "llm_calls": 0
     },
     {
@@ -39,7 +41,7 @@
       "false_auto_accept_rate": 0.08823529411764706,
       "unsafe_auto_route": 7,
       "unsafe_auto_route_rate": 0.15555555555555556,
-      "latency_ms": 8.634837777754,
+      "latency_ms": 27.77286888883989,
       "llm_calls": 0
     },
     {
@@ -54,7 +56,7 @@
       "false_auto_accept_rate": 0.058823529411764705,
       "unsafe_auto_route": 6,
       "unsafe_auto_route_rate": 0.13333333333333333,
-      "latency_ms": 8.634837777754,
+      "latency_ms": 27.77286888883989,
       "llm_calls": 0
     },
     {
@@ -69,7 +71,7 @@
       "false_auto_accept_rate": 0.058823529411764705,
       "unsafe_auto_route": 4,
       "unsafe_auto_route_rate": 0.08888888888888889,
-      "latency_ms": 8.634837777754,
+      "latency_ms": 27.77286888883989,
       "llm_calls": 0
     },
     {
@@ -84,7 +86,7 @@
       "false_auto_accept_rate": 0.0,
       "unsafe_auto_route": 2,
       "unsafe_auto_route_rate": 0.044444444444444446,
-      "latency_ms": 8.634837777754,
+      "latency_ms": 27.77286888883989,
       "llm_calls": 0
     },
     {
@@ -99,7 +101,7 @@
       "false_auto_accept_rate": 0.0,
       "unsafe_auto_route": 2,
       "unsafe_auto_route_rate": 0.044444444444444446,
-      "latency_ms": 8.634837777754,
+      "latency_ms": 27.77286888883989,
       "llm_calls": 0
     },
     {
@@ -114,7 +116,7 @@
       "false_auto_accept_rate": 0.0,
       "unsafe_auto_route": 2,
       "unsafe_auto_route_rate": 0.044444444444444446,
-      "latency_ms": 8.634837777754,
+      "latency_ms": 27.77286888883989,
       "llm_calls": 0
     },
     {
@@ -129,7 +131,7 @@
       "false_auto_accept_rate": 0.0,
       "unsafe_auto_route": 0,
       "unsafe_auto_route_rate": 0.0,
-      "latency_ms": 8.634837777754,
+      "latency_ms": 27.77286888883989,
       "llm_calls": 0
     },
     {
@@ -144,7 +146,7 @@
       "false_auto_accept_rate": 0.0,
       "unsafe_auto_route": 0,
       "unsafe_auto_route_rate": 0.0,
-      "latency_ms": 8.634837777754,
+      "latency_ms": 27.77286888883989,
       "llm_calls": 0
     }
   ]
