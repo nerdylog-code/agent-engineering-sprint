@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "purpose": "AdaptiveDecisionRouter evaluation, separate from RAG datasets",
+  "seed": 20260922,
+  "counts": {
+    "development": 120,
+    "calibration": 60,
+    "held_out_test": 60
+  },
+  "large_input_cases": {
+    "development": 24,
+    "calibration": 12,
+    "held_out_test": 12
+  },
+  "splits": {
+    "development": 0.5,
+    "calibration": 0.25,
+    "held_out_test": 0.25
+  },
+  "routes": [
+    "general_agent",
+    "tool_agent",
+    "rag_agent"
+  ],
+  "difficulties": [
+    "easy",
+    "medium",
+    "hard",
+    "ambiguous"
+  ],
+  "languages": [
+    "en",
+    "pt-BR",
+    "mixed"
+  ],
+  "threshold_fit_allowed": [
+    "development",
+    "calibration"
+  ],
+  "threshold_fit_forbidden": [
+    "held_out_test"
+  ]
+}
